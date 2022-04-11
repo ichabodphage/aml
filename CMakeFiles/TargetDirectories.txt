@@ -1,0 +1,3 @@
+/home/agarioisgud/projects/graphics-project/CMakeFiles/rebuild_cache.dir
+/home/agarioisgud/projects/graphics-project/CMakeFiles/edit_cache.dir
+/home/agarioisgud/projects/graphics-project/CMakeFiles/graphics-project.dir

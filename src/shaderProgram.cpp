@@ -1,0 +1,26 @@
+#include "../include/shaderProgram.hpp"
+
+using namespace aml;
+
+
+ShaderProgram::ShaderProgram(aml::ShaderResource &fragmentShader,aml::ShaderResource &vertexShader){
+    programId = glCreateProgram();
+    glAttachShader(programId, vertexShader.shader);
+    glAttachShader(programId, fragmentShader.shader);
+    glBindFragDataLocation(programId, 0, "outColor");
+    
+    glLinkProgram(programId);
+    glUseProgram(programId);
+    
+    //define position of shader data
+    posAttrib = glGetAttribLocation(programId, "position");
+    glEnableVertexAttribArray(posAttrib);
+    glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
+}
+
+ShaderProgram::~ShaderProgram(){
+    glDeleteProgram(programId);
+}
+void ShaderProgram::run(){
+    glUseProgram(programId);
+}
