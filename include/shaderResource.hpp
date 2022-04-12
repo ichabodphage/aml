@@ -9,6 +9,7 @@
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 
+
 #ifndef AML_SHADER
 #define AML_SHADER
 
@@ -33,7 +34,7 @@ namespace aml{
             ShaderResource(const std::string shaderFile,aml::ShaderType type);
             ~ShaderResource();
 
-
+            
     };
 
 }

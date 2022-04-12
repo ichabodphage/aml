@@ -14,7 +14,11 @@ CMakeFiles/graphics-project.dir/main.cpp.o
 CMakeFiles/graphics-project.dir/src/lib.cpp.o
  /home/agarioisgud/projects/graphics-project/include/lib.hpp
  /home/agarioisgud/projects/graphics-project/src/lib.cpp
+CMakeFiles/graphics-project.dir/src/renderMatrix.cpp.o
+ /home/agarioisgud/projects/graphics-project/include/renderMatrix.hpp
+ /home/agarioisgud/projects/graphics-project/src/renderMatrix.cpp
 CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.o
+ /home/agarioisgud/projects/graphics-project/include/renderMatrix.hpp
  /home/agarioisgud/projects/graphics-project/include/shaderProgram.hpp
  /home/agarioisgud/projects/graphics-project/include/shaderResource.hpp
  /home/agarioisgud/projects/graphics-project/src/shaderProgram.cpp

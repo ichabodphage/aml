@@ -5,6 +5,7 @@ using namespace aml;
 template<typename vType>
 size_t VertexResource<vType>::nextID = 0;
 
+
 template<typename vType>
 VertexResource<vType>::~VertexResource(){
     glDeleteBuffers(1, &vbo);

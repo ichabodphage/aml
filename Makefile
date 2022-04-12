@@ -196,6 +196,33 @@ src/lib.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/lib.cpp.s
 .PHONY : src/lib.cpp.s
 
+src/renderMatrix.o: src/renderMatrix.cpp.o
+
+.PHONY : src/renderMatrix.o
+
+# target to build an object file
+src/renderMatrix.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/renderMatrix.cpp.o
+.PHONY : src/renderMatrix.cpp.o
+
+src/renderMatrix.i: src/renderMatrix.cpp.i
+
+.PHONY : src/renderMatrix.i
+
+# target to preprocess a source file
+src/renderMatrix.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/renderMatrix.cpp.i
+.PHONY : src/renderMatrix.cpp.i
+
+src/renderMatrix.s: src/renderMatrix.cpp.s
+
+.PHONY : src/renderMatrix.s
+
+# target to generate assembly for a file
+src/renderMatrix.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/renderMatrix.cpp.s
+.PHONY : src/renderMatrix.cpp.s
+
 src/shaderProgram.o: src/shaderProgram.cpp.o
 
 .PHONY : src/shaderProgram.o
@@ -319,6 +346,9 @@ help:
 	@echo "... src/lib.o"
 	@echo "... src/lib.i"
 	@echo "... src/lib.s"
+	@echo "... src/renderMatrix.o"
+	@echo "... src/renderMatrix.i"
+	@echo "... src/renderMatrix.s"
 	@echo "... src/shaderProgram.o"
 	@echo "... src/shaderProgram.i"
 	@echo "... src/shaderProgram.s"

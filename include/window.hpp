@@ -24,6 +24,9 @@ namespace aml{
             Window(size_t width,size_t height, const char* name);
 
             ~Window();
+
+            //clears the window 
+            void clear();
     };
 }
 

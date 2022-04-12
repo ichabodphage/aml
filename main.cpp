@@ -38,11 +38,14 @@ int main()
         glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(0.5f, -0.5f, -0.5f), glm::vec3(-0.5f, -0.5f, -0.5f),
         // Left face
         glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(-0.5f, -0.5f, -0.5f), glm::vec3(-0.5f, -0.5f, 0.5f),
+        // Right face
+        glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(0.5f, -0.5f, 0.5f), glm::vec3(0.5f, -0.5f, -0.5f),
+        
     };
 
 
     //add verticies to vertex buffer and push them to the GPU
-    vertexBuffer.addVerticies(vertices,9);
+    vertexBuffer.addVerticies(vertices,12);
     vertexBuffer.pushToGPU();
 
 
@@ -52,14 +55,17 @@ int main()
     colorBuffer.bindResource();
 
     glm::vec3 triangleColors[] = { 
-        glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f),
-        glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f)
+        glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(0.25f, 0.0f, 0.5f), glm::vec3(0.0f, 1.0f, 0.0f),
+        glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(0.25f, 0.0f, 0.5f), glm::vec3(0.0f, 1.0f, 0.0f),
+        glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(0.25f, 0.0f, 0.5f), glm::vec3(0.0f, 1.0f, 0.0f),
+        glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(0.25f, 0.0f, 0.5f), glm::vec3(0.0f, 1.0f, 0.0f)
+        
     };
     
     /*aml::Tint triangleColors[] = { 
         aml::Tint(255,0,0),aml::Tint(0,255,0),aml::Tint(0,0,255)
     };*/
-    colorBuffer.addVerticies(triangleColors,6);
+    colorBuffer.addVerticies(triangleColors,12);
     colorBuffer.pushToGPU();
     
     //initalize shader resources
@@ -86,20 +92,18 @@ int main()
     float rot = 0;
     while(!glfwWindowShouldClose(window.renderWindow))
     {
+        window.clear();
 
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         shaderProgram.run();
         viewMatrix.pushToGPU();
         projectionMatrix.pushToGPU();
             
         modelMatrix.matrix = glm::scale(glm::rotate(glm::mat4(1), rot, glm::vec3(1.0f, 0.0f, 0.0f)),glm::vec3(5,5,5));
         modelMatrix.matrix = glm::rotate(modelMatrix.matrix, rot, glm::vec3(0, 1.0f, 0.0f));
-
-        
         modelMatrix.pushToGPU();
+        
         // Draw a triangle from the 3 vertices
-        glDrawArrays(GL_TRIANGLES, 0, 6);
+        glDrawArrays(GL_TRIANGLES, 0, 12);
 
         // Swap buffers and poll window events
         glfwSwapBuffers(window.renderWindow);

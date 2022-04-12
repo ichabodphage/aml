@@ -45,8 +45,6 @@ glm/gtc/matrix_transform.hpp
 -
 GLFW/glfw3.h
 -
-shaderProgram.hpp
-/home/agarioisgud/projects/graphics-project/include/shaderProgram.hpp
 
 /home/agarioisgud/projects/graphics-project/include/shaderProgram.hpp
 iostream
@@ -69,6 +67,8 @@ GLFW/glfw3.h
 -
 shaderResource.hpp
 /home/agarioisgud/projects/graphics-project/include/shaderResource.hpp
+renderMatrix.hpp
+/home/agarioisgud/projects/graphics-project/include/renderMatrix.hpp
 
 /home/agarioisgud/projects/graphics-project/include/shaderResource.hpp
 iostream
@@ -181,4 +181,10 @@ include/renderMatrix.hpp
 /home/agarioisgud/projects/graphics-project/src/vertexResource_IMPLEMENT.hpp
 ../include/vertexResource.hpp
 /home/agarioisgud/projects/graphics-project/include/vertexResource.hpp
+
+/home/agarioisgud/projects/graphics-project/src/window.cpp
+../include/window.hpp
+/home/agarioisgud/projects/graphics-project/include/window.hpp
+../include/lib.hpp
+/home/agarioisgud/projects/graphics-project/include/lib.hpp
 
