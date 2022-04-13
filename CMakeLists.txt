@@ -17,7 +17,6 @@ add_executable(graphics-project
     main.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/lib.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/window.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/tint.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderResource.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderProgram.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/renderMatrix.cpp)

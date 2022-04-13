@@ -7,12 +7,14 @@
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 
+
+#include "points.hpp"
 #include "include/lib.hpp"
 #include "include/vertexResource.hpp"
 #include "include/window.hpp"
 #include "include/shaderResource.hpp"
 #include "include/shaderProgram.hpp"
-#include "include/tint.hpp"
+#include "include/vector3.hpp"
 #include "include/renderMatrix.hpp"
 /*
  compile with 
@@ -29,44 +31,23 @@ int main()
     
     //establish vertex buffer
     aml::VertexResource<glm::vec3> vertexBuffer;
-    vertexBuffer.bindResource();
-    
-    glm::vec3 vertices[] = {
-        // Front face
-        glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(-0.5f, -0.5f, 0.5f), glm::vec3(0.5f, -0.5f, 0.5f),
-        // Back face
-        glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(0.5f, -0.5f, -0.5f), glm::vec3(-0.5f, -0.5f, -0.5f),
-        // Left face
-        glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(-0.5f, -0.5f, -0.5f), glm::vec3(-0.5f, -0.5f, 0.5f),
-        // Right face
-        glm::vec3(0.0f, 0.5f, 0.0f), glm::vec3(0.5f, -0.5f, 0.5f), glm::vec3(0.5f, -0.5f, -0.5f),
-        
-    };
 
-
-    //add verticies to vertex buffer and push them to the GPU
-    vertexBuffer.addVerticies(vertices,12);
-    vertexBuffer.pushToGPU();
+    vertexBuffer.pushAdd(aml::cubeVertices.data(),aml::cubeVertices.size());
 
 
     //color buffer
-    aml::VertexResource<glm::vec3> colorBuffer;
-    //aml::VertexResource<aml::Tint> colorBuffer;
-    colorBuffer.bindResource();
 
-    glm::vec3 triangleColors[] = { 
-        glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(0.25f, 0.0f, 0.5f), glm::vec3(0.0f, 1.0f, 0.0f),
-        glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(0.25f, 0.0f, 0.5f), glm::vec3(0.0f, 1.0f, 0.0f),
-        glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(0.25f, 0.0f, 0.5f), glm::vec3(0.0f, 1.0f, 0.0f),
-        glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(0.25f, 0.0f, 0.5f), glm::vec3(0.0f, 1.0f, 0.0f)
-        
-    };
+ 
     
-    /*aml::Tint triangleColors[] = { 
-        aml::Tint(255,0,0),aml::Tint(0,255,0),aml::Tint(0,0,255)
-    };*/
-    colorBuffer.addVerticies(triangleColors,12);
+    // does not work for some reason
+    aml::VertexResource<glm::vec3> colorBuffer;
+    
+
+    colorBuffer.addVerticies(cubeColors.data(),cubeColors.size());
+    
+  
     colorBuffer.pushToGPU();
+    
     
     //initalize shader resources
     aml::ShaderResource vertexShader("src/basicShaders/basicVert.vert",aml::ShaderType::VERTEX);
@@ -84,13 +65,13 @@ int main()
 
     aml::RenderMatrix projectionMatrix(glm::perspective(
     45.0f, // field of view angle (in degrees)
-    float(800) / float(600), // aspect ratio
+    window.dimensions().x/window.dimensions().y, // aspect ratio
     0.5f, // near plane distance
     1000.0f), shaderProgram.programId,"matrices.projectionMatrix");
     // ---------------------------- RENDERING ------------------------------ //
 
     float rot = 0;
-    while(!glfwWindowShouldClose(window.renderWindow))
+    while(window.isActive())
     {
         window.clear();
 
@@ -100,13 +81,13 @@ int main()
             
         modelMatrix.matrix = glm::scale(glm::rotate(glm::mat4(1), rot, glm::vec3(1.0f, 0.0f, 0.0f)),glm::vec3(5,5,5));
         modelMatrix.matrix = glm::rotate(modelMatrix.matrix, rot, glm::vec3(0, 1.0f, 0.0f));
+        modelMatrix.matrix = glm::rotate(modelMatrix.matrix, rot, glm::vec3(0, 0, 1.0f));
         modelMatrix.pushToGPU();
         
-        // Draw a triangle from the 3 vertices
-        glDrawArrays(GL_TRIANGLES, 0, 12);
+        //call windows draw function
+        window.draw(0,cubeVertices.size()*3);
 
-        // Swap buffers and poll window events
-        glfwSwapBuffers(window.renderWindow);
+
         glfwPollEvents();
         rot += 0.01f;
     }

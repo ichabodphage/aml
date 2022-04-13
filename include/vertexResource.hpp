@@ -21,14 +21,20 @@ namespace aml
         GLuint vbo;
     public:
         std::vector<vType> verticies;
+
+        VertexResource();
         ~VertexResource();
 
         //binds the vertex resources
         void bindResource();
 
-        //adds the verticies of a vertex array into verticeis
+        //adds the verticies of a vertex array into verticies
         void addVerticies(vType* vertexArray, size_t size);
 
+        //adds the verticies of a vertex array into verticies and pushes them to the GPU
+        void pushAdd(vType* vertexArray, size_t size);
+
+        
         //pushes verticies data into the gpu
         void pushToGPU();
     };

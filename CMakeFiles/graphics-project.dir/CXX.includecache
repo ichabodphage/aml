@@ -90,7 +90,7 @@ glm/glm.hpp
 GLFW/glfw3.h
 -
 
-/home/agarioisgud/projects/graphics-project/include/tint.hpp
+/home/agarioisgud/projects/graphics-project/include/vector3.hpp
 iostream
 -
 stdio.h
@@ -163,6 +163,8 @@ glm/glm.hpp
 -
 GLFW/glfw3.h
 -
+points.hpp
+/home/agarioisgud/projects/graphics-project/points.hpp
 include/lib.hpp
 /home/agarioisgud/projects/graphics-project/include/lib.hpp
 include/vertexResource.hpp
@@ -173,18 +175,24 @@ include/shaderResource.hpp
 /home/agarioisgud/projects/graphics-project/include/shaderResource.hpp
 include/shaderProgram.hpp
 /home/agarioisgud/projects/graphics-project/include/shaderProgram.hpp
-include/tint.hpp
-/home/agarioisgud/projects/graphics-project/include/tint.hpp
+include/vector3.hpp
+/home/agarioisgud/projects/graphics-project/include/vector3.hpp
 include/renderMatrix.hpp
 /home/agarioisgud/projects/graphics-project/include/renderMatrix.hpp
+
+/home/agarioisgud/projects/graphics-project/points.hpp
+vector
+-
+GL/glew.h
+-
+GL/glut.h
+-
+glm/glm.hpp
+-
+GLFW/glfw3.h
+-
 
 /home/agarioisgud/projects/graphics-project/src/vertexResource_IMPLEMENT.hpp
 ../include/vertexResource.hpp
 /home/agarioisgud/projects/graphics-project/include/vertexResource.hpp
-
-/home/agarioisgud/projects/graphics-project/src/window.cpp
-../include/window.hpp
-/home/agarioisgud/projects/graphics-project/include/window.hpp
-../include/lib.hpp
-/home/agarioisgud/projects/graphics-project/include/lib.hpp
 

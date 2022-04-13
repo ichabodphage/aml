@@ -2,7 +2,7 @@
 #include "../include/lib.hpp"
 using namespace aml;
 
-Window::Window(size_t width,size_t height, const char* name){
+Window::Window(size_t winWidth,size_t winHeight, const char* name):width(winWidth),height(winHeight){
     renderWindow = aml::makeGLWindow(width,height,name);
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
@@ -19,4 +19,27 @@ void Window::clear(){
 
     glFrontFace(GL_CW);
     glDisable(GL_CULL_FACE);
+}
+
+bool Window::isActive(){
+    return !glfwWindowShouldClose(renderWindow);
+}
+
+void Window::renderVBO(size_t index, size_t amount){
+    // Draw a triangle from the 3 vertices
+    glDrawArrays(GL_TRIANGLES, index, amount);
+}
+
+
+void Window::draw(size_t index, size_t amount){
+    glDrawArrays(GL_TRIANGLES, index, amount);
+    display();
+}
+void Window::display(){
+    glfwSwapBuffers(renderWindow);
+}
+
+glm::vec2 Window::dimensions(){
+
+    return glm::vec2(width,height);
 }

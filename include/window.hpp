@@ -12,11 +12,17 @@
 #define AML_WINDOW
 
 namespace aml{
+    /*
+        class that manages a window used to display graphics
+    */
     class Window{
-        public:
+        private:
             //window vertex array object
             GLuint vao;
-
+            //width and height of window
+            size_t width,height;
+        public:
+            
             //GLFW render target
             GLFWwindow* renderWindow;
 
@@ -27,6 +33,21 @@ namespace aml{
 
             //clears the window 
             void clear();
+
+            //returns if the window should be active or not
+            bool isActive();
+
+            //renders the current bound VBO
+            void renderVBO(size_t index,size_t amount);
+
+            //calls renderVBO and display
+            void draw(size_t index, size_t amount);
+
+            //swaps the video buffer and shows the next frame
+            void display();
+
+            //returns the width/height window dimensions
+            glm::vec2 dimensions();
     };
 }
 

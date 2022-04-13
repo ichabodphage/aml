@@ -277,33 +277,6 @@ src/shaderResource.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/shaderResource.cpp.s
 .PHONY : src/shaderResource.cpp.s
 
-src/tint.o: src/tint.cpp.o
-
-.PHONY : src/tint.o
-
-# target to build an object file
-src/tint.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/tint.cpp.o
-.PHONY : src/tint.cpp.o
-
-src/tint.i: src/tint.cpp.i
-
-.PHONY : src/tint.i
-
-# target to preprocess a source file
-src/tint.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/tint.cpp.i
-.PHONY : src/tint.cpp.i
-
-src/tint.s: src/tint.cpp.s
-
-.PHONY : src/tint.s
-
-# target to generate assembly for a file
-src/tint.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/tint.cpp.s
-.PHONY : src/tint.cpp.s
-
 src/window.o: src/window.cpp.o
 
 .PHONY : src/window.o
@@ -355,9 +328,6 @@ help:
 	@echo "... src/shaderResource.o"
 	@echo "... src/shaderResource.i"
 	@echo "... src/shaderResource.s"
-	@echo "... src/tint.o"
-	@echo "... src/tint.i"
-	@echo "... src/tint.s"
 	@echo "... src/window.o"
 	@echo "... src/window.i"
 	@echo "... src/window.s"

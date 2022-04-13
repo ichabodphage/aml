@@ -6,10 +6,11 @@ CMakeFiles/graphics-project.dir/main.cpp.o
  /home/agarioisgud/projects/graphics-project/include/renderMatrix.hpp
  /home/agarioisgud/projects/graphics-project/include/shaderProgram.hpp
  /home/agarioisgud/projects/graphics-project/include/shaderResource.hpp
- /home/agarioisgud/projects/graphics-project/include/tint.hpp
+ /home/agarioisgud/projects/graphics-project/include/vector3.hpp
  /home/agarioisgud/projects/graphics-project/include/vertexResource.hpp
  /home/agarioisgud/projects/graphics-project/include/window.hpp
  /home/agarioisgud/projects/graphics-project/main.cpp
+ /home/agarioisgud/projects/graphics-project/points.hpp
  /home/agarioisgud/projects/graphics-project/src/vertexResource_IMPLEMENT.hpp
 CMakeFiles/graphics-project.dir/src/lib.cpp.o
  /home/agarioisgud/projects/graphics-project/include/lib.hpp
@@ -25,9 +26,6 @@ CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.o
 CMakeFiles/graphics-project.dir/src/shaderResource.cpp.o
  /home/agarioisgud/projects/graphics-project/include/shaderResource.hpp
  /home/agarioisgud/projects/graphics-project/src/shaderResource.cpp
-CMakeFiles/graphics-project.dir/src/tint.cpp.o
- /home/agarioisgud/projects/graphics-project/include/tint.hpp
- /home/agarioisgud/projects/graphics-project/src/tint.cpp
 CMakeFiles/graphics-project.dir/src/window.cpp.o
  /home/agarioisgud/projects/graphics-project/include/lib.hpp
  /home/agarioisgud/projects/graphics-project/include/window.hpp

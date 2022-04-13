@@ -115,22 +115,9 @@ CMakeFiles/graphics-project.dir/src/window.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/graphics-project.dir/src/window.cpp.s"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/agarioisgud/projects/graphics-project/src/window.cpp -o CMakeFiles/graphics-project.dir/src/window.cpp.s
 
-CMakeFiles/graphics-project.dir/src/tint.cpp.o: CMakeFiles/graphics-project.dir/flags.make
-CMakeFiles/graphics-project.dir/src/tint.cpp.o: src/tint.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/agarioisgud/projects/graphics-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/graphics-project.dir/src/tint.cpp.o"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphics-project.dir/src/tint.cpp.o -c /home/agarioisgud/projects/graphics-project/src/tint.cpp
-
-CMakeFiles/graphics-project.dir/src/tint.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/graphics-project.dir/src/tint.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/agarioisgud/projects/graphics-project/src/tint.cpp > CMakeFiles/graphics-project.dir/src/tint.cpp.i
-
-CMakeFiles/graphics-project.dir/src/tint.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/graphics-project.dir/src/tint.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/agarioisgud/projects/graphics-project/src/tint.cpp -o CMakeFiles/graphics-project.dir/src/tint.cpp.s
-
 CMakeFiles/graphics-project.dir/src/shaderResource.cpp.o: CMakeFiles/graphics-project.dir/flags.make
 CMakeFiles/graphics-project.dir/src/shaderResource.cpp.o: src/shaderResource.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/agarioisgud/projects/graphics-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/graphics-project.dir/src/shaderResource.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/agarioisgud/projects/graphics-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/graphics-project.dir/src/shaderResource.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphics-project.dir/src/shaderResource.cpp.o -c /home/agarioisgud/projects/graphics-project/src/shaderResource.cpp
 
 CMakeFiles/graphics-project.dir/src/shaderResource.cpp.i: cmake_force
@@ -143,7 +130,7 @@ CMakeFiles/graphics-project.dir/src/shaderResource.cpp.s: cmake_force
 
 CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.o: CMakeFiles/graphics-project.dir/flags.make
 CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.o: src/shaderProgram.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/agarioisgud/projects/graphics-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/agarioisgud/projects/graphics-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.o -c /home/agarioisgud/projects/graphics-project/src/shaderProgram.cpp
 
 CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.i: cmake_force
@@ -156,7 +143,7 @@ CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.s: cmake_force
 
 CMakeFiles/graphics-project.dir/src/renderMatrix.cpp.o: CMakeFiles/graphics-project.dir/flags.make
 CMakeFiles/graphics-project.dir/src/renderMatrix.cpp.o: src/renderMatrix.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/agarioisgud/projects/graphics-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/graphics-project.dir/src/renderMatrix.cpp.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/agarioisgud/projects/graphics-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/graphics-project.dir/src/renderMatrix.cpp.o"
 	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/graphics-project.dir/src/renderMatrix.cpp.o -c /home/agarioisgud/projects/graphics-project/src/renderMatrix.cpp
 
 CMakeFiles/graphics-project.dir/src/renderMatrix.cpp.i: cmake_force
@@ -172,7 +159,6 @@ graphics__project_OBJECTS = \
 "CMakeFiles/graphics-project.dir/main.cpp.o" \
 "CMakeFiles/graphics-project.dir/src/lib.cpp.o" \
 "CMakeFiles/graphics-project.dir/src/window.cpp.o" \
-"CMakeFiles/graphics-project.dir/src/tint.cpp.o" \
 "CMakeFiles/graphics-project.dir/src/shaderResource.cpp.o" \
 "CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.o" \
 "CMakeFiles/graphics-project.dir/src/renderMatrix.cpp.o"
@@ -183,13 +169,12 @@ graphics__project_EXTERNAL_OBJECTS =
 graphics-project: CMakeFiles/graphics-project.dir/main.cpp.o
 graphics-project: CMakeFiles/graphics-project.dir/src/lib.cpp.o
 graphics-project: CMakeFiles/graphics-project.dir/src/window.cpp.o
-graphics-project: CMakeFiles/graphics-project.dir/src/tint.cpp.o
 graphics-project: CMakeFiles/graphics-project.dir/src/shaderResource.cpp.o
 graphics-project: CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.o
 graphics-project: CMakeFiles/graphics-project.dir/src/renderMatrix.cpp.o
 graphics-project: CMakeFiles/graphics-project.dir/build.make
 graphics-project: CMakeFiles/graphics-project.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/agarioisgud/projects/graphics-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Linking CXX executable graphics-project"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/agarioisgud/projects/graphics-project/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Linking CXX executable graphics-project"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/graphics-project.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
