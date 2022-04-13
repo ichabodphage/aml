@@ -196,33 +196,6 @@ src/lib.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/lib.cpp.s
 .PHONY : src/lib.cpp.s
 
-src/renderMatrix.o: src/renderMatrix.cpp.o
-
-.PHONY : src/renderMatrix.o
-
-# target to build an object file
-src/renderMatrix.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/renderMatrix.cpp.o
-.PHONY : src/renderMatrix.cpp.o
-
-src/renderMatrix.i: src/renderMatrix.cpp.i
-
-.PHONY : src/renderMatrix.i
-
-# target to preprocess a source file
-src/renderMatrix.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/renderMatrix.cpp.i
-.PHONY : src/renderMatrix.cpp.i
-
-src/renderMatrix.s: src/renderMatrix.cpp.s
-
-.PHONY : src/renderMatrix.s
-
-# target to generate assembly for a file
-src/renderMatrix.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/renderMatrix.cpp.s
-.PHONY : src/renderMatrix.cpp.s
-
 src/shaderProgram.o: src/shaderProgram.cpp.o
 
 .PHONY : src/shaderProgram.o
@@ -277,6 +250,33 @@ src/shaderResource.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/shaderResource.cpp.s
 .PHONY : src/shaderResource.cpp.s
 
+src/uniform.o: src/uniform.cpp.o
+
+.PHONY : src/uniform.o
+
+# target to build an object file
+src/uniform.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/uniform.cpp.o
+.PHONY : src/uniform.cpp.o
+
+src/uniform.i: src/uniform.cpp.i
+
+.PHONY : src/uniform.i
+
+# target to preprocess a source file
+src/uniform.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/uniform.cpp.i
+.PHONY : src/uniform.cpp.i
+
+src/uniform.s: src/uniform.cpp.s
+
+.PHONY : src/uniform.s
+
+# target to generate assembly for a file
+src/uniform.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/uniform.cpp.s
+.PHONY : src/uniform.cpp.s
+
 src/window.o: src/window.cpp.o
 
 .PHONY : src/window.o
@@ -319,15 +319,15 @@ help:
 	@echo "... src/lib.o"
 	@echo "... src/lib.i"
 	@echo "... src/lib.s"
-	@echo "... src/renderMatrix.o"
-	@echo "... src/renderMatrix.i"
-	@echo "... src/renderMatrix.s"
 	@echo "... src/shaderProgram.o"
 	@echo "... src/shaderProgram.i"
 	@echo "... src/shaderProgram.s"
 	@echo "... src/shaderResource.o"
 	@echo "... src/shaderResource.i"
 	@echo "... src/shaderResource.s"
+	@echo "... src/uniform.o"
+	@echo "... src/uniform.i"
+	@echo "... src/uniform.s"
 	@echo "... src/window.o"
 	@echo "... src/window.i"
 	@echo "... src/window.s"

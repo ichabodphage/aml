@@ -6,9 +6,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/agarioisgud/projects/graphics-project/main.cpp" "/home/agarioisgud/projects/graphics-project/CMakeFiles/graphics-project.dir/main.cpp.o"
   "/home/agarioisgud/projects/graphics-project/src/lib.cpp" "/home/agarioisgud/projects/graphics-project/CMakeFiles/graphics-project.dir/src/lib.cpp.o"
-  "/home/agarioisgud/projects/graphics-project/src/renderMatrix.cpp" "/home/agarioisgud/projects/graphics-project/CMakeFiles/graphics-project.dir/src/renderMatrix.cpp.o"
   "/home/agarioisgud/projects/graphics-project/src/shaderProgram.cpp" "/home/agarioisgud/projects/graphics-project/CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.o"
   "/home/agarioisgud/projects/graphics-project/src/shaderResource.cpp" "/home/agarioisgud/projects/graphics-project/CMakeFiles/graphics-project.dir/src/shaderResource.cpp.o"
+  "/home/agarioisgud/projects/graphics-project/src/uniform.cpp" "/home/agarioisgud/projects/graphics-project/CMakeFiles/graphics-project.dir/src/uniform.cpp.o"
   "/home/agarioisgud/projects/graphics-project/src/window.cpp" "/home/agarioisgud/projects/graphics-project/CMakeFiles/graphics-project.dir/src/window.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")

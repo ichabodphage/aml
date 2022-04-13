@@ -21,10 +21,11 @@ namespace aml{
             GLuint vao;
             //width and height of window
             size_t width,height;
-        public:
             
             //GLFW render target
             GLFWwindow* renderWindow;
+        public:
+            
 
             //constructor using window width, height, and name
             Window(size_t width,size_t height, const char* name);

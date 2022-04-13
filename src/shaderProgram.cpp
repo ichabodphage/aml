@@ -24,3 +24,15 @@ ShaderProgram::~ShaderProgram(){
 void ShaderProgram::run(){
     glUseProgram(programId);
 }
+
+GLuint ShaderProgram::getID(){
+    return programId;
+};
+
+
+Uniform& ShaderProgram::operator[](const std::string uniformName){
+    if(uniformMap.count(uniformName) == 0){
+        uniformMap[uniformName] = aml::Uniform(this,uniformName);
+    }
+    return uniformMap[uniformName];
+}

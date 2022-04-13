@@ -16,8 +16,10 @@ namespace aml{
 
     
     //runs all basic opengl init functions
-    void initAml(bool resize = false);
+    void startAml(bool resize = false);
 
+    //terminates AML
+    void stopAml();
     //creates a GLFW window
     GLFWwindow* makeGLWindow(size_t width,size_t height, const char* name);
 }

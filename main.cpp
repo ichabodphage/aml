@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include <vector>
+#include <random>
 
 #include <GL/glew.h>
 #include <GL/glut.h>
@@ -9,13 +10,17 @@
 
 
 #include "points.hpp"
+#include "matricies.hpp"
+
 #include "include/lib.hpp"
 #include "include/vertexResource.hpp"
 #include "include/window.hpp"
 #include "include/shaderResource.hpp"
 #include "include/shaderProgram.hpp"
+#include "include/defaultShaderResources.hpp"
 #include "include/vector3.hpp"
-#include "include/renderMatrix.hpp"
+#include "include/uniform.hpp"
+
 /*
  compile with 
  cmake --build . -j 2
@@ -25,75 +30,56 @@
 int main()
 {
     //initAML and make AML window
-    aml::initAml();
+    aml::startAml();
     aml::Window window(800,600,"TEST");
     
-    
-    //establish vertex buffer
-    aml::VertexResource<glm::vec3> vertexBuffer;
+    //establish vertex buffer and push vertex data into the GPU
+    aml::VertexResource<float_t> vertexBuffer;
+    vertexBuffer.pushAdd(aml::cubeVerticesFloat.data(),aml::cubeVerticesFloat.size());
 
-    vertexBuffer.pushAdd(aml::cubeVertices.data(),aml::cubeVertices.size());
+    //like the vertexBuffer, but for the color of the verticies
+    aml::VertexResource<float> colorBuffer;    
+    colorBuffer.pushAdd(aml::cubeColorsFloat.data(),aml::cubeColorsFloat.size());
 
+    //default vertex shader, uses color and vertex data
+    aml::ShaderResource defaultVertexShader("src/basicShaders/basicVert.vert",aml::ShaderType::VERTEX);
 
-    //color buffer
-
- 
-    
-    // does not work for some reason
-    aml::VertexResource<glm::vec3> colorBuffer;
-    
-
-    colorBuffer.addVerticies(cubeColors.data(),cubeColors.size());
-    
-  
-    colorBuffer.pushToGPU();
-    
-    
-    //initalize shader resources
-    aml::ShaderResource vertexShader("src/basicShaders/basicVert.vert",aml::ShaderType::VERTEX);
-    aml::ShaderResource fragmentShader("src/basicShaders/basicFrag.frag",aml::ShaderType::FRAGMENT);
-
+    //default fragment shader, uses vertex color data
+    aml::ShaderResource defaultFragmentShader("src/basicShaders/basicFrag.frag",aml::ShaderType::FRAGMENT);
     // Link the vertex and fragment shader into a shader program
-    aml::ShaderProgram shaderProgram(fragmentShader,vertexShader);
+    aml::ShaderProgram shaderProgram(defaultFragmentShader,defaultVertexShader);
 
-    aml::RenderMatrix viewMatrix(
-        glm::lookAt(glm::vec3(0.0f, 0.0f, 20.0f), // Eye position
-        glm::vec3(0.0f, 0.0f, 0.0f),  // Viewpoint position
-        glm::vec3(0.0f, 1.0f, 0.0f)),shaderProgram.programId,"matrices.viewMatrix");
 
-    aml::RenderMatrix modelMatrix( glm::scale(glm::mat4(1), glm::vec3(5,5,5)),shaderProgram.programId,"matrices.modelMatrix");
-
-    aml::RenderMatrix projectionMatrix(glm::perspective(
+    //initalize shader program uniforms
+    shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
+    shaderProgram["matrices.viewMatrix"].setMatrix(aml::viewMatrix);
+  
+    glm::mat4 projectionMatrix =glm::perspective(
     45.0f, // field of view angle (in degrees)
     window.dimensions().x/window.dimensions().y, // aspect ratio
     0.5f, // near plane distance
-    1000.0f), shaderProgram.programId,"matrices.projectionMatrix");
+    1000.0f);
+
+    shaderProgram["matrices.projectionMatrix"].setMatrix(projectionMatrix);
     // ---------------------------- RENDERING ------------------------------ //
 
     float rot = 0;
     while(window.isActive())
     {
         window.clear();
-
         shaderProgram.run();
-        viewMatrix.pushToGPU();
-        projectionMatrix.pushToGPU();
-            
-        modelMatrix.matrix = glm::scale(glm::rotate(glm::mat4(1), rot, glm::vec3(1.0f, 0.0f, 0.0f)),glm::vec3(5,5,5));
-        modelMatrix.matrix = glm::rotate(modelMatrix.matrix, rot, glm::vec3(0, 1.0f, 0.0f));
-        modelMatrix.matrix = glm::rotate(modelMatrix.matrix, rot, glm::vec3(0, 0, 1.0f));
-        modelMatrix.pushToGPU();
+    
+        aml::modelMatrix = glm::scale(glm::rotate(glm::mat4(1), rot, glm::vec3(1.0f, 0.0f, 0.0f)),glm::vec3(5,5,5));
+        aml::modelMatrix = glm::rotate(modelMatrix, rot, glm::vec3(0, 1.0f, 0.0f));
+        aml::modelMatrix = glm::rotate(modelMatrix, rot, glm::vec3(0, 0, 1.0f));
+        shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
         
         //call windows draw function
-        window.draw(0,cubeVertices.size()*3);
-
+        window.draw(0,cubeVerticesFloat.size());
 
         glfwPollEvents();
         rot += 0.01f;
     }
     
-    // ---------------------------- TERMINATE ----------------------------- //
-
-    // Terminate GLFW
-    glfwTerminate();
+    aml::stopAml();
 }

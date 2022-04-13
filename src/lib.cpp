@@ -2,7 +2,7 @@
 
 using namespace aml;
 
-void aml::initAml(bool resize){
+void aml::startAml(bool resize){
     //init glfw
     if (!glfwInit()) {
         throw std::runtime_error("Failed to initialize GLFW\n");
@@ -30,3 +30,6 @@ GLFWwindow* aml::makeGLWindow(size_t width,size_t height,const char* name){
     return window;
 }
 
+void aml::stopAml(){
+    glfwTerminate();
+}
