@@ -3,6 +3,7 @@
 
 CMakeFiles/graphics-project.dir/main.cpp.o
  /home/agarioisgud/projects/graphics-project/include/defaultShaderResources.hpp
+ /home/agarioisgud/projects/graphics-project/include/graphics.hpp
  /home/agarioisgud/projects/graphics-project/include/lib.hpp
  /home/agarioisgud/projects/graphics-project/include/shaderProgram.hpp
  /home/agarioisgud/projects/graphics-project/include/shaderResource.hpp

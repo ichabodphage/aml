@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <vector>
 #include <random>
+#include <algorithm>
 
 #include <GL/glew.h>
 #include <GL/glut.h>
@@ -12,14 +13,8 @@
 #include "points.hpp"
 #include "matricies.hpp"
 
-#include "include/lib.hpp"
-#include "include/vertexResource.hpp"
-#include "include/window.hpp"
-#include "include/shaderResource.hpp"
-#include "include/shaderProgram.hpp"
-#include "include/defaultShaderResources.hpp"
-#include "include/vector3.hpp"
-#include "include/uniform.hpp"
+#include "include/graphics.hpp"
+
 
 /*
  compile with 
@@ -34,12 +29,13 @@ int main()
     aml::Window window(800,600,"TEST");
     
     //establish vertex buffer and push vertex data into the GPU
-    aml::VertexResource<float_t> vertexBuffer;
+    aml::VertexResource<float> vertexBuffer(0);
     vertexBuffer.pushAdd(aml::cubeVerticesFloat.data(),aml::cubeVerticesFloat.size());
 
     //like the vertexBuffer, but for the color of the verticies
-    aml::VertexResource<float> colorBuffer;    
-    colorBuffer.pushAdd(aml::cubeColorsFloat.data(),aml::cubeColorsFloat.size());
+    aml::VertexResource<glm::vec3> colorBuffer(1);
+    
+    colorBuffer.pushAdd(aml::cubeColors.data(),aml::cubeColors.size());
 
     //default vertex shader, uses color and vertex data
     aml::ShaderResource defaultVertexShader("src/basicShaders/basicVert.vert",aml::ShaderType::VERTEX);
@@ -69,15 +65,15 @@ int main()
         window.clear();
         shaderProgram.run();
     
-        aml::modelMatrix = glm::scale(glm::rotate(glm::mat4(1), rot, glm::vec3(1.0f, 0.0f, 0.0f)),glm::vec3(5,5,5));
+        aml::modelMatrix = glm::scale(glm::rotate(glm::mat4(1), rot, glm::vec3(0.0f, 1.0f, 0.0f)),glm::vec3(5,5,5));
         aml::modelMatrix = glm::rotate(modelMatrix, rot, glm::vec3(0, 1.0f, 0.0f));
         aml::modelMatrix = glm::rotate(modelMatrix, rot, glm::vec3(0, 0, 1.0f));
         shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
         
         //call windows draw function
         window.draw(0,cubeVerticesFloat.size());
-
-        glfwPollEvents();
+        window.pollInput();
+        
         rot += 0.01f;
     }
     

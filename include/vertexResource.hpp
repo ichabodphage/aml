@@ -16,13 +16,14 @@ namespace aml
     class VertexResource{
     private:
         static size_t nextID;
-        size_t id;
+        //location of the Resource in the vertex buffer
+        size_t layout;
         //vertex buffer object
         GLuint vbo;
     public:
         std::vector<vType> verticies;
 
-        VertexResource();
+        VertexResource(size_t layoutLocation);
         ~VertexResource();
 
         //binds the vertex resources
