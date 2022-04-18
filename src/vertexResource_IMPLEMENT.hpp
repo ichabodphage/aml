@@ -7,7 +7,9 @@ size_t VertexResource<vType>::nextID = 0;
 
 
 template<typename vType>
-VertexResource<vType>::VertexResource(size_t layoutLocation):layout(layoutLocation){
+VertexResource<vType>::VertexResource(size_t layoutLocation,size_t vertexSize):
+layout(layoutLocation),
+valueCount(vertexSize){
     bindResource();
 }
 
@@ -40,11 +42,12 @@ void VertexResource<vType>::pushToGPU(){
     size_t atributeLength = sizeof(vType) /sizeof(float);
     //set the current data pointer to the objects ID
     glVertexAttribPointer(
-        layout, 3, 
+        layout, valueCount, 
         GL_FLOAT, GL_FALSE, 
-        3 *sizeof(float), 
+        0, 
         (void*)0);
     glEnableVertexAttribArray(layout);
+    aml::checkForGLErrors(__FILE__,__LINE__);
 	
 }
 

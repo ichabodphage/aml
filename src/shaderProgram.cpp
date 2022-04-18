@@ -9,13 +9,12 @@ ShaderProgram::ShaderProgram(aml::ShaderResource &fragmentShader,aml::ShaderReso
     glAttachShader(programId, fragmentShader.shader);
     glBindFragDataLocation(programId, 0, "outColor");
     
+    glBindAttribLocation(programId,0,"vertexPosition");
     glLinkProgram(programId);
-    glUseProgram(programId);
+    glUseProgram(programId);    
     
-    //define position of shader data
-    posAttrib = glGetAttribLocation(programId, "position");
-    glEnableVertexAttribArray(posAttrib);
-    glVertexAttribPointer(posAttrib, 2, GL_FLOAT, GL_FALSE, 0, 0);
+    aml::checkForGLErrors(__FILE__,__LINE__);
+    
 }
 
 ShaderProgram::~ShaderProgram(){

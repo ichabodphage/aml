@@ -4,12 +4,16 @@
 #include <string>
 #include <functional>
 #include <cassert>
+#include <unordered_map>
+#include <cinttypes>
 
 
 #include <GL/glew.h>
 #include <GL/glut.h>
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
+
+#include "lib.hpp"
 
 #ifndef AML_WINDOW
 #define AML_WINDOW
@@ -27,11 +31,13 @@ namespace aml{
             //width and height of window
             size_t width,height;
             
+            std::unordered_map<int,std::function<void(int)>> inputMap;
             //GLFW render target
             GLFWwindow* renderWindow;
+
             //private static function that handles openGl key input
             static void handleKeyInput(GLFWwindow* window, int key, int scancode, int action, int mods);
-
+            friend void handleKeyInput(GLFWwindow* window, int key, int scancode, int action, int mods);
             //gets the AML window that holds rawWindow
             static aml::Window* getAmlWindow(GLFWwindow* rawWindow);
         public:
@@ -61,6 +67,9 @@ namespace aml{
             void pollInput();
             //returns the width/height window dimensions
             glm::vec2 dimensions();
+
+            //adds a key input into the windows input map
+            void addKeyInput(int keyCode,std::function<void(int)> callback);
     };
 }
 

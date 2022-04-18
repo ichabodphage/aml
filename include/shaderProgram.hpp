@@ -12,6 +12,7 @@
 
 #include "shaderResource.hpp"
 #include "uniform.hpp"
+#include "lib.hpp"
 
 #ifndef AML_SHADER_PROGRAM
 #define AML_SHADER_PROGRAM
@@ -25,8 +26,6 @@ namespace aml{
         private:
             //GLuint id of the shader program
             GLuint programId;
-            //vertex data position
-            GLint posAttrib;
             //map holding uniforms for the shader program
             std::unordered_map<std::string,aml::Uniform> uniformMap;
         public:

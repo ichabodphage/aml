@@ -5,8 +5,10 @@ using namespace aml;
 void Window::handleKeyInput(GLFWwindow* rawWindow, int key, int scancode, int action, int mods){
         
         aml::Window* window = Window::getAmlWindow(rawWindow);
-    
-        std::cout << (char) key << "\n";
+        if(window->inputMap.find(key) != window->inputMap.end()){
+            window->inputMap.at(key)(action);
+        }
+        
     
     
 }
@@ -39,6 +41,7 @@ void Window::clear(){
     //cull any verticies that are obstructed by other verticies
     glFrontFace(GL_CW);
     glDisable(GL_CULL_FACE);
+    aml::checkForGLErrors(__FILE__,__LINE__);
 }
 
 bool Window::isActive(){
@@ -48,6 +51,7 @@ bool Window::isActive(){
 void Window::renderVBO(size_t index, size_t amount){
     // Draw a triangle from the 3 vertices
     glDrawArrays(GL_TRIANGLES, index, amount);
+    
 }
 
 
@@ -66,4 +70,8 @@ glm::vec2 Window::dimensions(){
 
 void Window::pollInput(){
     glfwPollEvents();
+}
+
+void Window::addKeyInput(int keyCode,std::function<void(int)> callBack){
+    inputMap[keyCode] = callBack;
 }

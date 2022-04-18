@@ -9,6 +9,7 @@
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 
+#include "lib.hpp"
 
 #ifndef AML_SHADER
 #define AML_SHADER

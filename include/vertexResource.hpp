@@ -7,6 +7,10 @@
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 
+
+#include "lib.hpp"
+
+
 #ifndef AML_VBO
 #define AML_VBO
 namespace aml
@@ -18,12 +22,14 @@ namespace aml
         static size_t nextID;
         //location of the Resource in the vertex buffer
         size_t layout;
+        //amount of values in each section of data passed into the shader
+        size_t valueCount;
         //vertex buffer object
         GLuint vbo;
     public:
         std::vector<vType> verticies;
 
-        VertexResource(size_t layoutLocation);
+        VertexResource(size_t layoutLocation,size_t vertexSize = 3);
         ~VertexResource();
 
         //binds the vertex resources
