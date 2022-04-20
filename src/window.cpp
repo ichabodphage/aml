@@ -41,7 +41,7 @@ void Window::clear(){
     //cull any verticies that are obstructed by other verticies
     glFrontFace(GL_CW);
     glDisable(GL_CULL_FACE);
-    aml::checkForGLErrors(__FILE__,__LINE__);
+    
 }
 
 bool Window::isActive(){

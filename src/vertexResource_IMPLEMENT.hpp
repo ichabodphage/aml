@@ -32,6 +32,10 @@ void VertexResource<vType>::addVerticies(vType* vertexArray, size_t size){
         verticies.push_back(vertexArray[i]);
     }
 }
+template<typename vType>
+void VertexResource<vType>::addVerticies(std::vector<vType> &vertexArray){
+    verticies = vertexArray;
+};
 
 
 template<typename vType>
@@ -54,5 +58,11 @@ void VertexResource<vType>::pushToGPU(){
 template<typename vType>
 void VertexResource<vType>::pushAdd(vType* vertexArray, size_t size){
     addVerticies(vertexArray,size);
+    pushToGPU();
+}
+
+template<typename vType>
+void VertexResource<vType>::pushAdd(std::vector<vType> &vertexArray){
+    addVerticies(vertexArray);
     pushToGPU();
 }

@@ -5,7 +5,7 @@ project(graphics-project)
 
 
 # add the executable
-set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD 17)
 set(SOURCE
    ${SOURCE}
    

@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <vector>
 #include <string>
+
 #include <GL/glew.h>
 #include <GL/glut.h>
 #include <glm/glm.hpp>
@@ -38,9 +39,10 @@ namespace aml
         //adds the verticies of a vertex array into verticies
         void addVerticies(vType* vertexArray, size_t size);
 
+        void addVerticies(std::vector<vType> &vertexArray);
         //adds the verticies of a vertex array into verticies and pushes them to the GPU
         void pushAdd(vType* vertexArray, size_t size);
-
+        void pushAdd(std::vector<vType> &vertexArray);
         
         //pushes verticies data into the gpu
         void pushToGPU();

@@ -17,6 +17,7 @@ ShaderProgram::ShaderProgram(aml::ShaderResource &fragmentShader,aml::ShaderReso
     
 }
 
+
 ShaderProgram::~ShaderProgram(){
     glDeleteProgram(programId);
 }

@@ -4,6 +4,7 @@
 CMakeFiles/graphics-project.dir/main.cpp.o: include/defaultShaderResources.hpp
 CMakeFiles/graphics-project.dir/main.cpp.o: include/graphics.hpp
 CMakeFiles/graphics-project.dir/main.cpp.o: include/lib.hpp
+CMakeFiles/graphics-project.dir/main.cpp.o: include/multiResource.hpp
 CMakeFiles/graphics-project.dir/main.cpp.o: include/shaderProgram.hpp
 CMakeFiles/graphics-project.dir/main.cpp.o: include/shaderResource.hpp
 CMakeFiles/graphics-project.dir/main.cpp.o: include/uniform.hpp

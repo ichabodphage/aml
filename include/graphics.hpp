@@ -1,6 +1,7 @@
 
 #include "lib.hpp"
 #include "vertexResource.hpp"
+#include "multiResource.hpp"
 #include "window.hpp"
 #include "shaderResource.hpp"
 #include "shaderProgram.hpp"

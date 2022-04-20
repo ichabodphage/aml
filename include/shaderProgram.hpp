@@ -32,6 +32,7 @@ namespace aml{
             //constructor using vertex and fragment shader
             ShaderProgram(aml::ShaderResource &fragmentShader,aml::ShaderResource &vertexShader);
 
+        
             ~ShaderProgram();
             
             //runs the programs shaders

@@ -28,7 +28,7 @@ void aml::checkForGLErrors( const char *file, int line){
     }
 };
 
-void aml::startAml(bool resize){
+void aml::startAml(int antialiasingLevel,bool resize){
     //init glfw
     if (!glfwInit()) {
         throw std::runtime_error("Failed to initialize GLFW\n");
@@ -40,9 +40,11 @@ void aml::startAml(bool resize){
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_RESIZABLE, resize);
+
+    glfwWindowHint(GLFW_SAMPLES, antialiasingLevel);
+    glEnable(GL_MULTISAMPLE);  
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    glEnable(GL_DEPTH_TEST);
-    glDepthFunc(GL_LESS);
+    glfwSwapInterval(1);
     aml::checkForGLErrors(__FILE__,__LINE__);
   
 

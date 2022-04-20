@@ -15,6 +15,8 @@ lib.hpp
 /home/agarioisgud/projects/graphics-project/include/lib.hpp
 vertexResource.hpp
 /home/agarioisgud/projects/graphics-project/include/vertexResource.hpp
+multiResource.hpp
+/home/agarioisgud/projects/graphics-project/include/multiResource.hpp
 window.hpp
 /home/agarioisgud/projects/graphics-project/include/window.hpp
 shaderResource.hpp
@@ -45,6 +47,28 @@ glm/glm.hpp
 -
 GLFW/glfw3.h
 -
+tuple
+-
+
+/home/agarioisgud/projects/graphics-project/include/multiResource.hpp
+iostream
+-
+stdio.h
+-
+vector
+-
+string
+-
+GL/glew.h
+-
+GL/glut.h
+-
+glm/glm.hpp
+-
+GLFW/glfw3.h
+-
+lib.hpp
+/home/agarioisgud/projects/graphics-project/include/lib.hpp
 
 /home/agarioisgud/projects/graphics-project/include/shaderProgram.hpp
 iostream

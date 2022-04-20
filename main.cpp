@@ -9,90 +9,101 @@
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 
-
 #include "points.hpp"
 #include "matricies.hpp"
 
 #include "include/graphics.hpp"
 
-
 /*
- compile with 
+ compile with
  cmake --build . -j 2
 */
 
-
 int main()
 {
-    //initAML and make AML window
-    aml::startAml();
-    aml::Window window(800,600,"TEST");
+    // initAML and make AML window
+    aml::startAml(1);
+    aml::Window window(800, 600, "TEST");
 
-    
+    // establish vertex buffer and push vertex data into the GPU
+    aml::VertexResource<glm::vec3> vertexBuffer(0, 3);
+    vertexBuffer.pushAdd(aml::cubeVertices);
 
-    //establish vertex buffer and push vertex data into the GPU
-    aml::VertexResource<glm::vec3> vertexBuffer(0,3);
-    vertexBuffer.pushAdd(aml::cubeVertices.data(),aml::cubeVertices.size());
-
-    //like the vertexBuffer, but for the color of the verticies
+    // like the vertexBuffer, but for the color of the verticies
     aml::VertexResource<float> colorBuffer(1);
-    
-    colorBuffer.pushAdd(aml::cubeColorsFloat.data(),aml::cubeColorsFloat.size());
 
-    //default vertex shader, uses color and vertex data
-    aml::ShaderResource defaultVertexShader("src/basicShaders/basicVert.vert",aml::ShaderType::VERTEX);
-    //default fragment shader, uses vertex color data
-    aml::ShaderResource defaultFragmentShader("src/basicShaders/basicFrag.frag",aml::ShaderType::FRAGMENT);
-    
+    colorBuffer.pushAdd(aml::cubeColorsFloat);
+
+    // default vertex shader, uses color and vertex data
+    aml::ShaderResource defaultVertexShader("src/basicShaders/basicVert.vert", aml::ShaderType::VERTEX);
+    // default fragment shader, uses vertex color data
+    aml::ShaderResource defaultFragmentShader("src/basicShaders/basicFrag.frag", aml::ShaderType::FRAGMENT);
+
     // Link the vertex and fragment shader into a shader program
-    aml::ShaderProgram shaderProgram(defaultFragmentShader,defaultVertexShader);
+    aml::ShaderProgram shaderProgram(defaultFragmentShader, defaultVertexShader);
 
-    //initalize shader program uniforms
+    // initalize shader program uniforms
     shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
     shaderProgram["matrices.viewMatrix"].setMatrix(aml::viewMatrix);
-  
-    glm::mat4 projectionMatrix =glm::perspective(
-    45.0f, // field of view angle (in degrees)
-    window.dimensions().x/window.dimensions().y, // aspect ratio
-    0.5f, // near plane distance
-    1000.0f);
+
+    glm::mat4 projectionMatrix = glm::perspective(
+        45.0f,                                         // field of view angle (in degrees)
+        window.dimensions().x / window.dimensions().y, // aspect ratio
+        0.5f,                                          // near plane distance
+        1000.0f);
 
     shaderProgram["matrices.projectionMatrix"].setMatrix(projectionMatrix);
-    // ---------------------------- RENDERING ------------------------------ //
 
     float rotx = 0;
-    float roty = 0;
-    window.addKeyInput('D',[&rotx](int action){
+    glm::vec2 pos = glm::vec2(0);
+    // add rotation callbacks
+    window.addKeyInput('J', [&rotx](int action)
+                       { rotx += 0.05f; });
+    window.addKeyInput('K', [&rotx](int action)
+                       { rotx -= 0.05f; });
 
-        rotx += 0.05f;
-    });
-    window.addKeyInput('A',[&rotx](int action){
+    window.addKeyInput('W', [&pos](int action)
+                       { pos.y += 0.05f; });
+    window.addKeyInput('S', [&pos](int action)
+                       { pos.y -= 0.05f; });
 
-        rotx -= 0.05f;
-    });
-    window.addKeyInput('W',[&roty](int action){
+    window.addKeyInput('A', [&pos](int action)
+                       { pos.x += 0.05f; });
+    window.addKeyInput('D', [&pos](int action)
+                       { pos.x -= 0.05f; });
 
-        roty -= 0.05f;
-    });
-    window.addKeyInput('S',[&roty](int action){
+    // Q key prints FPS
+    double FPS;
+    window.addKeyInput('Q', [&FPS](int action)
+                       {
+        if(action == GLFW_PRESS){
+            std::cout << 1/FPS << "\n";
+        } });
 
-        roty += 0.05f;
-    });
-    while(window.isActive())
+    while (window.isActive())
     {
+        double time = glfwGetTime();
         window.clear();
         shaderProgram.run();
-    
-        aml::modelMatrix = glm::scale(glm::rotate(glm::mat4(1),rotx, glm::vec3(0.0f, 1.0f, 0.0f)),glm::vec3(5,5,5));
-    
-        aml::modelMatrix = glm::rotate(modelMatrix, roty, glm::vec3(1, 0, 0));
-        shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
-        
-        //call windows draw function
-        window.draw(0,cubeVertices.size());
-        window.pollInput();
+        for(int k = -2; k < 2; k++){
+        for (int j = 0; j < 5; j++)
+        {
+            for (int i = -2; i < 4; i++)
+            {
+                aml::modelMatrix = glm::scale(glm::mat4(1), glm::vec3(5, 5, 5));
+                aml::modelMatrix = glm::translate(aml::modelMatrix, glm::vec3(1.5 * -i, 1.5*-k, 1.5 * -j));
 
+                shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
+
+                // call windows draw function
+                window.renderVBO(0, cubeVertices.size());
+            }
+        }
+        }
+        window.display();
+        FPS = glfwGetTime() - time;
+        window.pollInput();
     }
-    
+
     aml::stopAml();
 }
