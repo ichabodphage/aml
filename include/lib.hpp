@@ -7,6 +7,7 @@
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 #include <tuple>
+#include <type_traits>
 #include "Graphics/vertex.hpp"
 #ifndef AML_CORE
 #define AML_CORE
@@ -21,11 +22,14 @@ namespace aml
     
     //returns the total size of a parameter pack
     template <typename... T>
-    size_t packSize()
+    constexpr size_t packSize()
     {
         
         return (sizeof(T) + ...);
     }
+    template<typename T, typename... Ts>
+    constexpr bool contains()
+    { return std::disjunction_v<std::is_same<T, Ts>...>; }
     // throws an std::runtime_exception if gl encounters any errors
     void checkForGLErrors(const char *file, int line);
 

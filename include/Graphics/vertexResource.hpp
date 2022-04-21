@@ -26,19 +26,14 @@ namespace aml
     private:
         
         //stride will be equal too the number of floats in all the vectors
-        size_t stride = aml::packSize<T...>()/sizeof(float);
+        const size_t stride = aml::packSize<T...>()/sizeof(float);
         // vertex buffer object
         GLuint vbo;
  
         //floatCountArr is equal to the amount of floats in each vector type
-        short floatCountArr[sizeof...(T)] = {(sizeof(T) / sizeof(float))...};
+        const short floatCountArr[sizeof...(T)] = {(sizeof(T) / sizeof(float))...};
         //size of numFloats
-        size_t atributeSize = sizeof...(T);
-
-        //array of floats from the verticies
-        std::vector<float> vertexArr;
-        
-
+        const size_t atributeSize = sizeof...(T);
     public:
         // default constructor
         VertexResource(){
@@ -50,22 +45,13 @@ namespace aml
             glGenBuffers(1, &vbo);
             glBindBuffer(GL_ARRAY_BUFFER, vbo);
         }
-        //takes a raw pointer to a vertex array and adds it into the vertex arr
-        void addRawVerticies(void* verticies,size_t vertexSize){
-            //cast verticies into an array of floats 
-            float * vertexBuff = reinterpret_cast<float*>(verticies);
-            size_t size = stride * vertexSize;
-
-            //push all the verticies into vertexArr
-            for(size_t i = 0; i < size;i++){
-                vertexArr.push_back(vertexBuff[i]);
-            }
-        }
-        //pushes vertex data to the GPU
-        void pushToGPU()
+        
+        /* unsafe implementation of pushToGPU, does not do any typechecking
+        void pushToGPU(void * rawData, size_t size)
         {
+            
             //set the buffer data to vertexArr
-            glBufferData(GL_ARRAY_BUFFER, sizeof(float) * vertexArr.size(), vertexArr.data(), GL_STATIC_DRAW);
+            glBufferData(GL_ARRAY_BUFFER, aml::packSize<T...>() *size, rawData, GL_STATIC_DRAW);
 
             //offset of vertex atributes in vertexArr
             size_t offSet = 0;
@@ -86,10 +72,18 @@ namespace aml
             }
             aml::checkForGLErrors(__FILE__,__LINE__);
         }
-        void pushToGPU(void * rawData, size_t size)
+        */
+        
+        //typesafe version of pushToGPU
+        template<typename vertexType>
+        void pushToGPU(vertexType * rawData, size_t size)
         {
+            //check if the vertexType is the same size as the pack size
+            if constexpr (sizeof(vertexType) != aml::packSize<T...>()){
+                throw std::runtime_error("vertex template paramerter is not compatable with the type of vertex resource");
+            }
             //set the buffer data to vertexArr
-            glBufferData(GL_ARRAY_BUFFER, sizeof(float) *stride *size, rawData, GL_STATIC_DRAW);
+            glBufferData(GL_ARRAY_BUFFER, aml::packSize<T...>() *size, rawData, GL_STATIC_DRAW);
 
             //offset of vertex atributes in vertexArr
             size_t offSet = 0;
@@ -115,10 +109,7 @@ namespace aml
             glDeleteBuffers(1, &vbo);
         }
 
-        //clears the resources' vertex array
-        void clear(){
-            vertexArr.reserve(0);
-        };
+        
     };
     typedef aml::VertexResource<glm::vec2,glm::vec3> VertexResource2d; 
     typedef aml::VertexResource<glm::vec3,glm::vec3> VertexResource3d; 

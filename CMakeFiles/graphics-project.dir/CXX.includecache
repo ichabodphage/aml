@@ -215,6 +215,8 @@ GLFW/glfw3.h
 -
 tuple
 -
+type_traits
+-
 Graphics/vertex.hpp
 /home/agarioisgud/projects/graphics-project/include/Graphics/vertex.hpp
 
@@ -228,6 +230,8 @@ vector
 random
 -
 algorithm
+-
+type_traits
 -
 GL/glew.h
 -

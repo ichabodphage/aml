@@ -3,6 +3,7 @@
 #include <vector>
 #include <random>
 #include <algorithm>
+#include<type_traits>
 
 #include <GL/glew.h>
 #include <GL/glut.h>
@@ -19,6 +20,10 @@
  cmake --build . -j 2
 */
 
+struct k{
+    glm::vec3 color;
+    glm::vec2 pos;
+};
 int main()
 {
     // initAML and make AML window
@@ -27,8 +32,8 @@ int main()
 
     aml::VertexResource3d multiBuffer;
     std::vector<aml::Vert3> verticies = aml::makeVertexArr(aml::cubeVertices,aml::cubeColors);
-    
-    multiBuffer.pushToGPU(verticies.data(),verticies.size());
+
+    multiBuffer.pushToGPU<aml::Vert3>(verticies.data(),verticies.size());
 
     // default vertex shader, uses color and vertex data
     aml::ShaderResource defaultVertexShader(AML_DEFAULT_VERT);
