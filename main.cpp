@@ -22,22 +22,18 @@
 int main()
 {
     // initAML and make AML window
-    aml::startAml(1);
+    aml::startAml();
     aml::Window window(800, 600, "TEST");
 
-    // establish vertex buffer and push vertex data into the GPU
-    aml::VertexResource<glm::vec3> vertexBuffer(0, 3);
-    vertexBuffer.pushAdd(aml::cubeVertices);
-
-    // like the vertexBuffer, but for the color of the verticies
-    aml::VertexResource<float> colorBuffer(1);
-
-    colorBuffer.pushAdd(aml::cubeColorsFloat);
+    aml::VertexResource3d multiBuffer;
+    std::vector<aml::Vert3> verticies = aml::makeVertexArr(aml::cubeVertices,aml::cubeColors);
+    
+    multiBuffer.pushToGPU(verticies.data(),verticies.size());
 
     // default vertex shader, uses color and vertex data
-    aml::ShaderResource defaultVertexShader("src/basicShaders/basicVert.vert", aml::ShaderType::VERTEX);
+    aml::ShaderResource defaultVertexShader(AML_DEFAULT_VERT);
     // default fragment shader, uses vertex color data
-    aml::ShaderResource defaultFragmentShader("src/basicShaders/basicFrag.frag", aml::ShaderType::FRAGMENT);
+    aml::ShaderResource defaultFragmentShader(AML_DEFAULT_FRAG);
 
     // Link the vertex and fragment shader into a shader program
     aml::ShaderProgram shaderProgram(defaultFragmentShader, defaultVertexShader);
@@ -47,10 +43,8 @@ int main()
     shaderProgram["matrices.viewMatrix"].setMatrix(aml::viewMatrix);
 
     glm::mat4 projectionMatrix = glm::perspective(
-        45.0f,                                         // field of view angle (in degrees)
-        window.dimensions().x / window.dimensions().y, // aspect ratio
-        0.5f,                                          // near plane distance
-        1000.0f);
+        45.0f,window.dimensions().x / window.dimensions().y,
+        0.5f,1000.0f);
 
     shaderProgram["matrices.projectionMatrix"].setMatrix(projectionMatrix);
 
@@ -85,21 +79,24 @@ int main()
         double time = glfwGetTime();
         window.clear();
         shaderProgram.run();
-        for(int k = -2; k < 2; k++){
-        for (int j = 0; j < 5; j++)
+
+        for (int k = -2; k < 2; k++)
         {
-            for (int i = -2; i < 4; i++)
+            for (int j = 0; j < 5; j++)
             {
-                aml::modelMatrix = glm::scale(glm::mat4(1), glm::vec3(5, 5, 5));
-                aml::modelMatrix = glm::translate(aml::modelMatrix, glm::vec3(1.5 * -i, 1.5*-k, 1.5 * -j));
+                for (int i = -2; i < 4; i++)
+                {
+                    aml::modelMatrix = glm::scale(glm::mat4(1), glm::vec3(5, 5, 5));
+                    aml::modelMatrix = glm::translate(aml::modelMatrix, glm::vec3(1.5 * -i, 1.5 * -k, 1.5 * -j));
 
-                shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
+                    shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
 
-                // call windows draw function
-                window.renderVBO(0, cubeVertices.size());
+                    // call windows draw function
+                    window.renderVBO(0, verticies.size());
+                }
             }
         }
-        }
+        
         window.display();
         FPS = glfwGetTime() - time;
         window.pollInput();

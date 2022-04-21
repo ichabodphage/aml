@@ -1,25 +1,25 @@
-#include "../include/vertexResource.hpp"
+#include "../include/Graphics/vectorResource.hpp"
 
 using namespace aml;
 //set nextID to zero
 template<typename vType>
-size_t VertexResource<vType>::nextID = 0;
+size_t VectorResource<vType>::nextID = 0;
 
 
 template<typename vType>
-VertexResource<vType>::VertexResource(size_t layoutLocation,size_t vertexSize):
+VectorResource<vType>::VectorResource(size_t layoutLocation,size_t VectorSize):
 layout(layoutLocation),
-valueCount(vertexSize){
+valueCount(VectorSize){
     bindResource();
 }
 
 template<typename vType>
-VertexResource<vType>::~VertexResource(){
+VectorResource<vType>::~VectorResource(){
     glDeleteBuffers(1, &vbo);
 }
 
 template<typename vType>
-void VertexResource<vType>::bindResource(){
+void VectorResource<vType>::bindResource(){
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
@@ -27,22 +27,22 @@ void VertexResource<vType>::bindResource(){
 
 
 template<typename vType>
-void VertexResource<vType>::addVerticies(vType* vertexArray, size_t size){
+void VectorResource<vType>::addVerticies(vType* VectorArray, size_t size){
     for(size_t i = 0; i < size; i++){
-        verticies.push_back(vertexArray[i]);
+        verticies.push_back(VectorArray[i]);
     }
 }
 template<typename vType>
-void VertexResource<vType>::addVerticies(std::vector<vType> &vertexArray){
-    verticies = vertexArray;
+void VectorResource<vType>::setVerticies(std::vector<vType> &VectorArray){
+    verticies = VectorArray;
 };
 
 
 template<typename vType>
-void VertexResource<vType>::pushToGPU(){
+void VectorResource<vType>::pushToGPU(){
     //push the data to the GPU
     glBufferData(GL_ARRAY_BUFFER, sizeof(vType) * verticies.size(), verticies.data() , GL_STATIC_DRAW);
-    //get the length of the vertex atribute
+    //get the length of the Vector atribute
     size_t atributeLength = sizeof(vType) /sizeof(float);
     //set the current data pointer to the objects ID
     glVertexAttribPointer(
@@ -56,13 +56,13 @@ void VertexResource<vType>::pushToGPU(){
 }
 
 template<typename vType>
-void VertexResource<vType>::pushAdd(vType* vertexArray, size_t size){
-    addVerticies(vertexArray,size);
+void VectorResource<vType>::pushAdd(vType* VectorArray, size_t size){
+    addVerticies(VectorArray,size);
     pushToGPU();
 }
 
 template<typename vType>
-void VertexResource<vType>::pushAdd(std::vector<vType> &vertexArray){
-    addVerticies(vertexArray);
+void VectorResource<vType>::pushSet(std::vector<vType> &VectorArray){
+    setVerticies(VectorArray);
     pushToGPU();
 }

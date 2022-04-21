@@ -10,7 +10,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <GLFW/glfw3.h>
 
-#include "lib.hpp"
+#include "../lib.hpp"
 
 
 #ifndef AML_UNIFORM
