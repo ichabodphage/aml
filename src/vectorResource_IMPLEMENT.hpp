@@ -1,4 +1,4 @@
-#include "../include/Graphics/vectorResource.hpp"
+#include "../include/LowLevelGraphics/vectorResource.hpp"
 
 using namespace aml;
 //set nextID to zero

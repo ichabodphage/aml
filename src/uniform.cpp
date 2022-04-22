@@ -1,5 +1,5 @@
-#include "../include/Graphics/uniform.hpp"
-#include "../include/Graphics/shaderProgram.hpp"
+#include "../include/LowLevelGraphics/uniform.hpp"
+#include "../include/LowLevelGraphics/shaderProgram.hpp"
 
 using namespace aml;
 

@@ -47,19 +47,16 @@ int main()
     shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
     shaderProgram["matrices.viewMatrix"].setMatrix(aml::viewMatrix);
 
+    glm::mat4 viewConst = aml::viewMatrix;
     glm::mat4 projectionMatrix = glm::perspective(
         45.0f,window.dimensions().x / window.dimensions().y,
         0.5f,1000.0f);
 
     shaderProgram["matrices.projectionMatrix"].setMatrix(projectionMatrix);
-
+    
     float rotx = 0;
     glm::vec2 pos = glm::vec2(0);
-    // add rotation callbacks
-    window.addKeyInput('J', [&rotx](int action)
-                       { rotx += 0.05f; });
-    window.addKeyInput('K', [&rotx](int action)
-                       { rotx -= 0.05f; });
+    
 
     window.addKeyInput('W', [&pos](int action)
                        { pos.y += 0.05f; });
@@ -87,15 +84,18 @@ int main()
 
         for (int k = -2; k < 2; k++)
         {
-            for (int j = 0; j < 5; j++)
+            for (int j = -1; j < 4; j++)
             {
                 for (int i = -2; i < 4; i++)
                 {
                     aml::modelMatrix = glm::scale(glm::mat4(1), glm::vec3(5, 5, 5));
-                    aml::modelMatrix = glm::translate(aml::modelMatrix, glm::vec3(1.5 * -i, 1.5 * -k, 1.5 * -j));
+                    
+                    aml::modelMatrix = glm::translate(aml::modelMatrix, glm::vec3(3 * -i, 3 * -k, 3 * -j));
+                    aml::modelMatrix = glm::translate(aml::modelMatrix, glm::vec3(std::sin(rotx)*2,std::cos(rotx)*2,0));
 
+                    aml::modelMatrix = glm::rotate(aml::modelMatrix,rotx,glm::vec3(1,0,0));
                     shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
-
+                    shaderProgram["matrices.viewMatrix"].setMatrix(aml::viewMatrix);
                     // call windows draw function
                     window.renderVBO(0, verticies.size());
                 }
@@ -104,6 +104,7 @@ int main()
         
         window.display();
         FPS = glfwGetTime() - time;
+        rotx += 0.01;
         window.pollInput();
     }
 

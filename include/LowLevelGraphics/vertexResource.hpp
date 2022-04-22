@@ -34,16 +34,39 @@ namespace aml
         const short floatCountArr[sizeof...(T)] = {(sizeof(T) / sizeof(float))...};
         //size of numFloats
         const size_t atributeSize = sizeof...(T);
+        //offset of the atribute location
+        const size_t layout;
     public:
         // default constructor
-        VertexResource(){
-            bindResource();       
+        VertexResource(size_t layoutOffset = 0):layout(layoutOffset){
+            bindResource();
+            bindAtributes();
+            //establish all the proper atribute locations
+            
         };
         // binds the MultiResource
         void bindResource()
         {
             glGenBuffers(1, &vbo);
             glBindBuffer(GL_ARRAY_BUFFER, vbo);
+        }
+
+        void bindAtributes(){
+            size_t offSet = 0;
+            for(size_t i = 0; i <atributeSize;i++){
+                glVertexAttribPointer(
+                    //set the atribute location and its size
+                    i+layout, floatCountArr[i] , 
+                    //tell openGl that this is atribute is a series of floats
+                    GL_FLOAT, GL_FALSE,
+                    //establish the distance inbetween verticies
+                    stride * sizeof(float), 
+                    //tell openGL where the atribute is located within the vertex
+                    (void*) ((i*offSet) * sizeof(float)));
+                glEnableVertexAttribArray(i+layout);
+                offSet+= floatCountArr[i];
+            } 
+            aml::checkForGLErrors(__FILE__,__LINE__);
         }
         
         /* unsafe implementation of pushToGPU, does not do any typechecking
@@ -83,25 +106,7 @@ namespace aml
                 throw std::runtime_error("vertex template paramerter is not compatable with the type of vertex resource");
             }
             //set the buffer data to vertexArr
-            glBufferData(GL_ARRAY_BUFFER, aml::packSize<T...>() *size, rawData, GL_STATIC_DRAW);
-
-            //offset of vertex atributes in vertexArr
-            size_t offSet = 0;
-
-            //establish all the proper atribute locations
-            for(size_t i = 0; i <atributeSize;i++){
-                glVertexAttribPointer(
-                    //set the atribute location and its size
-                    i, floatCountArr[i] , 
-                    //tell openGl that this is atribute is a series of floats
-                    GL_FLOAT, GL_FALSE,
-                    //establish the distance inbetween verticies
-                    stride * sizeof(float), 
-                    //tell openGL where the atribute is located within the vertex
-                    (void*) ((i*offSet) * sizeof(float)));
-                glEnableVertexAttribArray(i);
-                offSet+= floatCountArr[i];
-            }
+            glBufferData(GL_ARRAY_BUFFER, aml::packSize<T...>() *size, rawData, GL_STATIC_DRAW);            
             aml::checkForGLErrors(__FILE__,__LINE__);
         }
         ~VertexResource()

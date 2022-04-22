@@ -8,7 +8,7 @@
 #include <GLFW/glfw3.h>
 #include <tuple>
 #include <type_traits>
-#include "Graphics/vertex.hpp"
+#include "LowLevelGraphics/vertex.hpp"
 #ifndef AML_CORE
 #define AML_CORE
 

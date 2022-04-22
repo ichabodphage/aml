@@ -1,4 +1,4 @@
-#include "../include/Graphics/window.hpp"
+#include "../include/LowLevelGraphics/window.hpp"
 using namespace aml;
 
 void Window::handleKeyInput(GLFWwindow* rawWindow, int key, int scancode, int action, int mods){

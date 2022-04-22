@@ -6,11 +6,11 @@
 
 #IncludeRegexTransform: 
 
-/home/agarioisgud/projects/graphics-project/include/Graphics/defaultShaderResources.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/defaultShaderResources.hpp
 shaderResource.hpp
-/home/agarioisgud/projects/graphics-project/include/Graphics/shaderResource.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/shaderResource.hpp
 
-/home/agarioisgud/projects/graphics-project/include/Graphics/shaderProgram.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/shaderProgram.hpp
 iostream
 -
 stdio.h
@@ -32,13 +32,13 @@ glm/glm.hpp
 GLFW/glfw3.h
 -
 shaderResource.hpp
-/home/agarioisgud/projects/graphics-project/include/Graphics/shaderResource.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/shaderResource.hpp
 uniform.hpp
-/home/agarioisgud/projects/graphics-project/include/Graphics/uniform.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/uniform.hpp
 ../lib.hpp
 /home/agarioisgud/projects/graphics-project/include/lib.hpp
 
-/home/agarioisgud/projects/graphics-project/include/Graphics/shaderResource.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/shaderResource.hpp
 iostream
 -
 stdio.h
@@ -60,7 +60,7 @@ GLFW/glfw3.h
 ../lib.hpp
 /home/agarioisgud/projects/graphics-project/include/lib.hpp
 
-/home/agarioisgud/projects/graphics-project/include/Graphics/uniform.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/uniform.hpp
 iostream
 -
 stdio.h
@@ -84,7 +84,7 @@ GLFW/glfw3.h
 ../lib.hpp
 /home/agarioisgud/projects/graphics-project/include/lib.hpp
 
-/home/agarioisgud/projects/graphics-project/include/Graphics/vectorResource.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/vectorResource.hpp
 iostream
 -
 stdio.h
@@ -106,7 +106,7 @@ GLFW/glfw3.h
 ../../src/vectorResource_IMPLEMENT.hpp
 /home/agarioisgud/projects/graphics-project/src/vectorResource_IMPLEMENT.hpp
 
-/home/agarioisgud/projects/graphics-project/include/Graphics/vertex.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/vertex.hpp
 iostream
 -
 stdio.h
@@ -126,7 +126,7 @@ glm/glm.hpp
 GLFW/glfw3.h
 -
 
-/home/agarioisgud/projects/graphics-project/include/Graphics/vertexResource.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/vertexResource.hpp
 iostream
 -
 stdio.h
@@ -148,7 +148,7 @@ GLFW/glfw3.h
 ../lib.hpp
 /home/agarioisgud/projects/graphics-project/include/lib.hpp
 
-/home/agarioisgud/projects/graphics-project/include/Graphics/window.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/window.hpp
 iostream
 -
 stdio.h
@@ -179,22 +179,22 @@ GLFW/glfw3.h
 /home/agarioisgud/projects/graphics-project/include/graphics.hpp
 lib.hpp
 /home/agarioisgud/projects/graphics-project/include/lib.hpp
-Graphics/vectorResource.hpp
-/home/agarioisgud/projects/graphics-project/include/Graphics/vectorResource.hpp
-Graphics/vertexResource.hpp
-/home/agarioisgud/projects/graphics-project/include/Graphics/vertexResource.hpp
-Graphics/window.hpp
-/home/agarioisgud/projects/graphics-project/include/Graphics/window.hpp
-Graphics/shaderResource.hpp
-/home/agarioisgud/projects/graphics-project/include/Graphics/shaderResource.hpp
-Graphics/shaderProgram.hpp
-/home/agarioisgud/projects/graphics-project/include/Graphics/shaderProgram.hpp
-Graphics/defaultShaderResources.hpp
-/home/agarioisgud/projects/graphics-project/include/Graphics/defaultShaderResources.hpp
-Graphics/vertex.hpp
-/home/agarioisgud/projects/graphics-project/include/Graphics/vertex.hpp
-Graphics/uniform.hpp
-/home/agarioisgud/projects/graphics-project/include/Graphics/uniform.hpp
+LowLevelGraphics/vectorResource.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/vectorResource.hpp
+LowLevelGraphics/vertexResource.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/vertexResource.hpp
+LowLevelGraphics/window.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/window.hpp
+LowLevelGraphics/shaderResource.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/shaderResource.hpp
+LowLevelGraphics/shaderProgram.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/shaderProgram.hpp
+LowLevelGraphics/defaultShaderResources.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/defaultShaderResources.hpp
+LowLevelGraphics/vertex.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/vertex.hpp
+LowLevelGraphics/uniform.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/uniform.hpp
 
 /home/agarioisgud/projects/graphics-project/include/lib.hpp
 iostream
@@ -217,8 +217,8 @@ tuple
 -
 type_traits
 -
-Graphics/vertex.hpp
-/home/agarioisgud/projects/graphics-project/include/Graphics/vertex.hpp
+LowLevelGraphics/vertex.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/vertex.hpp
 
 /home/agarioisgud/projects/graphics-project/main.cpp
 iostream
@@ -274,7 +274,29 @@ glm/glm.hpp
 GLFW/glfw3.h
 -
 
+/home/agarioisgud/projects/graphics-project/src/lib.cpp
+../include/lib.hpp
+/home/agarioisgud/projects/graphics-project/include/lib.hpp
+
+/home/agarioisgud/projects/graphics-project/src/shaderProgram.cpp
+../include/LowLevelGraphics/shaderProgram.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/shaderProgram.hpp
+
+/home/agarioisgud/projects/graphics-project/src/shaderResource.cpp
+../include/LowLevelGraphics/shaderResource.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/shaderResource.hpp
+
+/home/agarioisgud/projects/graphics-project/src/uniform.cpp
+../include/LowLevelGraphics/uniform.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/uniform.hpp
+../include/LowLevelGraphics/shaderProgram.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/shaderProgram.hpp
+
 /home/agarioisgud/projects/graphics-project/src/vectorResource_IMPLEMENT.hpp
-../include/Graphics/vectorResource.hpp
-/home/agarioisgud/projects/graphics-project/include/Graphics/vectorResource.hpp
+../include/LowLevelGraphics/vectorResource.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/vectorResource.hpp
+
+/home/agarioisgud/projects/graphics-project/src/window.cpp
+../include/LowLevelGraphics/window.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/window.hpp
 
