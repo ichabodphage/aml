@@ -36,7 +36,7 @@ namespace aml{
         public:
             InputReciver(aml::Window &window);
             //checks a key in the keyPressTable
-            bool checkKey(int16_t keycode);
+            bool keyPressed(int16_t keycode);
 
             //polls for input and fills the inputBuffer
             void pollInput();

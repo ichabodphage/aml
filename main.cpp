@@ -31,10 +31,8 @@ int main()
     // initAML and make AML window
     aml::startAml();
     aml::Window window(800, 600, "TEST");
-
     //input reciver for the window
     aml::InputReciver localInput(window);
-
 
     aml::VertexResource3d multiBuffer;
     std::vector<aml::Vert3> verticies = aml::makeVertexArr(aml::cubeVertices,aml::cubeColors);
@@ -68,12 +66,9 @@ int main()
         double time = glfwGetTime();
         window.clear();
         shaderProgram.run();
-        if(localInput.checkKey('Q')){
-            std::cout << "PRESSED Q\n";
-        }
-        if(localInput.checkKey('W')){
-            std::cout << "PRESSED-W\n";
-        }
+
+        localInput.pollInput();
+
         for (int k = -2; k < 2; k++)
         {
             for (int j = -1; j < 4; j++)

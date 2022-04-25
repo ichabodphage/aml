@@ -20,7 +20,7 @@ InputReciver::InputReciver(aml::Window &window){
     glfwSetKeyCallback(window.renderWindow, InputReciver::handleKeyInput);
 };
 
-bool InputReciver::checkKey(int16_t keycode){
+bool InputReciver::keyPressed(int16_t keycode){
     return keyPressTable[keycode-32];
 };
 
