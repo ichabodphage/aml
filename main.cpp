@@ -22,23 +22,21 @@
  cmake --build . -j 2
 */
 
-struct k{
-    glm::vec3 color;
-    glm::vec2 pos;
-};
 int main()
 {
     // initAML and make AML window
     aml::startAml();
     aml::Window window(800, 600, "TEST");
+
     //input reciver for the window
     aml::InputReciver localInput(window);
 
+
     aml::VertexResource3d multiBuffer;
     std::vector<aml::Vert3> verticies = aml::makeVertexArr(aml::cubeVertices,aml::cubeColors);
-
     multiBuffer.pushToGPU<aml::Vert3>(verticies.data(),verticies.size());
 
+    
     // default vertex shader, uses color and vertex data
     aml::ShaderResource defaultVertexShader(AML_DEFAULT_VERT);
     // default fragment shader, uses vertex color data
@@ -55,7 +53,6 @@ int main()
     glm::mat4 projectionMatrix = glm::perspective(
         45.0f,window.dimensions().x / window.dimensions().y,
         0.5f,1000.0f);
-
     shaderProgram["matrices.projectionMatrix"].setMatrix(projectionMatrix);
     
     float rotx = 0;
@@ -67,8 +64,9 @@ int main()
         window.clear();
         shaderProgram.run();
 
+        //check for all inputs
         localInput.pollInput();
-
+        
         for (int k = -2; k < 2; k++)
         {
             for (int j = -1; j < 4; j++)

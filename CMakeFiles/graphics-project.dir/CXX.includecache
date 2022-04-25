@@ -320,10 +320,6 @@ glm/glm.hpp
 GLFW/glfw3.h
 -
 
-/home/agarioisgud/projects/graphics-project/src/inputReciver.cpp
-../include/Input/inputReciver.hpp
-/home/agarioisgud/projects/graphics-project/include/Input/inputReciver.hpp
-
 /home/agarioisgud/projects/graphics-project/src/vectorResource_IMPLEMENT.hpp
 ../include/LowLevelGraphics/vectorResource.hpp
 /home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/vectorResource.hpp

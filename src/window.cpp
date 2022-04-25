@@ -42,6 +42,7 @@ void Window::draw(size_t index, size_t amount){
     glDrawArrays(GL_TRIANGLES, index, amount);
     display();
 }
+
 void Window::display(){
     glfwSwapBuffers(renderWindow);
 }
