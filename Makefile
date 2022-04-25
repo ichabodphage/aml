@@ -169,6 +169,33 @@ main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/main.cpp.s
 .PHONY : main.cpp.s
 
+src/inputReciver.o: src/inputReciver.cpp.o
+
+.PHONY : src/inputReciver.o
+
+# target to build an object file
+src/inputReciver.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/inputReciver.cpp.o
+.PHONY : src/inputReciver.cpp.o
+
+src/inputReciver.i: src/inputReciver.cpp.i
+
+.PHONY : src/inputReciver.i
+
+# target to preprocess a source file
+src/inputReciver.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/inputReciver.cpp.i
+.PHONY : src/inputReciver.cpp.i
+
+src/inputReciver.s: src/inputReciver.cpp.s
+
+.PHONY : src/inputReciver.s
+
+# target to generate assembly for a file
+src/inputReciver.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/inputReciver.cpp.s
+.PHONY : src/inputReciver.cpp.s
+
 src/lib.o: src/lib.cpp.o
 
 .PHONY : src/lib.o
@@ -316,6 +343,9 @@ help:
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
+	@echo "... src/inputReciver.o"
+	@echo "... src/inputReciver.i"
+	@echo "... src/inputReciver.s"
 	@echo "... src/lib.o"
 	@echo "... src/lib.i"
 	@echo "... src/lib.s"

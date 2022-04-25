@@ -1,25 +1,9 @@
 #include "../include/LowLevelGraphics/window.hpp"
 using namespace aml;
 
-void Window::handleKeyInput(GLFWwindow* rawWindow, int key, int scancode, int action, int mods){
-        
-        aml::Window* window = Window::getAmlWindow(rawWindow);
-        if(window->inputMap.find(key) != window->inputMap.end()){
-            window->inputMap.at(key)(action);
-        }
-        
-    
-    
-}
-Window* Window::getAmlWindow(GLFWwindow* rawWindow){
-    //retrieve the aml::window object pointer that is stored within the raw GLFW window
-    return reinterpret_cast<aml::Window*>(glfwGetWindowUserPointer(rawWindow));
-}
+
 Window::Window(size_t winWidth,size_t winHeight, const char* name):width(winWidth),height(winHeight){
     renderWindow = aml::makeGLWindow(width,height,name);
-    //set up window input
-    glfwSetWindowUserPointer(renderWindow,this);
-    glfwSetKeyCallback(renderWindow, Window::handleKeyInput);
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
 }
@@ -65,12 +49,4 @@ void Window::display(){
 glm::vec2 Window::dimensions(){
 
     return glm::vec2(width,height);
-}
-
-void Window::pollInput(){
-    glfwPollEvents();
-}
-
-void Window::addKeyInput(int keyCode,std::function<void(int)> callBack){
-    inputMap[keyCode] = callBack;
 }

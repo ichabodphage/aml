@@ -1,5 +1,6 @@
 file(REMOVE_RECURSE
   "CMakeFiles/graphics-project.dir/main.cpp.o"
+  "CMakeFiles/graphics-project.dir/src/inputReciver.cpp.o"
   "CMakeFiles/graphics-project.dir/src/lib.cpp.o"
   "CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.o"
   "CMakeFiles/graphics-project.dir/src/shaderResource.cpp.o"

@@ -5,6 +5,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/agarioisgud/projects/graphics-project/main.cpp" "/home/agarioisgud/projects/graphics-project/CMakeFiles/graphics-project.dir/main.cpp.o"
+  "/home/agarioisgud/projects/graphics-project/src/inputReciver.cpp" "/home/agarioisgud/projects/graphics-project/CMakeFiles/graphics-project.dir/src/inputReciver.cpp.o"
   "/home/agarioisgud/projects/graphics-project/src/lib.cpp" "/home/agarioisgud/projects/graphics-project/CMakeFiles/graphics-project.dir/src/lib.cpp.o"
   "/home/agarioisgud/projects/graphics-project/src/shaderProgram.cpp" "/home/agarioisgud/projects/graphics-project/CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.o"
   "/home/agarioisgud/projects/graphics-project/src/shaderResource.cpp" "/home/agarioisgud/projects/graphics-project/CMakeFiles/graphics-project.dir/src/shaderResource.cpp.o"

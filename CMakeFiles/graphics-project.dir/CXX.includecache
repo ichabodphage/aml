@@ -6,6 +6,46 @@
 
 #IncludeRegexTransform: 
 
+/home/agarioisgud/projects/graphics-project/include/Input/inputReciver.hpp
+iostream
+-
+stdio.h
+-
+vector
+-
+string
+-
+functional
+-
+unordered_map
+-
+cstdint
+-
+GL/glew.h
+-
+GL/glut.h
+-
+glm/glm.hpp
+-
+GLFW/glfw3.h
+-
+result.hpp
+/home/agarioisgud/projects/graphics-project/include/Input/result.hpp
+../lib.hpp
+/home/agarioisgud/projects/graphics-project/include/lib.hpp
+../LowLevelGraphics/window.hpp
+/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/window.hpp
+
+/home/agarioisgud/projects/graphics-project/include/Input/result.hpp
+GL/glew.h
+-
+GL/glut.h
+-
+glm/glm.hpp
+-
+GLFW/glfw3.h
+-
+
 /home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/defaultShaderResources.hpp
 shaderResource.hpp
 /home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/shaderResource.hpp
@@ -196,6 +236,10 @@ LowLevelGraphics/vertex.hpp
 LowLevelGraphics/uniform.hpp
 /home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/uniform.hpp
 
+/home/agarioisgud/projects/graphics-project/include/input.hpp
+Input/inputReciver.hpp
+/home/agarioisgud/projects/graphics-project/include/Input/inputReciver.hpp
+
 /home/agarioisgud/projects/graphics-project/include/lib.hpp
 iostream
 -
@@ -247,6 +291,8 @@ matricies.hpp
 /home/agarioisgud/projects/graphics-project/matricies.hpp
 include/graphics.hpp
 /home/agarioisgud/projects/graphics-project/include/graphics.hpp
+include/input.hpp
+/home/agarioisgud/projects/graphics-project/include/input.hpp
 
 /home/agarioisgud/projects/graphics-project/matricies.hpp
 vector
@@ -274,29 +320,7 @@ glm/glm.hpp
 GLFW/glfw3.h
 -
 
-/home/agarioisgud/projects/graphics-project/src/lib.cpp
-../include/lib.hpp
-/home/agarioisgud/projects/graphics-project/include/lib.hpp
-
-/home/agarioisgud/projects/graphics-project/src/shaderProgram.cpp
-../include/LowLevelGraphics/shaderProgram.hpp
-/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/shaderProgram.hpp
-
-/home/agarioisgud/projects/graphics-project/src/shaderResource.cpp
-../include/LowLevelGraphics/shaderResource.hpp
-/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/shaderResource.hpp
-
-/home/agarioisgud/projects/graphics-project/src/uniform.cpp
-../include/LowLevelGraphics/uniform.hpp
-/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/uniform.hpp
-../include/LowLevelGraphics/shaderProgram.hpp
-/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/shaderProgram.hpp
-
 /home/agarioisgud/projects/graphics-project/src/vectorResource_IMPLEMENT.hpp
 ../include/LowLevelGraphics/vectorResource.hpp
 /home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/vectorResource.hpp
-
-/home/agarioisgud/projects/graphics-project/src/window.cpp
-../include/LowLevelGraphics/window.hpp
-/home/agarioisgud/projects/graphics-project/include/LowLevelGraphics/window.hpp
 

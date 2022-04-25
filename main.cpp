@@ -15,6 +15,8 @@
 
 #include "include/graphics.hpp"
 
+#include "include/input.hpp"
+
 /*
  compile with
  cmake --build . -j 2
@@ -29,6 +31,10 @@ int main()
     // initAML and make AML window
     aml::startAml();
     aml::Window window(800, 600, "TEST");
+
+    //input reciver for the window
+    aml::InputReciver localInput(window);
+
 
     aml::VertexResource3d multiBuffer;
     std::vector<aml::Vert3> verticies = aml::makeVertexArr(aml::cubeVertices,aml::cubeColors);
@@ -55,33 +61,19 @@ int main()
     shaderProgram["matrices.projectionMatrix"].setMatrix(projectionMatrix);
     
     float rotx = 0;
-    glm::vec2 pos = glm::vec2(0);
+  
     
-
-    window.addKeyInput('W', [&pos](int action)
-                       { pos.y += 0.05f; });
-    window.addKeyInput('S', [&pos](int action)
-                       { pos.y -= 0.05f; });
-
-    window.addKeyInput('A', [&pos](int action)
-                       { pos.x += 0.05f; });
-    window.addKeyInput('D', [&pos](int action)
-                       { pos.x -= 0.05f; });
-
-    // Q key prints FPS
-    double FPS;
-    window.addKeyInput('Q', [&FPS](int action)
-                       {
-        if(action == GLFW_PRESS){
-            std::cout << 1/FPS << "\n";
-        } });
-
     while (window.isActive())
     {
         double time = glfwGetTime();
         window.clear();
         shaderProgram.run();
-
+        if(localInput.checkKey('Q')){
+            std::cout << "PRESSED Q\n";
+        }
+        if(localInput.checkKey('W')){
+            std::cout << "PRESSED-W\n";
+        }
         for (int k = -2; k < 2; k++)
         {
             for (int j = -1; j < 4; j++)
@@ -103,9 +95,7 @@ int main()
         }
         
         window.display();
-        FPS = glfwGetTime() - time;
         rotx += 0.01;
-        window.pollInput();
     }
 
     aml::stopAml();

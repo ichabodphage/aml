@@ -23,23 +23,17 @@ namespace aml{
         class that manages a window used to display graphics
     */
 
-    
+    typedef std::function<void(int,int)> KeyCallback;
     class Window{
         private:
+            friend class InputReciver;
             //window vertex array object
             GLuint vao;
             //width and height of window
             size_t width,height;
-            
-            std::unordered_map<int,std::function<void(int)>> inputMap;
+        
             //GLFW render target
             GLFWwindow* renderWindow;
-
-            //private static function that handles openGl key input
-            static void handleKeyInput(GLFWwindow* window, int key, int scancode, int action, int mods);
-            friend void handleKeyInput(GLFWwindow* window, int key, int scancode, int action, int mods);
-            //gets the AML window that holds rawWindow
-            static aml::Window* getAmlWindow(GLFWwindow* rawWindow);
         public:
             
 
@@ -62,14 +56,9 @@ namespace aml{
 
             //swaps the video buffer and shows the next frame
             void display();
-
-            //polls for user input
-            void pollInput();
             //returns the width/height window dimensions
             glm::vec2 dimensions();
 
-            //adds a key input into the windows input map
-            void addKeyInput(int keyCode,std::function<void(int)> callback);
     };
 }
 
