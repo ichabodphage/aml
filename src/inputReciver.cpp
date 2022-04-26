@@ -48,12 +48,24 @@ bool InputReciver::keyPressed(int16_t keycode){
     return keyPressTable[keycode-InputReciver::arrayOffset];
 };
 
+
+bool InputReciver::keyTriggered(int16_t keycode){
+    //get the press status of the key
+    bool pressStatus = keyPressTable[keycode-InputReciver::arrayOffset];
+    //set the pressed status to false to check for a keypress only once
+    keyPressTable[keycode-InputReciver::arrayOffset] = false;
+    return pressStatus;
+};
 bool InputReciver::mousePressed(int16_t keycode){
     return mousePressTable[keycode];
 };
+
+
 glm::vec2 InputReciver::mousePosition(){
     return mouseLocation;
 };
+
+
 glm::vec2 InputReciver::scrollAmount(){
     return scrollMagnitude;
 };

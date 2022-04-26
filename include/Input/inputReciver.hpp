@@ -61,6 +61,9 @@ namespace aml{
             //checks a key in the keyPressTable
             bool keyPressed(int16_t keycode);
 
+            //checks if a key was pressed only once
+            bool keyTriggered(int16_t keycode);
+            
             //checks if a mouse button is pressed
             bool mousePressed(int16_t button);
 

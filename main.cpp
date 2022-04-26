@@ -31,7 +31,6 @@ int main()
     //input reciver for the window
     aml::InputReciver localInput(window);
 
-
     aml::VertexResource3d multiBuffer;
     std::vector<aml::Vert3> verticies = aml::makeVertexArr(aml::cubeVertices,aml::cubeColors);
     multiBuffer.pushToGPU<aml::Vert3>(verticies.data(),verticies.size());
