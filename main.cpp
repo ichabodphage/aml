@@ -42,8 +42,10 @@ int main()
     aml::ShaderResource defaultFragmentShader(AML_DEFAULT_FRAG);
 
     // Link the vertex and fragment shader into a shader program
-    aml::ShaderProgram shaderProgram(defaultFragmentShader, defaultVertexShader);
-
+    aml::ShaderProgram shaderProgram;
+    shaderProgram.addShader(defaultFragmentShader);
+    shaderProgram.addShader(defaultVertexShader);
+    shaderProgram.compile();
     // initalize shader program uniforms
     shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
     shaderProgram["matrices.viewMatrix"].setMatrix(aml::viewMatrix);
