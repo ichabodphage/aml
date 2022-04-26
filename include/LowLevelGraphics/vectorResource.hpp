@@ -30,7 +30,10 @@ namespace aml
     public:
         std::vector<vType> verticies;
 
+        //constructor using layout of vertex in shader and size of each vector
         VectorResource(size_t layoutLocation,size_t VectorSize = 3);
+
+        //default deconstructor
         ~VectorResource();
 
         //binds the Vector resources
@@ -39,9 +42,13 @@ namespace aml
         //adds the verticies of a Vector array into verticies
         void addVerticies(vType* VectorArray, size_t size);
 
+        //adds all vectors of VectorArray into verticies
         void setVerticies(std::vector<vType> &VectorArray);
+
         //adds the verticies of a Vector array into verticies and pushes them to the GPU
         void pushAdd(vType* VectorArray, size_t size);
+
+        //directly pushes the vectors from a vector array to the GPU
         void pushSet(std::vector<vType> &VectorArray);
         
         //pushes verticies data into the gpu

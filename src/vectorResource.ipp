@@ -20,6 +20,7 @@ VectorResource<vType>::~VectorResource(){
 
 template<typename vType>
 void VectorResource<vType>::bindResource(){
+    //bind the vbo
     glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
@@ -28,6 +29,7 @@ void VectorResource<vType>::bindResource(){
 
 template<typename vType>
 void VectorResource<vType>::addVerticies(vType* VectorArray, size_t size){
+    //push all vectors into verticies
     for(size_t i = 0; i < size; i++){
         verticies.push_back(VectorArray[i]);
     }

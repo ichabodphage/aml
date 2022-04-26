@@ -15,16 +15,21 @@
 
 namespace aml{
     /*
-        class that manages a vector used to represent many things, has a ton of instance methods to help determine its functionality
+        class that manages a vector used to represent many things
+        meant to be used with an instance of vertexResource
     */
     template<typename PosType,typename ColorType>
     struct Vertex{
+        //position of the vertex
         PosType pos;
+        //color of the vertex
         ColorType color;
-
+        //constructor using both color and type
         Vertex(PosType position,ColorType vertexColor):pos(position),color(vertexColor){};
     };
+    //predefined template for 2d vertex
     typedef aml::Vertex<glm::vec2,glm::vec3> Vert2;
+    //predefined template for 3d vertex
     typedef aml::Vertex<glm::vec3,glm::vec3> Vert3;
 
 }
