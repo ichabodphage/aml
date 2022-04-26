@@ -67,10 +67,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/agarioisgud/projects/graphics-project
+CMAKE_SOURCE_DIR = /home/agarioisgud/aml
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/agarioisgud/projects/graphics-project
+CMAKE_BINARY_DIR = /home/agarioisgud/aml
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,9 +99,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/agarioisgud/projects/graphics-project/CMakeFiles /home/agarioisgud/projects/graphics-project//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/agarioisgud/aml/CMakeFiles /home/agarioisgud/aml//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/agarioisgud/projects/graphics-project/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/agarioisgud/aml/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -130,17 +130,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named graphics-project
+# Target rules for targets named aml
 
 # Build rule for target.
-graphics-project: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 graphics-project
-.PHONY : graphics-project
+aml: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 aml
+.PHONY : aml
 
 # fast build rule for target.
-graphics-project/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/build
-.PHONY : graphics-project/fast
+aml/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/build
+.PHONY : aml/fast
 
 main.o: main.cpp.o
 
@@ -148,7 +148,7 @@ main.o: main.cpp.o
 
 # target to build an object file
 main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/main.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/main.cpp.o
 .PHONY : main.cpp.o
 
 main.i: main.cpp.i
@@ -157,7 +157,7 @@ main.i: main.cpp.i
 
 # target to preprocess a source file
 main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/main.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/main.cpp.i
 .PHONY : main.cpp.i
 
 main.s: main.cpp.s
@@ -166,7 +166,7 @@ main.s: main.cpp.s
 
 # target to generate assembly for a file
 main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/main.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/main.cpp.s
 .PHONY : main.cpp.s
 
 src/inputReciver.o: src/inputReciver.cpp.o
@@ -175,7 +175,7 @@ src/inputReciver.o: src/inputReciver.cpp.o
 
 # target to build an object file
 src/inputReciver.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/inputReciver.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/inputReciver.cpp.o
 .PHONY : src/inputReciver.cpp.o
 
 src/inputReciver.i: src/inputReciver.cpp.i
@@ -184,7 +184,7 @@ src/inputReciver.i: src/inputReciver.cpp.i
 
 # target to preprocess a source file
 src/inputReciver.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/inputReciver.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/inputReciver.cpp.i
 .PHONY : src/inputReciver.cpp.i
 
 src/inputReciver.s: src/inputReciver.cpp.s
@@ -193,7 +193,7 @@ src/inputReciver.s: src/inputReciver.cpp.s
 
 # target to generate assembly for a file
 src/inputReciver.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/inputReciver.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/inputReciver.cpp.s
 .PHONY : src/inputReciver.cpp.s
 
 src/lib.o: src/lib.cpp.o
@@ -202,7 +202,7 @@ src/lib.o: src/lib.cpp.o
 
 # target to build an object file
 src/lib.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/lib.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/lib.cpp.o
 .PHONY : src/lib.cpp.o
 
 src/lib.i: src/lib.cpp.i
@@ -211,7 +211,7 @@ src/lib.i: src/lib.cpp.i
 
 # target to preprocess a source file
 src/lib.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/lib.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/lib.cpp.i
 .PHONY : src/lib.cpp.i
 
 src/lib.s: src/lib.cpp.s
@@ -220,7 +220,7 @@ src/lib.s: src/lib.cpp.s
 
 # target to generate assembly for a file
 src/lib.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/lib.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/lib.cpp.s
 .PHONY : src/lib.cpp.s
 
 src/shaderProgram.o: src/shaderProgram.cpp.o
@@ -229,7 +229,7 @@ src/shaderProgram.o: src/shaderProgram.cpp.o
 
 # target to build an object file
 src/shaderProgram.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/shaderProgram.cpp.o
 .PHONY : src/shaderProgram.cpp.o
 
 src/shaderProgram.i: src/shaderProgram.cpp.i
@@ -238,7 +238,7 @@ src/shaderProgram.i: src/shaderProgram.cpp.i
 
 # target to preprocess a source file
 src/shaderProgram.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/shaderProgram.cpp.i
 .PHONY : src/shaderProgram.cpp.i
 
 src/shaderProgram.s: src/shaderProgram.cpp.s
@@ -247,7 +247,7 @@ src/shaderProgram.s: src/shaderProgram.cpp.s
 
 # target to generate assembly for a file
 src/shaderProgram.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/shaderProgram.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/shaderProgram.cpp.s
 .PHONY : src/shaderProgram.cpp.s
 
 src/shaderResource.o: src/shaderResource.cpp.o
@@ -256,7 +256,7 @@ src/shaderResource.o: src/shaderResource.cpp.o
 
 # target to build an object file
 src/shaderResource.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/shaderResource.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/shaderResource.cpp.o
 .PHONY : src/shaderResource.cpp.o
 
 src/shaderResource.i: src/shaderResource.cpp.i
@@ -265,7 +265,7 @@ src/shaderResource.i: src/shaderResource.cpp.i
 
 # target to preprocess a source file
 src/shaderResource.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/shaderResource.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/shaderResource.cpp.i
 .PHONY : src/shaderResource.cpp.i
 
 src/shaderResource.s: src/shaderResource.cpp.s
@@ -274,7 +274,7 @@ src/shaderResource.s: src/shaderResource.cpp.s
 
 # target to generate assembly for a file
 src/shaderResource.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/shaderResource.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/shaderResource.cpp.s
 .PHONY : src/shaderResource.cpp.s
 
 src/uniform.o: src/uniform.cpp.o
@@ -283,7 +283,7 @@ src/uniform.o: src/uniform.cpp.o
 
 # target to build an object file
 src/uniform.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/uniform.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/uniform.cpp.o
 .PHONY : src/uniform.cpp.o
 
 src/uniform.i: src/uniform.cpp.i
@@ -292,7 +292,7 @@ src/uniform.i: src/uniform.cpp.i
 
 # target to preprocess a source file
 src/uniform.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/uniform.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/uniform.cpp.i
 .PHONY : src/uniform.cpp.i
 
 src/uniform.s: src/uniform.cpp.s
@@ -301,7 +301,7 @@ src/uniform.s: src/uniform.cpp.s
 
 # target to generate assembly for a file
 src/uniform.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/uniform.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/uniform.cpp.s
 .PHONY : src/uniform.cpp.s
 
 src/window.o: src/window.cpp.o
@@ -310,7 +310,7 @@ src/window.o: src/window.cpp.o
 
 # target to build an object file
 src/window.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/window.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/window.cpp.o
 .PHONY : src/window.cpp.o
 
 src/window.i: src/window.cpp.i
@@ -319,7 +319,7 @@ src/window.i: src/window.cpp.i
 
 # target to preprocess a source file
 src/window.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/window.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/window.cpp.i
 .PHONY : src/window.cpp.i
 
 src/window.s: src/window.cpp.s
@@ -328,7 +328,7 @@ src/window.s: src/window.cpp.s
 
 # target to generate assembly for a file
 src/window.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/graphics-project.dir/build.make CMakeFiles/graphics-project.dir/src/window.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/aml.dir/build.make CMakeFiles/aml.dir/src/window.cpp.s
 .PHONY : src/window.cpp.s
 
 # Help Target
@@ -339,7 +339,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... graphics-project"
+	@echo "... aml"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
