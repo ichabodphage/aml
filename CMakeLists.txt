@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # set the project name
-project(graphics-project)
+project(aml)
 
 
 # add the executable
@@ -13,12 +13,13 @@ set(SOURCE
    PARENT_SCOPE
 )
 link_libraries("glfw" "GL" "GLEW" "glut")
-add_executable(graphics-project 
+add_executable(aml 
     main.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/lib.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/window.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderResource.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderProgram.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/uniform.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/vectorResource.ipp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/inputReciver.cpp
     )

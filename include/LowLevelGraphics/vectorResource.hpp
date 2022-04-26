@@ -48,5 +48,5 @@ namespace aml
         void pushToGPU();
     };
 }
-#include "../../src/vectorResource_IMPLEMENT.hpp"
+
 #endif
