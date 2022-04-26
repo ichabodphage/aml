@@ -3,7 +3,10 @@ using namespace aml;
 
 
 Window::Window(size_t winWidth,size_t winHeight, const char* name):width(winWidth),height(winHeight){
+    //create the raw opengl render target
     renderWindow = aml::makeGLWindow(width,height,name);
+
+    //initalize the vertex array object
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
 }

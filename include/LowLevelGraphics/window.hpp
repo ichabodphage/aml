@@ -26,9 +26,15 @@ namespace aml{
     typedef std::function<void(int,int)> KeyCallback;
     class Window{
         private:
+            /*
+                input reciver needs access to private variables 
+                to properly scan inputs from the window
+            */
             friend class InputReciver;
+
             //window vertex array object
             GLuint vao;
+
             //width and height of window
             size_t width,height;
         
@@ -40,6 +46,7 @@ namespace aml{
             //constructor using window width, height, and name
             Window(size_t width,size_t height, const char* name);
 
+            //window deconstructor
             ~Window();
 
             //clears the window 
@@ -51,11 +58,12 @@ namespace aml{
             //renders the current bound VBO
             void renderVBO(size_t index,size_t amount);
 
-            //calls renderVBO and display
+            //renders the VBO and displays the result of the render
             void draw(size_t index, size_t amount);
 
             //swaps the video buffer and shows the next frame
             void display();
+
             //returns the width/height window dimensions
             glm::vec2 dimensions();
 
