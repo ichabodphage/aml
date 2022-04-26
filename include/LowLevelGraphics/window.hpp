@@ -49,20 +49,24 @@ namespace aml{
             //window deconstructor
             ~Window();
 
+            //sets the window as the current target to draw to
+            void makeDrawTarget();
+
             //clears the window 
             void clear();
+
+            //clear that forces openGL to clear the current window
+            void clear(bool forceRenderTarget);
 
             //returns if the window should be active or not
             bool isActive();
 
-            //renders the current bound VBO
-            void renderVBO(size_t index,size_t amount);
-
-            //renders the VBO and displays the result of the render
-            void draw(size_t index, size_t amount);
-
+            //renders the VBO to the current window
+            void render(size_t index,size_t amount);
+            
             //swaps the video buffer and shows the next frame
             void display();
+
 
             //returns the width/height window dimensions
             glm::vec2 dimensions();

@@ -9,12 +9,18 @@ Window::Window(size_t winWidth,size_t winHeight, const char* name):width(winWidt
     //initalize the vertex array object
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
+
+    makeDrawTarget();
 }
 
 Window::~Window(){
     glDeleteVertexArrays(1, &vao);
+    glfwDestroyWindow(renderWindow);
 }
 
+void Window::makeDrawTarget(){
+    glfwMakeContextCurrent(renderWindow);
+}
 void Window::clear(){
 
     //enable 3d depth testing
@@ -30,20 +36,18 @@ void Window::clear(){
     
 }
 
+void Window::clear(bool forceRenderTarget){
+    glfwMakeContextCurrent(renderWindow);
+    clear();
+}
 bool Window::isActive(){
     return !glfwWindowShouldClose(renderWindow);
 }
 
-void Window::renderVBO(size_t index, size_t amount){
+void Window::render(size_t index, size_t amount){
     // Draw a triangle from the 3 vertices
     glDrawArrays(GL_TRIANGLES, index, amount);
     
-}
-
-
-void Window::draw(size_t index, size_t amount){
-    glDrawArrays(GL_TRIANGLES, index, amount);
-    display();
 }
 
 void Window::display(){

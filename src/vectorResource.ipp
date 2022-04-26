@@ -15,6 +15,7 @@ valueCount(VectorSize){
 
 template<typename vType>
 VectorResource<vType>::~VectorResource(){
+    
     glDeleteBuffers(1, &vbo);
 }
 

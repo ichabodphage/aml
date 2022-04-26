@@ -34,17 +34,20 @@ void aml::startAml(int antialiasingLevel,bool resize){
         throw std::runtime_error("Failed to initialize GLFW\n");
     }
     
-    
+    //establish openGL version hints
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 2);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-    glfwWindowHint(GLFW_RESIZABLE, resize);
 
+    //establish if resizing is allowed or not
+    glfwWindowHint(GLFW_RESIZABLE, resize);
     glfwWindowHint(GLFW_SAMPLES, antialiasingLevel);
+
     glEnable(GL_MULTISAMPLE);  
+    
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    glfwSwapInterval(1);
+    glfwSwapInterval(0);
     aml::checkForGLErrors(__FILE__,__LINE__);
   
 
@@ -53,7 +56,6 @@ void aml::startAml(int antialiasingLevel,bool resize){
 GLFWwindow* aml::makeGLWindow(size_t width,size_t height,const char* name){
     GLFWwindow* window = glfwCreateWindow(width, height, name, NULL, NULL);
     glfwMakeContextCurrent(window);
-    
     if (glewInit()!= 0) {
         throw std::runtime_error("Failed to initialize GLEW\n");
     }

@@ -60,7 +60,7 @@ int main()
     while (window.isActive())
     {
         double time = glfwGetTime();
-        window.clear();
+        window.clear(true);
         shaderProgram.run();
 
         //check for all inputs
@@ -84,7 +84,7 @@ int main()
                     shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
                     shaderProgram["matrices.viewMatrix"].setMatrix(aml::viewMatrix);
                     // call windows draw function
-                    window.renderVBO(0, verticies.size());
+                    window.render(0, verticies.size());
                 }
             }
         }
