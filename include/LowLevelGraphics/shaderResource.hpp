@@ -24,12 +24,14 @@ namespace aml{
         class that manages compiling of shaders
     */
     class ShaderResource{
-        public:
+        private:
+            friend class ShaderProgram;
             //GLuint id of the shader program
             GLuint shader;
 
             //aml ShaderType of the shader
             aml::ShaderType shaderType;
+        public:
             
             //constructor using the type of shader and file path
             ShaderResource(const std::string shaderFile,aml::ShaderType type);

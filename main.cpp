@@ -81,13 +81,13 @@ int main()
                 }
             }
         }
-        
+
         //check for all inputs
         localInput.pollInput();
         if(localInput.keyTriggered('W')){
             std::cout << 1/ (glfwGetTime() - time) << "\n";
         }
-
+        
         window.display();
         rotx += 0.01;
     }

@@ -55,7 +55,7 @@ glm::vec2 Window::dimensions(){
     return glm::vec2(width,height);
 }
 
-void Window::minmize(){
+void Window::minimize(){
     glfwIconifyWindow(renderWindow);
 };
 
