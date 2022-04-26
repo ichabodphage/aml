@@ -13,7 +13,7 @@ ShaderProgram::ShaderProgram(aml::ShaderResource &fragmentShader, aml::ShaderRes
 
     // link the program
     glLinkProgram(programId);
-
+    glUseProgram(programId);
     // check for any runtime errors
     aml::checkForGLErrors(__FILE__, __LINE__);
     // set linkage flag to true
@@ -46,6 +46,7 @@ void ShaderProgram::addShader(aml::ShaderResource &shader){
         throw std::runtime_error("cannot add shader to program that has allready been compiled");
     }
     glAttachShader(programId, shader.shader);
+    
 };
 
 
@@ -54,6 +55,7 @@ void ShaderProgram::compile(){
         throw std::runtime_error("cannot compile shader program that has allready been compiled");
     }
     glLinkProgram(programId);
+    glUseProgram(programId);
     compiled = true;
 };
 
