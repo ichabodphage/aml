@@ -11,18 +11,24 @@ void InputReciver::handleKeyInput(GLFWwindow* rawWindow, int key, int scancode, 
 }
 void InputReciver::handleMousePress(GLFWwindow* rawWindow, int button, int action, int mods){
     InputReciver* localInputReciver = InputReciver::getInputReciver(rawWindow);
+    //set the activity of the index button to action
     localInputReciver->mousePressTable[button] = action;
 };
 
 void InputReciver::handleMouseMovement(GLFWwindow* rawWindow, double x, double y){
     InputReciver* localInputReciver = InputReciver::getInputReciver(rawWindow);
+
+    //set the current cursor location on the window
     localInputReciver->mouseLocation.x = x;
     localInputReciver->mouseLocation.y = y;
 };
+
+
 void InputReciver::handleScroll(GLFWwindow* rawWindow, double x, double y){
     InputReciver* localInputReciver = InputReciver::getInputReciver(rawWindow);
-    localInputReciver->scrollMagnitude.x = x;
-    localInputReciver->scrollMagnitude.y = y;
+    //set the magnitude of the scroll event
+    localInputReciver->scrollMagnitude.x = x;    
+    localInputReciver->scrollMagnitude.y = y;    
 };
 
 InputReciver* InputReciver::getInputReciver(GLFWwindow* rawWindow){
@@ -36,11 +42,19 @@ InputReciver::InputReciver(aml::Window &window){
     glfwSetWindowUserPointer(window.renderWindow,this);
     //set up InputReciver callbacks
     glfwSetKeyCallback(window.renderWindow, InputReciver::handleKeyInput);
+
+    //mouse input callbacks
     glfwSetMouseButtonCallback(window.renderWindow, InputReciver::handleMousePress);
     glfwSetCursorPosCallback(window.renderWindow, InputReciver::handleMouseMovement);
     glfwSetScrollCallback(window.renderWindow, InputReciver::handleScroll);
-    for(int i = 0; i < 8; i++){
+
+    //set all values in the mousePressTable to false
+    for(int i = 0; i < InputReciver::mouseButtonCount; i++){
         mousePressTable[i] = false;
+    }
+    //set all values in keyPressTable to false
+    for(int i = 0; i < InputReciver::keyCount; i++){
+        keyPressTable[i] = false;
     }
 };
 

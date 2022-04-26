@@ -65,7 +65,10 @@ int main()
 
         //check for all inputs
         localInput.pollInput();
-        
+        if(localInput.scrollAmount().x != 0 || localInput.scrollAmount().y != 0 ){
+            std::cout << localInput.scrollAmount().x << " "
+            << localInput.scrollAmount().y << "\n";
+        }
         for (int k = -2; k < 2; k++)
         {
             for (int j = -1; j < 4; j++)

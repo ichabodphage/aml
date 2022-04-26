@@ -27,10 +27,12 @@ namespace aml{
         private:
             friend class aml::Window;
             //map containing all key Inputs
-            bool keyPressTable[316];
+            static const size_t keyCount = 316;
+            bool keyPressTable[InputReciver::keyCount];
             
             //map containing all mouse button inputs
-            bool mousePressTable[8];
+            static const size_t mouseButtonCount = 8;
+            bool mousePressTable[InputReciver::mouseButtonCount];
 
             //postion of mouse
             glm::vec2 mouseLocation;
@@ -63,7 +65,7 @@ namespace aml{
 
             //checks if a key was pressed only once
             bool keyTriggered(int16_t keycode);
-            
+
             //checks if a mouse button is pressed
             bool mousePressed(int16_t button);
 
