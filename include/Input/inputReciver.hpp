@@ -25,7 +25,9 @@ namespace aml{
     */
     class InputReciver{
         private:
+            //window is friend class as window holds a GLFWwindow thats needed to scan inputs from
             friend class aml::Window;
+
             //map containing all key Inputs
             static const size_t keyCount = 316;
             bool keyPressTable[InputReciver::keyCount];
@@ -37,11 +39,21 @@ namespace aml{
             //postion of mouse
             glm::vec2 mouseLocation;
             
+            //current magnitude of the scrollwheel while scrolling
             glm::vec2 scrollMagnitude = glm::vec2(0,0);
-            //glfw key codes start at 32, this is a constant that gets subtracted from each keycode to find its place in keyPresstable
+
+            /*
+                glfw key codes start at 32, this is a constant that 
+                gets subtracted from each keycode to find its place in keyPresstable
+            */
             static const size_t arrayOffset = 32;
 
-            //private static function that handles openGl key input
+            /*
+                input callbacks used by the object to poll events from the window.
+                all of them are friend functions as they need to access private variables
+                of InputReciver to work
+            */
+            //keyboard callbacks
             static void handleKeyInput(GLFWwindow* window, int key, int scancode, int action, int mods);
             friend void handleKeyInput(GLFWwindow* window, int key, int scancode, int action, int mods);
 
@@ -49,11 +61,14 @@ namespace aml{
             static void handleMousePress(GLFWwindow* window,  int button, int action, int mods);
             friend void handleMousePress(GLFWwindow* window,  int button, int action, int mods);
             
+            //mouse movement callbacks
             static void handleMouseMovement(GLFWwindow* window, double x, double y);
             friend void handleMouseMovement(GLFWwindow* window, double x, double y);
             
+            //scrollwheel callbacks
             static void handleScroll(GLFWwindow* window, double x, double y);
             friend void handleScroll(GLFWwindow* window, double x, double y);
+
             //gets the input reciver
             static InputReciver* getInputReciver(GLFWwindow* window);
         public:
@@ -81,7 +96,4 @@ namespace aml{
 
 
 }
-
-
-
 #endif

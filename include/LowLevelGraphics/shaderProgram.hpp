@@ -20,7 +20,7 @@
 namespace aml{
    
     /*
-        class that manages applying and linking shaders into one program
+        class that manages linking shaders into one program
     */
     class ShaderProgram{
         private:
@@ -29,17 +29,19 @@ namespace aml{
             //map holding uniforms for the shader program
             std::unordered_map<std::string,aml::Uniform> uniformMap;
         public:
-            //constructor using vertex and fragment shader
+            //constructor using vertex and fragment shader, compiles and links the fragment and vertex shader together
             ShaderProgram(aml::ShaderResource &fragmentShader,aml::ShaderResource &vertexShader);
 
-        
+            //deconstructor of shaderProgram
             ~ShaderProgram();
             
             //runs the programs shaders
             void run();
 
+            //gets the ID of the compiled program
             GLuint getID();
 
+            //opperator that allows access to uniforms within the shader
             aml::Uniform& operator[](const std::string uniformName);
 
             

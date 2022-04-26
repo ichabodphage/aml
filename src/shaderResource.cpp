@@ -3,8 +3,9 @@
 using namespace aml;
 
 ShaderResource::ShaderResource(const std::string shaderFile,aml::ShaderType type):shaderType(type){
+    //ifstream to read the shader file
     std::ifstream resourceFile(shaderFile,std::ios::in);
-
+    //vector holding all the lines of the resource file
     std::vector<std::string> fileLines;
 
 
@@ -38,6 +39,7 @@ ShaderResource::ShaderResource(const std::string shaderFile,aml::ShaderType type
     int compilationStatus;
 	glGetShaderiv(shader, GL_COMPILE_STATUS, &compilationStatus);
 
+    //throw runtime error if shader failed to compile
 	if(!compilationStatus)
 	{
 		char infoLogBuffer[2048];

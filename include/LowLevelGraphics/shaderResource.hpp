@@ -21,7 +21,7 @@ namespace aml{
         GEOMETRY = GL_GEOMETRY_SHADER
     };
     /*
-        class that manages running, compiling, and linking of shaders
+        class that manages compiling of shaders
     */
     class ShaderResource{
         public:
