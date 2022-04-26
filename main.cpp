@@ -3,7 +3,7 @@
 #include <vector>
 #include <random>
 #include <algorithm>
-#include<type_traits>
+#include <type_traits>
 
 #include <GL/glew.h>
 #include <GL/glut.h>
@@ -19,7 +19,7 @@
 
 /*
  compile with
- cmake --build . -j 2
+ cmake --build . -j 4
 */
 
 int main()
