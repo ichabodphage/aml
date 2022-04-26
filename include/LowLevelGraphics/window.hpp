@@ -49,14 +49,14 @@ namespace aml{
             //window deconstructor
             ~Window();
 
+
+            // methods that controll what is displayed on the window
+
             //sets the window as the current target to draw to
             void makeDrawTarget();
 
             //clears the window 
             void clear();
-
-            //clear that forces openGL to clear the current window
-            void clear(bool forceRenderTarget);
 
             //returns if the window should be active or not
             bool isActive();
@@ -67,6 +67,18 @@ namespace aml{
             //swaps the video buffer and shows the next frame
             void display();
 
+
+
+            // methods to controll the size of the window
+
+            //minimizes the window in the OS
+            void minimize();
+
+            //unminimizes a minimized window
+            void unMinimize();
+
+            //sets the window to the size of the entire screen
+            void maximize();
 
             //returns the width/height window dimensions
             glm::vec2 dimensions();

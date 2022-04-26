@@ -36,10 +36,6 @@ void Window::clear(){
     
 }
 
-void Window::clear(bool forceRenderTarget){
-    glfwMakeContextCurrent(renderWindow);
-    clear();
-}
 bool Window::isActive(){
     return !glfwWindowShouldClose(renderWindow);
 }
@@ -57,4 +53,16 @@ void Window::display(){
 glm::vec2 Window::dimensions(){
 
     return glm::vec2(width,height);
+}
+
+void Window::minmize(){
+    glfwIconifyWindow(renderWindow);
+};
+
+void Window::unMinimize(){
+    glfwRestoreWindow(renderWindow);
+}
+
+void Window::maximize(){
+    glfwMaximizeWindow(renderWindow);
 }
