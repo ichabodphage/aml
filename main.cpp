@@ -87,7 +87,7 @@ int main()
         if(localInput.keyTriggered('W')){
             window.setTitle(
                 std::to_string(window.position().x).c_str()
-                );
+            );
         }
         
         window.display();
