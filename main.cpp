@@ -85,7 +85,7 @@ int main()
         //check for all inputs
         localInput.pollInput();
         if(localInput.keyTriggered('W')){
-            std::cout << 1/ (glfwGetTime() - time) << "\n";
+            window.close();
         }
         
         window.display();

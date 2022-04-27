@@ -40,6 +40,10 @@ bool Window::isActive(){
     return !glfwWindowShouldClose(renderWindow);
 }
 
+void Window::close(){
+    glfwSetWindowShouldClose(renderWindow,true);
+}
+
 void Window::render(size_t index, size_t amount){
     // Draw a triangle from the 3 vertices
     glDrawArrays(GL_TRIANGLES, index, amount);

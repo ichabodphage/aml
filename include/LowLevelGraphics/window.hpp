@@ -58,15 +58,11 @@ namespace aml{
             //clears the window 
             void clear();
 
-            //returns if the window should be active or not
-            bool isActive();
-
             //renders the VBO to the current window
             void render(size_t index,size_t amount);
             
             //swaps the video buffer and shows the next frame
             void display();
-
 
 
             // methods to controll the size of the window
@@ -82,6 +78,15 @@ namespace aml{
 
             //returns the width/height window dimensions
             glm::vec2 dimensions();
+
+            
+            //methods to controll the activity of the window
+
+            //returns if the window should be active or not
+            bool isActive();
+
+            //closes the window
+            void close(); 
 
     };
 }
