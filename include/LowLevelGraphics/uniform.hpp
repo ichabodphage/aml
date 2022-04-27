@@ -19,16 +19,20 @@
 namespace aml{
     //forward declaration
     class ShaderProgram;
-    /*
-        class that manages shader uniforms or inputs
-    */
+    
+    /**
+     * @brief class that manages interfacing with uniforms within shaders
+     * 
+     */
     class Uniform{
         private:
-            //pointer back to the uniforms shader program
+            /// @brief pointer to a compiled shader program
             aml::ShaderProgram* program;
 
+            /// @brief id of the uniform in the GPU
             GLuint uniformId;
-            //name of the uniform in the shader
+
+            /// @brief name of the uniform in the shader
             std::string paramName;
 
         public:
