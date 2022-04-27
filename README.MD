@@ -11,4 +11,5 @@ the library itself is divided into a few modules,
 
 ## building
 
-build the library by using cmake
+run cmake CMakeLists.txt
+then run make
