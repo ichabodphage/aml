@@ -14,38 +14,35 @@
 #define AML_VECTOR
 
 namespace aml{
-    /*
-        class that manages a vector used to represent many things
-        meant to be used with an instance of vertexResource
-    */
+    /**
+     * @brief Vertex template struct
+     * 
+     * @tparam PosType vector type containing vertex position
+     * @tparam ColorType vector type containing vertex color
+     */
     template<typename PosType,typename ColorType>
     struct Vertex{
-        //position of the vertex
+        /// @brief position of the vertex
         PosType pos;
-        //color of the vertex
+
+        /// @brief color of the vertex
         ColorType color;
-        //constructor using both color and type
+
+        /**
+         * @brief Construct a new Vertex object
+         * 
+         * @param position positon of the vertex
+         * @param vertexColor color of the vertex
+         */
         Vertex(PosType position,ColorType vertexColor):pos(position),color(vertexColor){};
     };
-    //predefined template for 2d vertex
+    
+    /// @brief 2d vertex template declaration
     typedef aml::Vertex<glm::vec2,glm::vec3> Vert2;
-    //predefined template for 3d vertex
+
+    /// @brief 3d vertex template delcaration
     typedef aml::Vertex<glm::vec3,glm::vec3> Vert3;
 
-    template<typename PosType,typename ColorType>
-    struct TextureVertex{
-        //position of the vertex
-        PosType pos;
-        //color of the vertex
-        ColorType color;
-
-        glm::vec2 textCords;
-        //constructor using both color and type
-        Vertex(PosType position,ColorType vertexColor,glm::vec2 textureCords):
-        pos(position),color(vertexColor),textCords(textureCords){};
-    };
-    typedef aml::TextureVertex<glm::vec2,glm::vec3> Vert2Textured;
-    typedef aml::TextureVertex<glm::vec3,glm::vec3> Vert3Textured;
 
 }
 

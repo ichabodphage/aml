@@ -26,8 +26,8 @@ int main()
 {
     // initAML and make AML window
     aml::startAml();
-    aml::Window window(800, 600, "TEST");
-
+    aml::Window window(800,600,"TEST");
+     
     //input reciver for the window
     aml::InputReciver localInput(window);
 
@@ -35,7 +35,6 @@ int main()
     std::vector<aml::Vert3> verticies = aml::makeVertexArr(aml::cubeVertices,aml::cubeColors);
     multiBuffer.pushToGPU<aml::Vert3>(verticies.data(),verticies.size());
 
-    
     // default vertex shader, uses color and vertex data
     aml::ShaderResource defaultVertexShader(aml::defaultVert(),aml::ShaderType::VERTEX);
     // default fragment shader, uses vertex color data

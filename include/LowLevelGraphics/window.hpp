@@ -7,7 +7,6 @@
 #include <unordered_map>
 #include <cinttypes>
 
-
 #include <GL/glew.h>
 #include <GL/glut.h>
 #include <glm/glm.hpp>
@@ -18,85 +17,123 @@
 #ifndef AML_WINDOW
 #define AML_WINDOW
 
-namespace aml{
-    /*
-        class that manages a window used to display graphics
-    */
+namespace aml
+{
 
-    typedef std::function<void(int,int)> KeyCallback;
-    class Window{
-        private:
-            /*
-                input reciver needs access to private variables 
-                to properly scan inputs from the window
-            */
-            friend class InputReciver;
+    /**
+     * 
+     * @brief class that manages a window that displays graphics
+     * @details contains mostly low level methods to interface with openGl window functions
+     */ 
+    class Window
+    {
+    private:
+        /*
+            input reciver needs access to private variables
+            to properly scan inputs from the window
+        */
+        friend class InputReciver;
 
-            //window vertex array object
-            GLuint vao;
+        ///@brief openGl vertex array object
+        GLuint vao;
 
-            //width and height of window
-            size_t width,height;
+        ///@brief width and height of the windo
+        size_t width, height;
+
+        ///@brief raw openGL render window
+        GLFWwindow *renderWindow;
+
+    public:
+        /**
+        *   @brief window constuctor, creates a window and sets the window as the current draw target
+        *   @param width width of the window
+        *   @param height height of the window
+        *   @param name name of the window
+        */
+        Window(size_t width, size_t height, const char *name);
+
+        ///@brief deletes the windows vertex array and its raw openGL window
+        ~Window();
+
+        // methods that controll what is displayed on the window
+        /**
+        *   @brief tells openGL to render to this window instance
+        *   @return none
+        */
+        void makeDrawTarget();
+
+        /**
+        *   @brief clears the current draw target
+        *   @return none
+        */ 
+        void clear();
+
+        /**
+        *   @brief renders current VBO from the starting vertex index and the amount of verticies to draw
+        *   @return none
+        */ 
+        void render(size_t index, size_t amount);
         
-            //GLFW render target
-            GLFWwindow* renderWindow;
-        public:
-            
+        /**
+        *   @brief displays to the current draw target
+        *   @return none
+        */
+        void display();
 
-            //constructor using window width, height, and name
-            Window(size_t width,size_t height, const char* name);
+        // methods to controll the size of the window
 
-            //window deconstructor
-            ~Window();
+        /**
+        *   @brief minimizes the window on the desktop
+        *   @return none
+        */
+        void minimize();
 
+        /**
+        *   @brief brief description unminimizes a minimized window
+        *   @return none
+        */
+        void unMinimize();
 
-            // methods that controll what is displayed on the window
+        /**
+        *   @brief brief description sets the window to the size of the entire screen
+        *   @return none
+        */
+        void maximize();
 
-            //sets the window as the current target to draw to
-            void makeDrawTarget();
+        /** 
+        *   @brief returns the width/height window dimensions
+        *   @return glm::vec2 holding current width and height of the window
+        */ 
+        glm::vec2 dimensions();
 
-            //clears the window 
-            void clear();
+        // methods to controll the position of the window
+        
+        /**
+        *   @brief returns the position of the window on the monitor
+        *   @return glm::vec2 holding current position of the window
+        */
+        glm::vec2 position();
 
-            //renders the VBO to the current window
-            void render(size_t index,size_t amount);
-            
-            //swaps the video buffer and shows the next frame
-            void display();
+        // methods to controll the activity of the window
 
+        /**
+        *   @brief gets the current activity status of the window
+        *   @return boolean value, false means the window is inactive, true means the window is active
+        */ 
+        bool isActive();
 
-            // methods to controll the size of the window
-
-            //minimizes the window in the OS
-            void minimize();
-
-            //unminimizes a minimized window
-            void unMinimize();
-
-            //sets the window to the size of the entire screen
-            void maximize();
-
-            //returns the width/height window dimensions
-            glm::vec2 dimensions();
-
-            
-            // methods to controll the position of the window
-
-            //gets the position of the window on the monitor
-            glm::vec2 position();
-
-
-            //methods to controll the activity of the window
-
-            //returns if the window should be active or not
-            bool isActive();
-
-            //closes the window
-            void close(); 
-
-            //methods to controll title of the window
-            void setTitle(const char* title);
-
+        /**
+        *   @brief closes the window and sets its activity to false
+        *   @return none
+        */
+        void close();
+        
+        /**
+        *   @brief changes the title of the window
+        *   @param title new title of the window
+        *   @return none
+        */ 
+        void setTitle(const char *title);
     };
 }
 

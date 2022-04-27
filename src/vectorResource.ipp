@@ -11,6 +11,7 @@ VectorResource<vType>::VectorResource(size_t layoutLocation,size_t VectorSize):
 layout(layoutLocation),
 valueCount(VectorSize){
     bindResource();
+    bindAtributes();
 }
 
 template<typename vType>
@@ -29,22 +30,19 @@ void VectorResource<vType>::bindResource(){
 
 
 template<typename vType>
-void VectorResource<vType>::addVerticies(vType* VectorArray, size_t size){
-    //push all vectors into verticies
-    for(size_t i = 0; i < size; i++){
-        verticies.push_back(VectorArray[i]);
-    }
+void VectorResource<vType>::pushToGPU(vType* VectorArray, size_t size){
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vType) * size, VectorArray , GL_STATIC_DRAW);
 }
+
 template<typename vType>
-void VectorResource<vType>::setVerticies(std::vector<vType> &VectorArray){
-    verticies = VectorArray;
+void VectorResource<vType>::pushToGPU(std::vector<vType> &VectorArray){
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vType) * VectorArray.size(), VectorArray.data() , GL_STATIC_DRAW);
 };
 
 
 template<typename vType>
-void VectorResource<vType>::pushToGPU(){
-    //push the data to the GPU
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vType) * verticies.size(), verticies.data() , GL_STATIC_DRAW);
+void VectorResource<vType>::bindAtributes(){
+    
     //get the length of the Vector atribute
     size_t atributeLength = sizeof(vType) /sizeof(float);
     //set the current data pointer to the objects ID
@@ -56,16 +54,4 @@ void VectorResource<vType>::pushToGPU(){
     glEnableVertexAttribArray(layout);
     aml::checkForGLErrors(__FILE__,__LINE__);
 	
-}
-
-template<typename vType>
-void VectorResource<vType>::pushAdd(vType* VectorArray, size_t size){
-    addVerticies(VectorArray,size);
-    pushToGPU();
-}
-
-template<typename vType>
-void VectorResource<vType>::pushSet(std::vector<vType> &VectorArray){
-    setVerticies(VectorArray);
-    pushToGPU();
 }

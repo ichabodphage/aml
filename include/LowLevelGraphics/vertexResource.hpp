@@ -15,42 +15,73 @@
 
 namespace aml
 {
-    /*
-        template class that manages a vertex resource that holds multiple values
-        VertexResouce manages verticies with multiple vector components, 
-        unlike vector resource which only manages one compnent of a vertex
+    /** @brief manages a vertex buffer that lives on the GPU
+    * 
+    *   @details 
+    *   data is ordered in the vertex buffer in the order the data is declared within the template. 
+    *   the order of the data also determines the atribute location within shaders.
+    *
+    *   @attention in order for the template to work properly, all template arguments must meet these requirements
+    *   all dataTypes must contain no private members or pointers
+    *   they must only contain float values
+    *   the datatypes must be indicative of the amount of values within said atribute 
+    *   (ie a single float will be indicative of one value while a struct holding 2 floats will atribute to 2 values)
+    *
+    *   @tparam 
+    *   template pack, parameters must meet requirements in details section
     */
     template <typename... T>
     class VertexResource
     {
     private:
         
-        //stride will be equal too the number of floats in all the vectors
+        ///@brief constant value that dictates the total size of the verticies
         const size_t stride = aml::packSize<T...>()/sizeof(float);
-        // vertex buffer object
+
+        ///@brief openGL vertex buffer 
         GLuint vbo;
  
-        //floatCountArr is equal to the amount of floats in each vector type
+        /** 
+        *   @brief 
+        *   array holding the amount of floats in each template parameter
+        *   @details 
+        *   openGL needs to know how much floats are in each vector atribute
+        *   this array stores the float count of each atribute in the order used in the template
+        */
         const short floatCountArr[sizeof...(T)] = {(sizeof(T) / sizeof(float))...};
-        //size of numFloats
+
+        /// @brief size of floatCountArr
         const size_t atributeSize = sizeof...(T);
-        //offset of the atribute location
+
+        /// @brief constant value for the offset to add to the layout of the vertex elements
         const size_t layout;
     public:
-        // default constructor
+        /**
+        *   @brief constructor for vertex resource
+        *   @details creates the vertex buffer on the GPU and 
+        *   establishes how that data is layed out within the buffer
+        * 
+        *   @param layoutOffset offset of the data atribute pointers. defaults to no offset (0)
+        */
         VertexResource(size_t layoutOffset = 0):layout(layoutOffset){
             bindResource();
-            bindAtributes();
-            //establish all the proper atribute locations
-            
+            bindAtributes();    
         };
-        // binds the MultiResource
+
+        /** 
+        *   @brief creates the VBO on the graphics card 
+        *  
+        */
         void bindResource()
         {
             glGenBuffers(1, &vbo);
             glBindBuffer(GL_ARRAY_BUFFER, vbo);
         }
 
+        /**
+        *   @brief establishes how vertex data is positioned on the GPU
+        *   
+        */ 
         void bindAtributes(){
             size_t offSet = 0;
             for(size_t i = 0; i <atributeSize;i++){
@@ -96,8 +127,18 @@ namespace aml
             aml::checkForGLErrors(__FILE__,__LINE__);
         }
         */
-        
-        //typesafe version of pushToGPU
+        /**
+        *   @brief pushes an array of verticies into the vertex buffer
+        *   @attention
+        *   sizeof(vertexType) must be equal to the size of all the atribute types combined
+        *   throws a runtime error if the size of the struct is not equal to the combined size of
+        *   all the classes' template parameters
+        *
+        *   @tparam vertexType the vertex datatype to push to the GPU
+        *   @param rawData pointer to an array of verticies
+        *   @param size size of the vertex array
+        *   
+        */
         template<typename vertexType>
         void pushToGPU(vertexType * rawData, size_t size)
         {
@@ -109,6 +150,34 @@ namespace aml
             glBufferData(GL_ARRAY_BUFFER, aml::packSize<T...>() *size, rawData, GL_STATIC_DRAW);            
             aml::checkForGLErrors(__FILE__,__LINE__);
         }
+
+        /**
+         * @brief pushes an array of verticies into the vertex buffer
+         * 
+         * @attention
+         * sizeof(vertexType) must be equal to the size of all the atribute types combined
+         * throws a runtime error if the size of the struct is not equal to the combined size of
+         * all the classes' template parameters
+         * @tparam vertexType the vertex datatype to push to the GPU
+         * 
+         * @param vertexArray std::vector holding verticies
+         */
+        template<typename vertexType>
+        void pushToGPU(std::vector<vertexType>& vertexArray);
+        {
+            //check if the vertexType is the same size as the pack size
+            if constexpr (sizeof(vertexType) != aml::packSize<T...>()){
+                throw std::runtime_error("vertex template paramerter is not compatable with the type of vertex resource");
+            }
+            //set the buffer data to vertexArr
+            glBufferData(GL_ARRAY_BUFFER, aml::packSize<T...>() *size, vertexArray.data(), GL_STATIC_DRAW);            
+            aml::checkForGLErrors(__FILE__,__LINE__);
+        }
+
+        /**
+         * @brief Destroy the Vertex Resource object
+         * 
+         */
         ~VertexResource()
         {
             glDeleteBuffers(1, &vbo);
@@ -116,9 +185,13 @@ namespace aml
 
         
     };
+    /// @brief vertex buffer for 2d vertices
     typedef aml::VertexResource<glm::vec2,glm::vec3> VertexResource2d;
-    typedef aml::VertexResource<glm::vec2,glm::vec3,glm::vec2> VertexResource2dTextured; 
-    typedef aml::VertexResource<glm::vec3,glm::vec3,glm::vec2> VertexResource3dTextured; 
+
+    typedef aml::VertexResource<glm::vec2,glm::vec3,glm::vec2> VertexResource2dTextured;
+    
+    /// @brief vertex buffer for 3d verticies
+    typedef aml::VertexResource<glm::vec3,glm::vec3> VertexResource3d; 
 }
 
 #endif
