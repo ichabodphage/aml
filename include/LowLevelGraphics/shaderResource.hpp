@@ -9,6 +9,7 @@
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 
+#include "defaultShaderResources.hpp"
 #include "../lib.hpp"
 
 #ifndef AML_SHADER
@@ -39,8 +40,7 @@ namespace aml{
 
             
     };
-#define AML_DEFAULT_FRAG "../src/basicShaders/basicFrag.frag", aml::ShaderType::FRAGMENT
-#define AML_DEFAULT_VERT "../src/basicShaders/basicVert.vert", aml::ShaderType::VERTEX 
+ 
 }
 
 #endif

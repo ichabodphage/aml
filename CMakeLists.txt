@@ -23,4 +23,5 @@ add_executable(test
     ${CMAKE_CURRENT_SOURCE_DIR}/src/uniform.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/vectorResource.ipp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/inputReciver.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/defaultShaders.cpp
     )

@@ -37,9 +37,9 @@ int main()
 
     
     // default vertex shader, uses color and vertex data
-    aml::ShaderResource defaultVertexShader(AML_DEFAULT_VERT);
+    aml::ShaderResource defaultVertexShader(aml::defaultVert(),aml::ShaderType::VERTEX);
     // default fragment shader, uses vertex color data
-    aml::ShaderResource defaultFragmentShader(AML_DEFAULT_FRAG);
+    aml::ShaderResource defaultFragmentShader(aml::defaultFrag(),aml::ShaderType::FRAGMENT);
 
     // Link the vertex and fragment shader into a shader program
     aml::ShaderProgram shaderProgram(defaultFragmentShader,defaultVertexShader);
