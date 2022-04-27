@@ -85,7 +85,7 @@ int main()
         //check for all inputs
         localInput.pollInput();
         if(localInput.keyTriggered('W')){
-            window.close();
+            std::cout << window.position().x <<" " << window.position().y << "\n";
         }
         
         window.display();

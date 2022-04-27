@@ -70,3 +70,9 @@ void Window::unMinimize(){
 void Window::maximize(){
     glfwMaximizeWindow(renderWindow);
 }
+
+glm::vec2 Window::position(){
+    int x,y;
+    glfwGetWindowPos(renderWindow,&x,&y);
+    return glm::vec2(x,y);
+}

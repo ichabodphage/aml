@@ -80,6 +80,11 @@ namespace aml{
             glm::vec2 dimensions();
 
             
+            // methods to controll the position of the window
+
+            //gets the position of the window on the monitor
+            glm::vec2 position();
+
             //methods to controll the activity of the window
 
             //returns if the window should be active or not
