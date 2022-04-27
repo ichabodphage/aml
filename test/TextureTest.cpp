@@ -60,38 +60,27 @@ int main()
     while (window.isActive())
     {
         double time = glfwGetTime();
+        
         window.clear();
         shaderProgram.run();
-        for (int k = -2; k < 2; k++)
-        {
-            for (int j = -1; j < 4; j++)
-            {
-                for (int i = -2; i < 4; i++)
-                {
-                    aml::modelMatrix = glm::scale(glm::mat4(1), glm::vec3(5, 5, 5));
-                    
-                    aml::modelMatrix = glm::translate(aml::modelMatrix, glm::vec3(3 * -i, 3 * -k, 3 * -j));
-                    aml::modelMatrix = glm::translate(aml::modelMatrix, glm::vec3(std::sin(rotx)*2,std::cos(rotx)*2,0));
+        aml::modelMatrix = glm::scale(glm::mat4(1), glm::vec3(5, 5, 5));
+        aml::modelMatrix = glm::rotate(aml::modelMatrix,rotx,glm::vec3(1,0,0));
+        aml::modelMatrix = glm::rotate(aml::modelMatrix,rotx,glm::vec3(0,1,0));
 
-                    aml::modelMatrix = glm::rotate(aml::modelMatrix,rotx,glm::vec3(1,0,0));
-                    shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
-                    shaderProgram["matrices.viewMatrix"].setMatrix(aml::viewMatrix);
-                    // call windows draw function
-                    window.render(0, verticies.size());
-                }
-            }
-        }
-
+        shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
+        window.render(0,verticies.size());
+        
         //check for all inputs
         localInput.pollInput();
         if(localInput.keyTriggered('W')){
-            window.setTitle(
-                std::to_string(window.position().x).c_str()
-            );
+            
+            std::cout << std::to_string(localInput.mousePosition().x) << " "
+            << std::to_string(localInput.mousePosition().y) << "\n";
+            
         }
         
         window.display();
-        rotx += 0.01;
+        rotx += 0.02;
     }
 
     aml::stopAml();

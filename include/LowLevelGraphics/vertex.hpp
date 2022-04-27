@@ -32,6 +32,21 @@ namespace aml{
     //predefined template for 3d vertex
     typedef aml::Vertex<glm::vec3,glm::vec3> Vert3;
 
+    template<typename PosType,typename ColorType>
+    struct TextureVertex{
+        //position of the vertex
+        PosType pos;
+        //color of the vertex
+        ColorType color;
+
+        glm::vec2 textCords;
+        //constructor using both color and type
+        Vertex(PosType position,ColorType vertexColor,glm::vec2 textureCords):
+        pos(position),color(vertexColor),textCords(textureCords){};
+    };
+    typedef aml::TextureVertex<glm::vec2,glm::vec3> Vert2Textured;
+    typedef aml::TextureVertex<glm::vec3,glm::vec3> Vert3Textured;
+
 }
 
 

@@ -116,8 +116,9 @@ namespace aml
 
         
     };
-    typedef aml::VertexResource<glm::vec2,glm::vec3> VertexResource2d; 
-    typedef aml::VertexResource<glm::vec3,glm::vec3> VertexResource3d; 
+    typedef aml::VertexResource<glm::vec2,glm::vec3> VertexResource2d;
+    typedef aml::VertexResource<glm::vec2,glm::vec3,glm::vec2> VertexResource2dTextured; 
+    typedef aml::VertexResource<glm::vec3,glm::vec3,glm::vec2> VertexResource3dTextured; 
 }
 
 #endif
