@@ -39,50 +39,110 @@ namespace aml{
             //this only exists to remove a compiler error
             Uniform() = default;
             
+            /**
+             * @brief Construct a new Uniform object
+             * 
+             * @param shaderProgram  pointer back to compiled shader program
+             * @param shaderParameter name of the uniform in the shader
+             */
             Uniform(aml::ShaderProgram* shaderProgram,std::string shaderParameter);
 
             // matrix functions
 
-            //sets the uniform parameter to a 4x4 matrix
+            /**
+             * @brief sets the uniform to the speficied matrix
+             * 
+             * @param matrix 4x4 matrix
+             */
             void setMatrix(glm::mat4 &matrix);
 
-            //sets the uniform parameter to a 4x3 matrix
+            /**
+             * @brief sets the uniform to the speficied matrix
+             * 
+             * @param matrix 4x3 matrix
+             */
             void setMatrix(glm::mat4x3 &matrix);
 
-            //sets the uniform parameter to a 4x2 matrix
+            /**
+             * @brief sets the uniform to the speficied matrix
+             * 
+             * @param matrix 4x2 matrix
+             */
             void setMatrix(glm::mat4x2 &matrix);
 
-            //sets the uniform parameter to a 3x4 matrix
+            /**
+             * @brief sets the uniform to the speficied matrix
+             * 
+             * @param matrix 3x4 matrix
+             */
             void setMatrix(glm::mat3x4 &matrix);
 
-            //sets the uniform parameter to a 3x3 matrix
+            /**
+             * @brief sets the uniform to the speficied matrix
+             * 
+             * @param matrix 3x3 matrix
+             */
             void setMatrix(glm::mat3 &matrix);
 
-            //sets the uniform parameter to a 3x2 matrix
+            /**
+             * @brief sets the uniform to the speficied matrix
+             * 
+             * @param matrix 3x2 matrix
+             */
             void setMatrix(glm::mat3x2 &matrix);
 
-            //sets the uniform parameter to a 2x4 matrix
+            /**
+             * @brief sets the uniform to the speficied matrix
+             * 
+             * @param matrix 2x4 matrix
+             */
             void setMatrix(glm::mat2x4 &matrix);
 
-            //sets the uniform parameter to a 2x3 matrix
+            
+            /**
+             * @brief sets the uniform to the speficied matrix
+             * 
+             * @param matrix 2x3 matrix
+             */
             void setMatrix(glm::mat2x3 &matrix);
 
-            //sets the uniform parameter to a 2x2 matrix
+            /**
+             * @brief sets the uniform to the speficied matrix
+             * 
+             * @param matrix 2x2 matrix
+             */
             void setMatrix(glm::mat2 &matrix);
 
 
             //vector functions
-            //sets the uniform parameter to a 4d vector
+
+            /**
+             * @brief Set the uniform to the specified vector
+             * 
+             * @param vector vector with 4 elements
+             */
             void setVector(glm::vec4 &vector);
 
-            //sets the uniform parameter to a 3d vector
+            /**
+             * @brief Set the uniform to the specified vector
+             * 
+             * @param vector vector with 3 elements
+             */
             void setVector(glm::vec3 &vector);
 
-            //sets the uniform parameter to a 2d vector
+            /**
+             * @brief Set the uniform to the specified vector
+             * 
+             * @param vector vector with 2 elements
+             */
             void setVector(glm::vec2 &vector);
 
             //scalar functions
-            //sets the uniform to a single scalar value
+            /**
+             * @brief Set the uniform to the specified scalar
+             * 
+             * @param vector 1 element scalar
+             */
             void setScalar(float scalar);
             
 
