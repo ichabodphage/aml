@@ -85,6 +85,7 @@ namespace aml{
             //gets the position of the window on the monitor
             glm::vec2 position();
 
+
             //methods to controll the activity of the window
 
             //returns if the window should be active or not
@@ -92,6 +93,9 @@ namespace aml{
 
             //closes the window
             void close(); 
+
+            //methods to controll title of the window
+            void setTitle(const char* title);
 
     };
 }

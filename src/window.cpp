@@ -36,14 +36,6 @@ void Window::clear(){
     
 }
 
-bool Window::isActive(){
-    return !glfwWindowShouldClose(renderWindow);
-}
-
-void Window::close(){
-    glfwSetWindowShouldClose(renderWindow,true);
-}
-
 void Window::render(size_t index, size_t amount){
     // Draw a triangle from the 3 vertices
     glDrawArrays(GL_TRIANGLES, index, amount);
@@ -53,6 +45,9 @@ void Window::render(size_t index, size_t amount){
 void Window::display(){
     glfwSwapBuffers(renderWindow);
 }
+
+
+//window size
 
 glm::vec2 Window::dimensions(){
 
@@ -71,8 +66,29 @@ void Window::maximize(){
     glfwMaximizeWindow(renderWindow);
 }
 
+
+//window activity
+
+bool Window::isActive(){
+    return !glfwWindowShouldClose(renderWindow);
+}
+
+void Window::close(){
+    glfwSetWindowShouldClose(renderWindow,true);
+}
+
+
+//window position
+
 glm::vec2 Window::position(){
     int x,y;
     glfwGetWindowPos(renderWindow,&x,&y);
     return glm::vec2(x,y);
+}
+
+
+//window name
+
+void Window::setTitle(const char* title){
+    glfwSetWindowTitle(renderWindow,title);
 }
