@@ -13,9 +13,9 @@
 #include "points.hpp"
 #include "matricies.hpp"
 
-#include "include/graphics.hpp"
+#include "../include/graphics.hpp"
 
-#include "include/input.hpp"
+#include "../include/input.hpp"
 
 /*
  compile with

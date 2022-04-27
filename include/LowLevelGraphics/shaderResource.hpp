@@ -39,8 +39,8 @@ namespace aml{
 
             
     };
-#define AML_DEFAULT_FRAG "src/basicShaders/basicFrag.frag", aml::ShaderType::FRAGMENT
-#define AML_DEFAULT_VERT "src/basicShaders/basicVert.vert", aml::ShaderType::VERTEX 
+#define AML_DEFAULT_FRAG "../src/basicShaders/basicFrag.frag", aml::ShaderType::FRAGMENT
+#define AML_DEFAULT_VERT "../src/basicShaders/basicVert.vert", aml::ShaderType::VERTEX 
 }
 
 #endif

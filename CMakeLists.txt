@@ -12,9 +12,10 @@ set(SOURCE
    ${CMAKE_CURRENT_SOURCE_DIR}/file2.cpp
    PARENT_SCOPE
 )
+set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
 link_libraries("glfw" "GL" "GLEW" "glut")
-add_executable(aml 
-    main.cpp
+add_executable(test 
+    ${CMAKE_CURRENT_SOURCE_DIR}/test/main.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/lib.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/window.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderResource.cpp
