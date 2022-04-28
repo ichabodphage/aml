@@ -4,10 +4,18 @@
 #define AML_DEFAULT_SHADERS
 
 namespace aml{
-    //gets the default fragment shader
+    /**
+     * @brief gets the file path to the default fragment shader
+     * 
+     * @return const char* shader path c string
+     */
     const char* defaultFrag();
 
-    //gets default vertex shader
+    /**
+     * @brief gets the file path to the default vertex shader
+     * 
+     * @return const char* shader path c string
+     */
     const char * defaultVert();
 }
 

@@ -19,39 +19,76 @@
 
 namespace aml{
    
-    /*
-        class that manages linking shaders into one program
-    */
+    /**
+     * @brief class that manages ShaderResources and shader uniforms
+     * 
+     */
     class ShaderProgram{
         private:
-            //GLuint id of the shader program
+            /// @brief GLuint id of the shader program
             GLuint programId;
-            //map holding uniforms for the shader program
+
+            /// @brief map holding uniforms for the shader program
             std::unordered_map<std::string,aml::Uniform> uniformMap;
-            //flag for if the program has been linked
+
+            /// @brief flag for if the program has been linked
             bool compiled = false;
         public:
-            //constructor using vertex and fragment shader, compiles and links the fragment and vertex shader together
+            /**
+             * @brief Construct a new Shader Program object using one vertex shader and one fragment shader
+             * 
+             * @param fragmentShader programs fragment shader
+             * @param vertexShader programs vertex shader
+             */
             ShaderProgram(aml::ShaderResource &fragmentShader,aml::ShaderResource &vertexShader);
 
-            //constructor that does not link any shaders
+            /**
+             * @brief constructor for shader program with multiple shaders
+             * 
+             * @return * constructor 
+             */
             ShaderProgram();
 
-            //deconstructor of shaderProgram
+            /**
+             * @brief Destroy the Shader Program object
+             * 
+             */
             ~ShaderProgram();
             
-            //runs the programs shaders
+            /**
+             * @brief runs the shader program once
+             * 
+             */
             void run();
 
-            //gets the ID of the compiled program
+            /**
+             * @brief gets the ID of the shader program
+             * 
+             * @return GLuint shader program id
+             */
             GLuint getID();
             
-            //adds a shader to be linked in the shader program
+            /**
+             * @brief adds a shader resource to the shader program
+             * @attention 
+             * throws a runtime error if the shader program allready has been linked and compiled
+             * 
+             * @param shader ShaderResource to add to the program
+             */
             void addShader(aml::ShaderResource &shader);
 
-            //compiles the shader program
+            /**
+             * @brief compiles and links all shader resources added to the shade program
+             * 
+             */
             void compile();
-            //opperator that allows access to uniforms within the shader
+
+            /**
+             * @brief accesss uniforms within the shader program
+             * 
+             * @param uniformName string holding name of the uniform
+             * @return aml::Uniform& uniform at the specified name
+             */
             aml::Uniform& operator[](const std::string uniformName);
 
             
