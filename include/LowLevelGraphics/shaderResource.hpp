@@ -16,26 +16,43 @@
 #define AML_SHADER
 
 namespace aml{
+    /**
+     * @brief enumerator for differing types of shaders
+     * 
+     */
     enum ShaderType{
         FRAGMENT = GL_FRAGMENT_SHADER,
         VERTEX = GL_VERTEX_SHADER ,
         GEOMETRY = GL_GEOMETRY_SHADER
     };
-    /*
-        class that manages compiling of shaders
-    */
+
+    /**
+     * @brief class that manages an individual shader
+     * 
+     */
     class ShaderResource{
         private:
             friend class ShaderProgram;
-            //GLuint id of the shader program
+
+            /// @briefid of the shader
             GLuint shader;
 
-            //aml ShaderType of the shader
+            
+            /// @brief type of shader
             aml::ShaderType shaderType;
         public:
-            
-            //constructor using the type of shader and file path
+            /**
+             * @brief Construct a new Shader Resource object, compiles the shader from path shaderFile
+             * 
+             * @param shaderFile file path holding the shader
+             * @param type type of shader
+             */
             ShaderResource(const std::string shaderFile,aml::ShaderType type);
+
+            /**
+             * @brief Destroys the Shader Resource object
+             * 
+             */
             ~ShaderResource();
 
             
