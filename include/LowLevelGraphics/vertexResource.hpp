@@ -170,7 +170,7 @@ namespace aml
                 throw std::runtime_error("vertex template paramerter is not compatable with the type of vertex resource");
             }
             //set the buffer data to vertexArr
-            glBufferData(GL_ARRAY_BUFFER, aml::packSize<T...>() *size, vertexArray.data(), GL_STATIC_DRAW);            
+            glBufferData(GL_ARRAY_BUFFER, aml::packSize<T...>() * vertexArray.size(), vertexArray.data(), GL_STATIC_DRAW);            
             aml::checkForGLErrors(__FILE__,__LINE__);
         }
 

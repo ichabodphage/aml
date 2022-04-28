@@ -51,7 +51,10 @@ namespace aml
          */
         VectorResource(size_t layoutLocation,size_t VectorSize = 3);
 
-        //default deconstructor
+        /**
+         * @brief Destroy the Vector Resource object
+         * 
+         */
         ~VectorResource();
 
         /**
@@ -61,23 +64,23 @@ namespace aml
         void bindResource();
 
         /**
-         * @brief establishes how vertex data is positioned on the GPU
+         * @brief establishes how vector data is positioned on the GPU
          * 
          */
         void bindAtributes();
 
         /**
-         * @brief adds all vectors 
+         * @brief pushes a C style array into the vector buffer
          * 
-         * @param VectorArray 
-         * @param size 
+         * @param VectorArray pointer to the C style array
+         * @param size length of the array
          */
         void pushToGPU(vType* VectorArray, size_t size);
 
         /**
-         * @brief 
+         * @brief pushes a standard vector to the vector buffer
          * 
-         * @param VectorArray 
+         * @param VectorArray standard vector
          */
         void pushToGPU(std::vector<vType> &VectorArray);
 

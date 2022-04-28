@@ -23,6 +23,10 @@ namespace aml{
     /**
      * @brief class that manages interfacing with uniforms within shaders
      * 
+     * @details uniforms are used as way to pass data into shaders without
+     * reseting the data within vertex buffers, they are meant for passing 
+     * small amounts of data into the GPU, and not the large amounts of data 
+     * vertex buffers handle
      */
     class Uniform{
         private:
@@ -36,7 +40,7 @@ namespace aml{
             std::string paramName;
 
         public:
-            //this only exists to remove a compiler error
+            /// @brief this only exists to remove a compiler error regrarding std::map
             Uniform() = default;
             
             /**
