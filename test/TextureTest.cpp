@@ -31,9 +31,9 @@ int main()
     //input reciver for the window
     aml::InputReciver localInput(window);
 
-    aml::VertexResource3d multiBuffer;
+    aml::VertexResource2d multiBuffer;
     std::vector<aml::Vert3> verticies = aml::makeVertexArr(aml::cubeVertices,aml::cubeColors);
-    multiBuffer.pushToGPU<aml::Vert3>(verticies.data(),verticies.size());
+    multiBuffer.pushToGPU<aml::Vert2>(verticies.data(),verticies.size());
 
     // default vertex shader, uses color and vertex data
     aml::ShaderResource defaultVertexShader(aml::defaultVert(),aml::ShaderType::VERTEX);
