@@ -14,33 +14,77 @@
 
 namespace aml
 {
-    // returns the nth element in
+    /**
+     * @brief gets the Nth element in a template parameter pack
+     * 
+     * @tparam N template element
+     * @tparam Ts template parameter pack
+     */
     template <int N, typename... Ts>
     using indexInTemplate =
         typename std::tuple_element<N, std::tuple<Ts...>>::type;
-    // returns an array containing the size of all types in a paramete pack
     
-    //returns the total size of a parameter pack
+    
+    /**
+     * @brief returns the combined sizeof every item in a template parameter pack
+     * 
+     * @tparam T template parameter pack
+     * @return constexpr size_t sum of the size of all the parameters
+     */
     template <typename... T>
     constexpr size_t packSize()
     {
         
         return (sizeof(T) + ...);
     }
+
     template<typename T, typename... Ts>
     constexpr bool contains()
     { return std::disjunction_v<std::is_same<T, Ts>...>; }
-    // throws an std::runtime_exception if gl encounters any errors
+
+    /**
+     * @brief checks for any openGL errors, throws a runtime error if any errors are caught
+     * 
+     * 
+     * @param file path to the file to check errors (should be _FILE_)
+     * @param line line to alert error from (should be _LINE_)
+     */
     void checkForGLErrors(const char *file, int line);
 
-    // initalizes AML 
+    /**
+     * @brief starts aml within the program on a global scale
+     * 
+     * @param antialiasingLevel level of antialiasing, defaults to 1
+     * @param resize flag for if windows should be resizable or not, defaults to false
+     */
     void startAml(int antialiasingLevel = 1, bool resize = false);
 
-    //weaves an array of possitions with an array of colors
+    /**
+     * @brief interweaves 2 standard vectors holding 3 dimenstional vectors into a single vertex array
+     * 
+     * @details 
+     * used to provide compatibility between arrays of raw vectors and arrays of verticies
+     * 
+     * @param posArray array of position vectors
+     * @param colorArray array of color vectors
+     * @return std::vector<aml::Vert3> standard vector of 3d vertices
+     */
     std::vector<aml::Vert3> makeVertexArr(std::vector<glm::vec3> &posArray,std::vector<glm::vec3> &colorArray);
-    // terminates AML
+
+    /**
+     * @brief terminates AML 
+     * 
+     */
     void stopAml();
-    // creates a GLFW window
+
+    /**
+     * @brief creates a raw openGL window
+     * 
+     * @param width width of the window
+     * @param height height of the window
+     * @param name display name of the window
+     * @return GLFWwindow* pointer to the raw openGL window
+     */
     GLFWwindow *makeGLWindow(size_t width, size_t height, const char *name);
 
 }
