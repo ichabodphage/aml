@@ -35,39 +35,21 @@ int main()
     std::vector<aml::Vert3> verticies = aml::makeVertexArr(aml::cubeVertices,aml::cubeColors);
     multiBuffer.pushToGPU<aml::Vert3>(verticies.data(),verticies.size());
 
-    
     // default vertex shader, uses color and vertex data
     aml::ShaderResource defaultVertexShader(aml::defaultVert(),aml::ShaderType::VERTEX);
     // default fragment shader, uses vertex color data
     aml::ShaderResource defaultFragmentShader(aml::defaultFrag(),aml::ShaderType::FRAGMENT);
-
     // Link the vertex and fragment shader into a shader program
     aml::ShaderProgram shaderProgram(defaultFragmentShader,defaultVertexShader);
-    
-    // initalize shader program uniforms
-    shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
-    shaderProgram["matrices.viewMatrix"].setMatrix(aml::viewMatrix);
-
-    glm::mat4 viewConst = aml::viewMatrix;
-    glm::mat4 projectionMatrix = glm::perspective(
-        45.0f,window.dimensions().x / window.dimensions().y,
-        0.5f,1000.0f);
-    shaderProgram["matrices.projectionMatrix"].setMatrix(projectionMatrix);
-    
+ 
     float rotx = 0;
-  
-    
+
     while (window.isActive())
     {
         double time = glfwGetTime();
         
         window.clear();
         shaderProgram.run();
-        aml::modelMatrix = glm::scale(glm::mat4(1), glm::vec3(5, 5, 5));
-        aml::modelMatrix = glm::rotate(aml::modelMatrix,rotx,glm::vec3(1,0,0));
-        aml::modelMatrix = glm::rotate(aml::modelMatrix,rotx,glm::vec3(0,1,0));
-
-        shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
         window.render(0,verticies.size());
         
         //check for all inputs
@@ -80,7 +62,7 @@ int main()
         }
         
         window.display();
-        rotx += 0.02;
+        
     }
 
     aml::stopAml();
