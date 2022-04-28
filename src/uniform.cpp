@@ -68,3 +68,6 @@ void Uniform::setVector(glm::vec2 &vector){
 void Uniform::setScalar(float scalar){
     glUniform1f(uniformId,scalar);
 };
+void Uniform::setId(int scalar){
+    glUniform1i (uniformId,scalar);
+};

@@ -142,13 +142,20 @@ namespace aml{
             void setVector(glm::vec2 &vector);
 
             //scalar functions
+
             /**
              * @brief Set the uniform to the specified scalar
              * 
-             * @param vector 1 element scalar
+             * @param scalar float value
              */
             void setScalar(float scalar);
-            
+
+            /**
+             * @brief Set the uniform to the specified ID
+             * 
+             * @param scalar integer value
+             */
+            void setId(int scalar);
 
     };
 
