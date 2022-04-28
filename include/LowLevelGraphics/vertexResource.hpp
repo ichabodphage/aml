@@ -163,7 +163,7 @@ namespace aml
          * @param vertexArray std::vector holding verticies
          */
         template<typename vertexType>
-        void pushToGPU(std::vector<vertexType>& vertexArray);
+        void pushToGPU(std::vector<vertexType>& vertexArray)
         {
             //check if the vertexType is the same size as the pack size
             if constexpr (sizeof(vertexType) != aml::packSize<T...>()){
