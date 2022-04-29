@@ -8,6 +8,7 @@ template<typename vType>
 VectorResource<vType>::VectorResource(size_t layoutLocation,size_t VectorSize):
 layout(layoutLocation),
 valueCount(VectorSize){
+    glGenBuffers(1, &vbo);
     bindResource();
     bindAtributes();
 }
@@ -21,7 +22,6 @@ VectorResource<vType>::~VectorResource(){
 template<typename vType>
 void VectorResource<vType>::bindResource(){
     //bind the vbo
-    glGenBuffers(1, &vbo);
     glBindBuffer(GL_ARRAY_BUFFER, vbo);
 
 }
@@ -29,11 +29,13 @@ void VectorResource<vType>::bindResource(){
 
 template<typename vType>
 void VectorResource<vType>::pushToGPU(vType* VectorArray, size_t size){
+    bindResource();
     glBufferData(GL_ARRAY_BUFFER, sizeof(vType) * size, VectorArray , GL_STATIC_DRAW);
 }
 
 template<typename vType>
 void VectorResource<vType>::pushToGPU(std::vector<vType> &VectorArray){
+    bindResource();
     glBufferData(GL_ARRAY_BUFFER, sizeof(vType) * VectorArray.size(), VectorArray.data() , GL_STATIC_DRAW);
 };
 

@@ -140,7 +140,6 @@ namespace aml{
              * @param vector vector with 2 elements
              */
             void setVector(glm::vec2 &vector);
-
             //scalar functions
 
             /**
@@ -151,11 +150,66 @@ namespace aml{
             void setScalar(float scalar);
 
             /**
-             * @brief Set the uniform to the specified ID
+             * @brief Sets the uniform to 2 scalar values
+             * 
+             * @param scalarOne first float value
+             * @param scalarTwo second float value
+             */
+            void setScalar(float scalarOne, float scalarTwo);
+
+            /**
+             * @brief Sets the uniform to 3 scalar values
+             * 
+             * @param scalarOne first float value
+             * @param scalarTwo second float value
+             * @param scalarThree third float value
+             */
+            void setScalar(float scalarOne, float scalarTwo,float scalarThree);
+
+            /**
+             * @brief Sets the uniform to 4 scalar values
+             * 
+             * @param scalarOne first float value
+             * @param scalarTwo second float value
+             * @param scalarThree third float value
+             * @param scalarFour fourth float value
+             */
+            void setScalar(float scalarOne, float scalarTwo,float scalarThree,float scalarFour);
+
+            /**
+             * @brief Set the uniform to the specified scalar
              * 
              * @param scalar integer value
              */
-            void setId(int scalar);
+            void setScalar(int scalar);
+
+            /**
+             * @brief Sets the uniform to 2 scalar values
+             * 
+             * @param scalarOne first int value
+             * @param scalarTwo second int value
+             */
+            void setScalar(int scalarOne, int scalarTwo);
+
+            /**
+             * @brief Sets the uniform to 3 scalar values
+             * 
+             * @param scalarOne first float value
+             * @param scalarTwo second float value
+             * @param scalarThree third float value
+             */
+            void setScalar(int scalarOne, int scalarTwo,int scalarThree);
+
+            /**
+             * @brief Sets the uniform to 4 scalar values
+             * 
+             * @param scalarOne first int value
+             * @param scalarTwo second int value
+             * @param scalarThree third int value
+             * @param scalarFour fourth int value
+             */
+            void setScalar(int scalarOne, int scalarTwo,int scalarThree,int scalarFour);
+
 
     };
 

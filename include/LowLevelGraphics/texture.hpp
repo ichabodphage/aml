@@ -24,9 +24,6 @@ namespace aml{
             /// @brief openGL id of the texture
             GLuint textureId;
 
-            /// @brief raw texture data            
-            unsigned char * textureData;
-
             /// @brief width of the texture
             size_t width;
             
@@ -40,7 +37,13 @@ namespace aml{
              * 
              * @param path file path of texture data
              */
-            Texture(std::string path);
+            Texture();
+
+            /**
+             * @brief binds the texture to openGL
+             * 
+             */
+            void bindTexture();
 
             /**
              * @brief deconstructs the texture object

@@ -58,7 +58,7 @@ namespace aml
         ~VectorResource();
 
         /**
-         * @brief creates the VBO on the graphics card 
+         * @brief tells the grapics card to write to this vector resource 
          * 
          */
         void bindResource();

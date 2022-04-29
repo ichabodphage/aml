@@ -2,6 +2,15 @@
 
 using namespace aml;
 
+Texture::Texture(){
+    glGenTextures(1,&textureId);
+    bindTexture();
+}
+
+void Texture::bindTexture(){
+    glBindTexture(GL_TEXTURE_2D, textureId);
+}
+
 Texture::~Texture(){
-    delete[] textureData;
+    glDeleteTextures(1,&textureId);
 };

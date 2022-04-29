@@ -68,6 +68,31 @@ void Uniform::setVector(glm::vec2 &vector){
 void Uniform::setScalar(float scalar){
     glUniform1f(uniformId,scalar);
 };
-void Uniform::setId(int scalar){
+
+void Uniform::setScalar(float scalarOne, float scalarTwo){
+    glUniform2f(uniformId,scalarOne,scalarTwo);
+}
+void Uniform::setScalar(float scalarOne, float scalarTwo,float scalarThree){
+    glUniform3f(uniformId,scalarOne,scalarTwo,scalarThree);
+}
+void Uniform::setScalar(float scalarOne, float scalarTwo,float scalarThree,float scalarFour){
+    glUniform4f(uniformId,scalarOne,scalarTwo,scalarThree,scalarFour);
+}
+
+
+
+//int scalar setters
+void Uniform::setScalar(int scalar){
     glUniform1i (uniformId,scalar);
 };
+
+void Uniform::setScalar(int scalarOne, int scalarTwo){
+    glUniform2i(uniformId,scalarOne,scalarTwo);
+}
+
+void Uniform::setScalar(int scalarOne, int scalarTwo,int scalarThree){
+    glUniform3i(uniformId,scalarOne,scalarTwo,scalarThree);
+}
+void Uniform::setScalar(int scalarOne, int scalarTwo,int scalarThree,int scalarFour){
+    glUniform4i(uniformId,scalarOne,scalarTwo,scalarThree,scalarFour);
+}
