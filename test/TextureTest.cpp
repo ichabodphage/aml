@@ -21,7 +21,20 @@
  compile with
  cmake --build . -j 4
 */
+std::vector<aml::Vert2> make2dVertexArr(std::vector<glm::vec2> &posArray,std::vector<glm::vec3> &colorArray){
+    if(posArray.size() != colorArray.size()){
+        throw std::runtime_error("array of position vectors must be the same size of the array of color vectors");
+    }
 
+    std::vector<aml::Vert2> vertices;
+
+    for(size_t i = 0; i <posArray.size();i++){
+        vertices.push_back(aml::Vert2(posArray[i],colorArray[i]));
+    }
+
+    return vertices;
+
+};
 int main()
 {
     // initAML and make AML window
@@ -32,7 +45,7 @@ int main()
     aml::InputReciver localInput(window);
 
     aml::VertexResource2d multiBuffer;
-    std::vector<aml::Vert3> verticies = aml::makeVertexArr(aml::cubeVertices,aml::cubeColors);
+    std::vector<aml::Vert2> verticies = make2dVertexArr(aml::squareVertices,aml::squareColors);
     multiBuffer.pushToGPU<aml::Vert2>(verticies.data(),verticies.size());
 
     // default vertex shader, uses color and vertex data
@@ -42,8 +55,6 @@ int main()
     // Link the vertex and fragment shader into a shader program
     aml::ShaderProgram shaderProgram(defaultFragmentShader,defaultVertexShader);
  
-    float rotx = 0;
-
     while (window.isActive())
     {
         double time = glfwGetTime();

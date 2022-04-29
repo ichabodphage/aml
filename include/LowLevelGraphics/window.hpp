@@ -28,6 +28,8 @@ namespace aml
     class Window
     {
     private:
+        //shader program needs to acess the raw window
+        friend class ShaderProgram;
         /*
             input reciver needs access to private variables
             to properly scan inputs from the window

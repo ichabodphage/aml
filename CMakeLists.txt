@@ -14,6 +14,7 @@ set(SOURCE
 )
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
 link_libraries("glfw" "GL" "GLEW" "glut")
+
 add_executable(3dTest 
     ${CMAKE_CURRENT_SOURCE_DIR}/test/3dTest.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/lib.cpp
@@ -24,6 +25,7 @@ add_executable(3dTest
     ${CMAKE_CURRENT_SOURCE_DIR}/src/vectorResource.ipp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/inputReciver.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/defaultShaders.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/texture.cpp
     )
 
 add_executable(TextureTest 
@@ -36,4 +38,5 @@ add_executable(TextureTest
     ${CMAKE_CURRENT_SOURCE_DIR}/src/vectorResource.ipp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/inputReciver.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/defaultShaders.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/texture.cpp
     )

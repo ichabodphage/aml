@@ -37,14 +37,15 @@ namespace aml{
         
     };
 
-    std::vector<float> squareVerticies = {
-       -0.5f, 0.5f, 0.5f, 0.5f, 0.5f, -0.5f, 
-        0.5f, -0.5f, -0.5f, -0.5f, -0.5f, 0.5f
-    }
+    std::vector<glm::vec2> squareVertices = {
+       glm::vec2(-0.5f, 0.5f),glm::vec2(0.5f, 0.5f),glm::vec2(0.5f, -0.5f), 
+        glm::vec2(0.5f, -0.5f), glm::vec2(-0.5f, -0.5f), glm::vec2(-0.5f, 0.5f)
+    };
+
     std::vector<glm::vec3> squareColors = {
         glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f),
         glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f),
-    }
+    };
     std::vector<glm::vec3> cubeColors = { 
         glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f),
         glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f),

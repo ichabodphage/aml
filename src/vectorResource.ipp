@@ -1,9 +1,7 @@
 #include "../include/LowLevelGraphics/vectorResource.hpp"
 
 using namespace aml;
-//set nextID to zero
-template<typename vType>
-size_t VectorResource<vType>::nextID = 0;
+
 
 
 template<typename vType>

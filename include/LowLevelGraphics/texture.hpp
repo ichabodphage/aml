@@ -1,3 +1,8 @@
+#include <vector>
+#include <string>
+#include <fstream>
+
+
 #include <GL/glew.h>
 #include <GL/glut.h>
 #include <glm/glm.hpp>
@@ -28,17 +33,21 @@ namespace aml{
             /// @brief height of the texture
             size_t height;
 
-            /// @brief number of color channels in the texture;
-            size_t colorChanelCount;
-
         public:
             
+            /**
+             * @brief Construct a new Texture object
+             * 
+             * @param path file path of texture data
+             */
+            Texture(std::string path);
+
             /**
              * @brief deconstructs the texture object
              * 
              */
             ~Texture();
-    }
+    };
 }
 
 
