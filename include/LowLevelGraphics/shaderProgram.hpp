@@ -50,7 +50,7 @@ namespace aml{
             ShaderProgram();
 
             /**
-             * @brief Destroy the Shader Program object
+             * @brief Destroys the Shader Program object
              * 
              */
             ~ShaderProgram();

@@ -118,6 +118,9 @@ namespace aml{
             void setMatrix(glm::mat2 &matrix);
 
 
+
+            ///////////////////////////////////////////////////////////////////////////
+
             //vector functions
 
             /**
@@ -125,29 +128,36 @@ namespace aml{
              * 
              * @param vector vector with 4 elements
              */
-            void setVector(glm::vec4 &vector);
+            void setVector4(glm::vec4 &vector);
 
             /**
              * @brief Set the uniform to the specified vector
              * 
-             * @param vector vector with 3 elements
+             * @param vector vector with 3 elementsar(float scalarOne, float scalarTwo,float scalarThree);
              */
-            void setVector(glm::vec3 &vector);
+            void setVector3(glm::vec3 &vector);
+
 
             /**
              * @brief Set the uniform to the specified vector
              * 
              * @param vector vector with 2 elements
              */
-            void setVector(glm::vec2 &vector);
-            //scalar functions
+            void setVector2(glm::vec2 &vector);
+
+        
+
+
+            ///////////////////////////////////////////////////////////////////////////
+
+            //// float setters
 
             /**
              * @brief Set the uniform to the specified scalar
              * 
              * @param scalar float value
              */
-            void setScalar(float scalar);
+            void setScalarFloat(float scalar);
 
             /**
              * @brief Sets the uniform to 2 scalar values
@@ -155,7 +165,7 @@ namespace aml{
              * @param scalarOne first float value
              * @param scalarTwo second float value
              */
-            void setScalar(float scalarOne, float scalarTwo);
+            void setScalarFloat2(float scalarOne, float scalarTwo);
 
             /**
              * @brief Sets the uniform to 3 scalar values
@@ -164,7 +174,7 @@ namespace aml{
              * @param scalarTwo second float value
              * @param scalarThree third float value
              */
-            void setScalar(float scalarOne, float scalarTwo,float scalarThree);
+            void setScalarFloat3(float scalarOne, float scalarTwo,float scalarThree);
 
             /**
              * @brief Sets the uniform to 4 scalar values
@@ -174,14 +184,20 @@ namespace aml{
              * @param scalarThree third float value
              * @param scalarFour fourth float value
              */
-            void setScalar(float scalarOne, float scalarTwo,float scalarThree,float scalarFour);
+            void setScalarFloat4(float scalarOne, float scalarTwo,float scalarThree,float scalarFour);
+        
 
+
+            ///////////////////////////////////////////////////////////////////////////
+
+            // int setters
+            
             /**
              * @brief Set the uniform to the specified scalar
              * 
              * @param scalar integer value
              */
-            void setScalar(int scalar);
+            void setScalarInt(int scalar);
 
             /**
              * @brief Sets the uniform to 2 scalar values
@@ -189,7 +205,7 @@ namespace aml{
              * @param scalarOne first int value
              * @param scalarTwo second int value
              */
-            void setScalar(int scalarOne, int scalarTwo);
+            void setScalarInt2(int scalarOne, int scalarTwo);
 
             /**
              * @brief Sets the uniform to 3 scalar values
@@ -198,7 +214,7 @@ namespace aml{
              * @param scalarTwo second float value
              * @param scalarThree third float value
              */
-            void setScalar(int scalarOne, int scalarTwo,int scalarThree);
+            void setScalarInt3(int scalarOne, int scalarTwo,int scalarThree);
 
             /**
              * @brief Sets the uniform to 4 scalar values
@@ -208,9 +224,98 @@ namespace aml{
              * @param scalarThree third int value
              * @param scalarFour fourth int value
              */
-            void setScalar(int scalarOne, int scalarTwo,int scalarThree,int scalarFour);
+            void setScalarInt4(int scalarOne, int scalarTwo,int scalarThree,int scalarFour);
+
+            ///////////////////////////////////////////////////////////////////////////
+
+            // array setters
+
+            /**
+             * @brief Sets the uniform to an array of floats
+             * 
+             * @param array pointer to raw array
+             * @param size lenght of the array
+             */
+
+            void setFloatArr(float * array, size_t size);
 
 
+            /**
+             * @brief Sets the uniform to an array of floats
+             * 
+             * @param array standard vector of floats
+             */
+
+            void setFloatArr(std::vector<float> &array);
+
+
+            /**
+             * @brief Sets the uniform to an array of integers
+             * 
+             * @param array pointer to raw array
+             * @param size lenght of the array
+             */
+
+            void setIntArr(int * array, size_t size);
+
+
+            /**                         
+             * @brief Sets the uniform to an array of integers
+             *  
+             * @param array standard vector of integers
+             */
+
+            void setIntArr(std::vector<int> &array);
+
+
+            // vector array setters
+
+            /**
+             * @brief Set the uniform to an array of 2d vectors
+             * 
+             * @param array raw pointer to vector array
+             * @param size size of the array
+             */
+            void setVector2Arr(glm::vec2 * array,size_t size);
+
+            /**
+             * @brief Set the uniform to an array of 2d vectors
+             * 
+             * @param array standard vector of 2d vectors
+             */
+            void setVector2Arr(std::vector<glm::vec2> &array);
+
+            /**
+             * @brief Set the uniform to an array of 3d vectors
+             * 
+             * @param array raw pointer to vector array
+             * @param size size of the array
+             */
+            void setVector3Arr(glm::vec3 * array, size_t size);
+
+
+            /**
+             * @brief Set the uniform to an array of 3d vectors
+             * 
+             * @param array standard vector of 3d vectors
+             */
+            void setVector3Arr(std::vector<glm::vec3> &array);
+
+            /**
+             * @brief Set the uniform to an array of 4d vectors
+             * 
+             * @param array raw pointer to vector array
+             * @param size size of the array
+             */
+            void setVector4Arr(glm::vec4 * array, size_t size);
+
+
+            /**
+             * @brief Set the uniform to an array of 4d vectors
+             * 
+             * @param array standard vector of 4d vectors
+             */
+            void setVector4Arr(std::vector<glm::vec4> &array);
     };
 
 

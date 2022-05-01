@@ -27,7 +27,7 @@ int main()
     // initAML and make AML window
     aml::startAml();
     aml::Window window(800,600,"TEST");
-     
+
     //input reciver for the window
     aml::InputReciver localInput(window);
 

@@ -44,15 +44,17 @@ int main()
     //input reciver for the window
     aml::InputReciver localInput(window);
 
-    aml::VertexResource2d multiBuffer;
+    aml::VertexResource<glm::vec2,glm::vec3> multiBuffer;
     std::vector<aml::Vert2> verticies = make2dVertexArr(aml::squareVertices,aml::squareColors);
     multiBuffer.pushToGPU<aml::Vert2>(verticies.data(),verticies.size());
 
-    // default vertex shader, uses color and vertex data
+    aml::Texture localTexture;
+
+    //default shaders
     aml::ShaderResource defaultVertexShader(aml::defaultVert(),aml::ShaderType::VERTEX);
-    // default fragment shader, uses vertex color data
     aml::ShaderResource defaultFragmentShader(aml::defaultFrag(),aml::ShaderType::FRAGMENT);
-    // Link the vertex and fragment shader into a shader program
+
+    //initalize shader program
     aml::ShaderProgram shaderProgram(defaultFragmentShader,defaultVertexShader);
  
     while (window.isActive())

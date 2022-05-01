@@ -9,3 +9,4 @@
 #include "LowLevelGraphics/defaultShaderResources.hpp"
 #include "LowLevelGraphics/vertex.hpp"
 #include "LowLevelGraphics/uniform.hpp"
+#include "LowLevelGraphics/texture.hpp"
