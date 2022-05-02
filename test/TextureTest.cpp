@@ -44,11 +44,13 @@ int main()
     //input reciver for the window
     aml::InputReciver localInput(window);
 
+
+    //insert verticies of the shape
     aml::VertexResource<glm::vec2,glm::vec3> multiBuffer;
     std::vector<aml::Vert2> verticies = make2dVertexArr(aml::squareVertices,aml::squareColors);
     multiBuffer.pushToGPU<aml::Vert2>(verticies);
 
-
+    // define shape texture cordinates
     aml::VectorResource<glm::vec2> texCords(2,2);
     std::vector<glm::vec2> cords = {
         glm::vec2(0,0),glm::vec2(0,0),glm::vec2(0,0),
