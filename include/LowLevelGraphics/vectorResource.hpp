@@ -89,5 +89,5 @@ namespace aml
         
     };
 }
-
+#include "../../src/vectorResource.ipp"
 #endif

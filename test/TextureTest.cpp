@@ -46,7 +46,15 @@ int main()
 
     aml::VertexResource<glm::vec2,glm::vec3> multiBuffer;
     std::vector<aml::Vert2> verticies = make2dVertexArr(aml::squareVertices,aml::squareColors);
-    multiBuffer.pushToGPU<aml::Vert2>(verticies.data(),verticies.size());
+    multiBuffer.pushToGPU<aml::Vert2>(verticies);
+
+
+    aml::VectorResource<glm::vec2> texCords(2,2);
+    std::vector<glm::vec2> cords = {
+        glm::vec2(0,0),glm::vec2(0,0),glm::vec2(0,0),
+        glm::vec2(0,0),glm::vec2(0,0),glm::vec2(0,0)
+    };
+    texCords.pushToGPU(cords);
 
     aml::Texture localTexture;
 
