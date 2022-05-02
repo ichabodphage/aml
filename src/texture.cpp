@@ -13,4 +13,9 @@ void Texture::bindTexture(){
 
 Texture::~Texture(){
     glDeleteTextures(1,&textureId);
+}
+
+GLuint Texture::getId() 
+{
+    return textureId;
 };

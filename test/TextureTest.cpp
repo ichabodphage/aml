@@ -56,7 +56,8 @@ int main()
 
     //initalize shader program
     aml::ShaderProgram shaderProgram(defaultFragmentShader,defaultVertexShader);
- 
+    
+    shaderProgram["textureId"].setScalarInt(localTexture.getId());
     while (window.isActive())
     {
         double time = glfwGetTime();

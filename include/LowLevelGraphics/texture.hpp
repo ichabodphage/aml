@@ -50,6 +50,13 @@ namespace aml{
              * 
              */
             ~Texture();
+
+            /**
+             * @brief gets the id of the texture 
+             * 
+             * @return GLuint 
+             */
+            GLuint getId();
     };
 }
 
