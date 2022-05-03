@@ -25,25 +25,34 @@ namespace aml{
             GLuint textureId;
 
             /// @brief width of the texture
-            size_t width;
+            int width;
             
             /// @brief height of the texture
-            size_t height;
+            int height;
 
+            /// @brief brief description amount of data in each pixel
+            int pixelSize;
         public:
             
             /**
              * @brief Construct a new Texture object
              * 
              * @param path file path of texture data
+             * 
+             * @param mipmap flag to generate mipmaps
              */
-            Texture();
+            Texture(const std::string& path, bool mipmap = false);
 
             /**
              * @brief binds the texture to openGL
              * 
              */
             void bindTexture();
+
+            
+
+
+
 
             /**
              * @brief deconstructs the texture object
@@ -57,6 +66,20 @@ namespace aml{
              * @return GLuint 
              */
             GLuint getId();
+
+            /**
+             * @brief Get the Width of the image
+             * 
+             * @return int image width (x)
+             */
+            int getWidth();
+
+            /**
+             * @brief Get the Height of the image
+             * 
+             * @return int image height (y)
+             */
+            int getHeight();
     };
 }
 
