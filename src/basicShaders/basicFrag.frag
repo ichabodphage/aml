@@ -9,5 +9,5 @@ uniform sampler2D textureId;
 
 void main()
 {
-	outputColor = texture(textureId, TexCoord) + vec4(ioVertexColor, 1.0);
+	outputColor = texture(textureId, TexCoord) * vec4(ioVertexColor, 1.0);
 }

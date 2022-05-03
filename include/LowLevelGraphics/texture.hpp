@@ -48,12 +48,6 @@ namespace aml{
              * 
              */
             void bindTexture();
-
-            
-
-
-
-
             /**
              * @brief deconstructs the texture object
              * 

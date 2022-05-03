@@ -53,13 +53,11 @@ int main()
     // define shape texture cordinates
     aml::VectorResource<glm::vec2> texCords(2,2);
     std::vector<glm::vec2> cords = {
-        glm::vec2(0,0),glm::vec2(0,0),glm::vec2(0,0),
-        glm::vec2(0,0),glm::vec2(0,0),glm::vec2(0,0)
+        glm::vec2(0,0),glm::vec2(1,0),glm::vec2(1,1),
     };
     texCords.pushToGPU(cords);
 
-    aml::Texture localTexture;
-
+    aml::Texture localTexture("test/w3c_home.bmp");
     //default shaders
     aml::ShaderResource defaultVertexShader(aml::defaultVert(),aml::ShaderType::VERTEX);
     aml::ShaderResource defaultFragmentShader(aml::defaultFrag(),aml::ShaderType::FRAGMENT);

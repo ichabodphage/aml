@@ -1,10 +1,11 @@
 #include "../include/LowLevelGraphics/texture.hpp"
+#define STB_IMAGE_IMPLEMENTATION
 
 #include "../include/stb_image.h"
 using namespace aml;
 
 Texture::Texture(const std::string& path, bool mipmap){
-    stbi_set_flip_vertically_on_load(1);
+    
 
     //load image
     unsigned char * imageData = stbi_load(path.c_str(), &width, &height, &pixelSize, 0);
@@ -44,11 +45,17 @@ Texture::Texture(const std::string& path, bool mipmap){
     if(mipmap){
         glGenerateMipmap(GL_TEXTURE_2D);
     }
-    
+
     stbi_image_free(imageData);
+    
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }
 
 void Texture::bindTexture(){
+    glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, textureId);
 }
 
@@ -58,7 +65,7 @@ Texture::~Texture(){
 
 GLuint Texture::getId() 
 {
-    return textureId;
+    return textureId-1;
 }
 
 int Texture::getWidth() 
