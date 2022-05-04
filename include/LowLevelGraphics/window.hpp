@@ -72,10 +72,18 @@ namespace aml
 
         /**
         *   @brief renders current VBO from the starting vertex index and the amount of verticies to draw
+        *   @param index index to start drawing from
+        *   @param amount amount of verticies to draw
         *   @return none
         */ 
-        void render(size_t index, size_t amount);
+        void renderVertexBuffer(size_t index, size_t amount);
         
+         /**
+        *   @brief renders current EBO using the size of the EBO
+        *   @param amount amount of verticies to draw
+        *   @return none
+        */ 
+        void renderElementBuffer(size_t amount);
         /**
         *   @brief displays to the current draw target
         *   @return none

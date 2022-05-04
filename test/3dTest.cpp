@@ -75,7 +75,7 @@ int main()
                     shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
                     shaderProgram["matrices.viewMatrix"].setMatrix(aml::viewMatrix);
                     // call windows draw function
-                    window.render(0, verticies.size());
+                    window.renderVertexBuffer(0, verticies.size());
                 }
             }
         }

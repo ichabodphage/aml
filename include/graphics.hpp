@@ -5,6 +5,8 @@
 //resource includes
 #include "LowLevelGraphics/resource/vectorResource.hpp"
 #include "LowLevelGraphics/resource/vertexResource.hpp"
+#include "LowLevelGraphics/resource/elementBuffer.hpp"
+
 #include "LowLevelGraphics/resource/texture.hpp"
 #include "LowLevelGraphics/resource/vertex.hpp"
 

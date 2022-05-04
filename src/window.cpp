@@ -36,10 +36,14 @@ void Window::clear(){
     
 }
 
-void Window::render(size_t index, size_t amount){
+void Window::renderVertexBuffer(size_t index, size_t amount){
     // Draw a triangle from the 3 vertices
     glDrawArrays(GL_TRIANGLES, index, amount);
     
+}
+
+void Window::renderElementBuffer(size_t amount){
+    glDrawElements(GL_TRIANGLES,amount,GL_UNSIGNED_INT,0);
 }
 
 void Window::display(){
