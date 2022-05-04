@@ -22,6 +22,12 @@ namespace aml{
     class ShaderProgram;
     
     /**
+     * avoid working on this class at all costs, litterally all its member functions are just the same openGL
+     * function but with exactly 1 character difference in each of them
+     * 
+     */
+
+    /**
      * @brief class that manages interfacing with uniforms within shaders
      * 
      * @details uniforms are used as way to pass data into shaders without
@@ -159,35 +165,7 @@ namespace aml{
              * @param scalar float value
              */
             void setScalarFloat(float scalar);
-
-            /**
-             * @brief Sets the uniform to 2 scalar values
-             * 
-             * @param scalarOne first float value
-             * @param scalarTwo second float value
-             */
-            void setScalarFloat2(float scalarOne, float scalarTwo);
-
-            /**
-             * @brief Sets the uniform to 3 scalar values
-             * 
-             * @param scalarOne first float value
-             * @param scalarTwo second float value
-             * @param scalarThree third float value
-             */
-            void setScalarFloat3(float scalarOne, float scalarTwo,float scalarThree);
-
-            /**
-             * @brief Sets the uniform to 4 scalar values
-             * 
-             * @param scalarOne first float value
-             * @param scalarTwo second float value
-             * @param scalarThree third float value
-             * @param scalarFour fourth float value
-             */
-            void setScalarFloat4(float scalarOne, float scalarTwo,float scalarThree,float scalarFour);
         
-
 
             ///////////////////////////////////////////////////////////////////////////
 
@@ -200,32 +178,7 @@ namespace aml{
              */
             void setScalarInt(int scalar);
 
-            /**
-             * @brief Sets the uniform to 2 scalar values
-             * 
-             * @param scalarOne first int value
-             * @param scalarTwo second int value
-             */
-            void setScalarInt2(int scalarOne, int scalarTwo);
 
-            /**
-             * @brief Sets the uniform to 3 scalar values
-             * 
-             * @param scalarOne first float value
-             * @param scalarTwo second float value
-             * @param scalarThree third float value
-             */
-            void setScalarInt3(int scalarOne, int scalarTwo,int scalarThree);
-
-            /**
-             * @brief Sets the uniform to 4 scalar values
-             * 
-             * @param scalarOne first int value
-             * @param scalarTwo second int value
-             * @param scalarThree third int value
-             * @param scalarFour fourth int value
-             */
-            void setScalarInt4(int scalarOne, int scalarTwo,int scalarThree,int scalarFour);
 
             ///////////////////////////////////////////////////////////////////////////
 

@@ -124,35 +124,10 @@ void Uniform::setScalarFloat(float scalar){
     glUniform1f(uniformId,scalar);
 };
 
-void Uniform::setScalarFloat2(float scalarOne, float scalarTwo){
-    glUniform2f(uniformId,scalarOne,scalarTwo);
-}
-void Uniform::setScalarFloat3(float scalarOne, float scalarTwo,float scalarThree){
-    glUniform3f(uniformId,scalarOne,scalarTwo,scalarThree);
-}
-void Uniform::setScalarFloat4(float scalarOne, float scalarTwo,float scalarThree,float scalarFour){
-    glUniform4f(uniformId,scalarOne,scalarTwo,scalarThree,scalarFour);
-}
-
-
-
 //int scalar setters
 void Uniform::setScalarInt(int scalar){
     glUniform1i (uniformId,scalar);
 };
-
-void Uniform::setScalarInt2(int scalarOne, int scalarTwo){
-    glUniform2i(uniformId,scalarOne,scalarTwo);
-}
-
-void Uniform::setScalarInt3(int scalarOne, int scalarTwo,int scalarThree){
-    glUniform3i(uniformId,scalarOne,scalarTwo,scalarThree);
-}
-void Uniform::setScalarInt4(int scalarOne, int scalarTwo,int scalarThree,int scalarFour){
-    glUniform4i(uniformId,scalarOne,scalarTwo,scalarThree,scalarFour);
-}
-
-
 
 // array setters
 

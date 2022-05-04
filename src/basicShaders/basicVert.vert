@@ -21,6 +21,9 @@ layout(location = 2) in vec2 aTexCoord;
 smooth out vec3 ioVertexColor;
 smooth out vec2 TexCoord;
 
+
+
+
 void main()
 {
 	mat4 mvpMatrix = matrices.projectionMatrix * matrices.viewMatrix * matrices.modelMatrix;
