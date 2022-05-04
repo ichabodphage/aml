@@ -9,7 +9,7 @@
 #include <tuple>
 #include <type_traits>
 
-#include "LowLevelGraphics/vertex.hpp"
+#include "LowLevelGraphics/resource/vertex.hpp"
 #ifndef AML_CORE
 #define AML_CORE
 

@@ -1,4 +1,4 @@
-#include "../include/LowLevelGraphics/shaderProgram.hpp"
+#include "../include/LowLevelGraphics/shader/shaderProgram.hpp"
 
 using namespace aml;
 

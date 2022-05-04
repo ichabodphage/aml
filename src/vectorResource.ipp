@@ -1,4 +1,4 @@
-#include "../include/LowLevelGraphics/vectorResource.hpp"
+#include "../include/LowLevelGraphics/resource/vectorResource.hpp"
 
 using namespace aml;
 

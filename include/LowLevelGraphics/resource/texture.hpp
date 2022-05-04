@@ -8,7 +8,7 @@
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 
-#include "../lib.hpp"
+#include "../../lib.hpp"
 
 #ifndef AML_TEXTURE
 #define AML_TEXTURE

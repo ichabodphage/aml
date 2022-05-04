@@ -10,7 +10,7 @@
 #include <GLFW/glfw3.h>
 
 #include "defaultShaderResources.hpp"
-#include "../lib.hpp"
+#include "../../lib.hpp"
 
 #ifndef AML_SHADER
 #define AML_SHADER

@@ -9,7 +9,7 @@
 #include <GLFW/glfw3.h>
 
 
-#include "../lib.hpp"
+#include "../../lib.hpp"
 
 
 #ifndef AML_VBO
@@ -89,5 +89,5 @@ namespace aml
         
     };
 }
-#include "../../src/vectorResource.ipp"
+#include "../../../src/vectorResource.ipp"
 #endif
