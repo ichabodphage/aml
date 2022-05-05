@@ -73,11 +73,22 @@ namespace aml{
             static InputReciver* getInputReciver(GLFWwindow* window);
         public:
 
+            /**
+             * @brief creates an InputReciver for the selected window
+             * 
+             * @param window window to poll inputs from
+             */
             InputReciver(aml::Window &window);
 
             //methods for polling inputs
 
-            //checks a key in the keyPressTable
+            /**
+             * @brief 
+             * 
+             * @param keycode keycode to check for input 
+             * @return true 
+             * @return false 
+             */
             bool keyPressed(int16_t keycode);
 
             //checks if a key was pressed only once

@@ -34,9 +34,11 @@ namespace aml{
         private:
             friend class ShaderProgram;
 
-            /// @briefid of the shader
+            /// @brief id of the shader
             GLuint shader;
 
+            /// @brief flag for if the shader has been compiled 
+            const bool isCompiled;
             
             /// @brief type of shader
             aml::ShaderType shaderType;
@@ -48,6 +50,9 @@ namespace aml{
              * @param type type of shader
              */
             ShaderResource(const std::string shaderFile,aml::ShaderType type);
+
+            
+
 
             /**
              * @brief Destroys the Shader Resource object

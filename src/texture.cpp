@@ -4,6 +4,7 @@
 #include "../include/stb_image.h"
 using namespace aml;
 
+
 Texture::Texture(const std::string& path, bool mipmap){
     
 

@@ -137,6 +137,7 @@ namespace aml{
              */
             void setVector4(glm::vec4 &vector);
 
+            
             /**
              * @brief Set the uniform to the specified vector
              * 

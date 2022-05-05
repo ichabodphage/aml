@@ -52,6 +52,8 @@ ShaderResource::ShaderResource(const std::string shaderFile,aml::ShaderType type
 
 }
 
+
+
 ShaderResource::~ShaderResource(){
     glDeleteShader(shader);
 }
