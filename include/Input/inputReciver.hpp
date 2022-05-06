@@ -28,13 +28,13 @@ namespace aml{
             //window is friend class as window holds a GLFWwindow thats needed to scan inputs from
             friend class aml::Window;
 
-            
+            /// @brief number of keys to track
             static const size_t keyCount = 316;
 
             /// @brief array containing all key Inputs
             bool keyPressTable[InputReciver::keyCount];
             
-            
+            /// @brief number of mouse buttons to track
             static const size_t mouseButtonCount = 8;
 
             /// @brief array containing all mouse button inputs
@@ -134,16 +134,33 @@ namespace aml{
              */
             bool keyTriggered(int16_t keycode);
 
-            //checks if a mouse button is pressed
+            /**
+             * @brief checks if a mouse button is pressed
+             * 
+             * @param button code of the mouse button to check
+             * @return true mouse button is pressed
+             * @return false mouse button is not pressed
+             */
             bool mousePressed(int16_t button);
 
-            //returns the position of the cursor on the window
-            glm::vec2 mousePosition();
+            /**
+             * @brief gets the position of the cursor on the window
+             * 
+             * @return glm::vec2 cursor positon
+             */
+            glm::vec2 mousePosition(); 
 
-            //gets mouses scroll
+            /**
+             * @brief gets the current magnitude of the scrollwheel
+             * 
+             * @return glm::vec2 scroll magnitude 
+             */
             glm::vec2 scrollAmount();
 
-            //polls for input and fills the inputBuffer
+            /**
+             * @brief polls the window for input
+             * 
+             */
             void pollInput();
 
     };
