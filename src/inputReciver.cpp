@@ -3,6 +3,7 @@
 
 using namespace aml;
 
+
 void InputReciver::handleKeyInput(GLFWwindow* rawWindow, int key, int scancode, int action, int mods){
         
     InputReciver* localInputReciver = InputReciver::getInputReciver(rawWindow);

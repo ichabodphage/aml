@@ -37,8 +37,6 @@ namespace aml{
             /// @brief id of the shader
             GLuint shader;
 
-            /// @brief flag for if the shader has been compiled 
-            const bool isCompiled;
             
             /// @brief type of shader
             aml::ShaderType shaderType;
