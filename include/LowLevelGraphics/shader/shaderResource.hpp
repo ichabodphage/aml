@@ -9,6 +9,7 @@
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 
+#include "shaderType.hpp"
 #include "defaultShaderResources.hpp"
 #include "../../lib.hpp"
 
@@ -16,16 +17,6 @@
 #define AML_SHADER
 
 namespace aml{
-    /**
-     * @brief enumerator for differing types of shaders
-     * 
-     */
-    enum ShaderType{
-        FRAGMENT = GL_FRAGMENT_SHADER,
-        VERTEX = GL_VERTEX_SHADER ,
-        GEOMETRY = GL_GEOMETRY_SHADER
-    };
-
     /**
      * @brief class that manages an individual shader
      * 
