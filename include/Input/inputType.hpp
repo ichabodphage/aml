@@ -12,9 +12,13 @@ namespace aml{
      * 
      */
     enum InputType{
+        /// @brief mousewheel input
         scroll,
+        /// @brief cursor movement input
         cursorMove,
+        /// @brief key press input
         keyPress,
+        /// @brief key up input
         keyUp
     };
 }

@@ -13,13 +13,13 @@ namespace aml{
      * 
      */
     class Result{
-        
+    private:
         /// @brief type of the input
         aml::InputType type;
         
         /// @brief activity of input
         bool active;
-        
+
         /**
          * @brief union that holds relavant information per type of input
          * 
@@ -27,8 +27,10 @@ namespace aml{
         union {
             /// @brief keycode of a keyboard input
             int key;
+            
             /// @brief magnitude of a scroll input
             glm::vec2 magnitude;
+
             /// @brief position of a mouse click or move input
             glm::vec2 pos;
         } state;
