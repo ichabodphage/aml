@@ -63,7 +63,7 @@ namespace aml
         * 
         *   @param layoutOffset offset of the data atribute pointers. defaults to no offset (0)
         */
-        VertexResource(size_t layoutOffset = 0):layout(layoutOffset){
+        VertexResource(size_t layoutOffset = 0) noexcept :layout(layoutOffset){
             glGenBuffers(1, &vbo);
             bindResource();
             bindAtributes();    
@@ -143,9 +143,9 @@ namespace aml
         void pushToGPU(vertexType * rawData, size_t size)
         {
             //check if the vertexType is the same size as the pack size
-            if constexpr (sizeof(vertexType) != aml::packSize<T...>()){
-                throw std::runtime_error("vertex template paramerter is not compatable with the type of vertex resource");
-            }
+            static_assert(
+            sizeof(vertexType) != aml::packSize<T...>(),    
+            "vertex template paramerter is not compatable with the type of vertex resource");
             
             //tell opengl to write data to this VBO
             bindResource();
@@ -170,9 +170,9 @@ namespace aml
         void pushToGPU(std::vector<vertexType>& vertexArray)
         {
             //check if the vertexType is the same size as the pack size
-            if constexpr (sizeof(vertexType) != aml::packSize<T...>()){
-                throw std::runtime_error("vertex template paramerter is not compatable with the type of vertex resource");
-            }
+            static_assert(
+            sizeof(vertexType) != aml::packSize<T...>(),    
+            "vertex template paramerter is not compatable with the type of vertex resource");
 
             //tell opengl to write data to this VBO
             bindResource();
