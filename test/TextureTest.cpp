@@ -48,7 +48,7 @@ int main()
     aml::VertexResource<glm::vec2,glm::vec3> multiBuffer;
     std::vector<aml::Vert2> verticies = make2dVertexArr(aml::squareVertices,aml::squareColors);
     multiBuffer.pushToGPU<aml::Vert2>(verticies);
-    
+    std::cout << (sizeof(aml::Vert2) != aml::packSize<glm::vec2,glm::vec3>()) << "\n";
     aml::ElementBuffer elementIndecies;
     std::vector<unsigned int> indecies = {
         0,1,3,
