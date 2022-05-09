@@ -144,12 +144,8 @@ namespace aml
         {
             //check if the vertexType is the same size as the pack size
             static_assert(
-<<<<<<< HEAD
             //using == gives proper behavior
             (sizeof(vertexType) == aml::packSize<T...>()),    
-=======
-            sizeof(vertexType) == aml::packSize<T...>(),    
->>>>>>> b0732f2958f73d0acd424e255b9b67b8ccb5dccd
             "vertex template paramerter is not compatable with the type of vertex resource");
             
             //tell opengl to write data to this VBO
@@ -176,12 +172,8 @@ namespace aml
         {
             //check if the vertexType is the same size as the pack size
             static_assert(
-<<<<<<< HEAD
             //using == gives proper behavior
             (sizeof(vertexType) == aml::packSize<T...>()),
-=======
-            sizeof(vertexType) == aml::packSize<T...>(),    
->>>>>>> b0732f2958f73d0acd424e255b9b67b8ccb5dccd
             "vertex template paramerter is not compatable with the type of vertex resource");
 
             //tell opengl to write data to this VBO
