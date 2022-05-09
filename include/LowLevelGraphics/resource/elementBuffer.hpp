@@ -71,9 +71,8 @@ namespace aml{
         void pushToGPU(std::vector<IntType>& indexArray)
         {      
             //guard clause to prevent any datatype that isnt an integer from being used
-            if constexpr(!std::is_same<IntType,unsigned int>()){
-                throw std::invalid_argument("type of standard vector used in element buffer object must be equivalent to unsigned int");
-            }
+            static_assert(std::is_same<IntType,unsigned int>(),
+            "type of standard vector used in element buffer object must be equivalent to unsigned int");
             //tell opengl to write data to this EBO
             bindResource();
 
@@ -94,9 +93,8 @@ namespace aml{
         void pushToGPU(IntType * indexArray , size_t size)
         {
             //guard clause to prevent any datatype that isnt an integer from being used
-            if constexpr(!std::is_same<IntType,unsigned int>()){
-                throw std::invalid_argument("type of raw pointer to array used in element buffer object must be equivalent to unsigned int");
-            }
+            static_assert(std::is_same<IntType,unsigned int>(),
+            "type of raw pointer used in element buffer object must be equivalent to unsigned int");
             
             //tell opengl to write data to this EBO
             bindResource();
