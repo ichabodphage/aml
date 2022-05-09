@@ -15,11 +15,12 @@ namespace aml{
         /// @brief mousewheel input
         scroll,
         /// @brief cursor movement input
-        cursorMove,
-        /// @brief key press input
-        keyPress,
-        /// @brief key up input
-        keyUp
+        mouseMove,
+        /// @brief mouse button press
+        mousePress,
+        /// @brief key input
+        key,
+
     };
 }
 

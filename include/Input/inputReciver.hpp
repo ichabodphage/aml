@@ -5,7 +5,7 @@
 #include <functional>
 #include <unordered_map>
 #include <cstdint>
-
+#include <queue>
 
 #include <GL/glew.h>
 #include <GL/glut.h>
@@ -28,6 +28,8 @@ namespace aml{
             //window is friend class as window holds a GLFWwindow thats needed to scan inputs from
             friend class aml::Window;
 
+            /// @brief standard queue of input results
+            std::queue<aml::Result> resultQueue;
             /// @brief number of keys to track
             static const size_t keyCount = 316;
 
@@ -162,7 +164,23 @@ namespace aml{
              * 
              */
             void pollInput();
+            
+            /**
+             * @brief checks if the input queue has pending results
+             * 
+             * @return true queue has pending results
+             * @return false queue has no results
+             */
+            bool pendingResults();
 
+            /**
+             * @brief returns the next input result in the queue
+             * 
+             * @return aml::Result& next result
+             */
+            aml::Result nextResult();
+
+            
     };
 
 

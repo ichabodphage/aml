@@ -12,8 +12,9 @@ namespace aml{
      * @brief class that represents the result of an input
      * 
      */
-    class Result{
-    private:
+    struct Result{
+    public:
+        
         /// @brief type of the input
         aml::InputType type;
         
@@ -28,6 +29,9 @@ namespace aml{
             /// @brief keycode of a keyboard input
             int key;
             
+            /// @brief mouse button of a mouse input
+            int mouseButton;
+
             /// @brief magnitude of a scroll input
             glm::vec2 magnitude;
 

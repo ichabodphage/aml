@@ -9,11 +9,23 @@ void InputReciver::handleKeyInput(GLFWwindow* rawWindow, int key, int scancode, 
     InputReciver* localInputReciver = InputReciver::getInputReciver(rawWindow);
     localInputReciver->keyPressTable[key-InputReciver::arrayOffset] = action;
 
+    aml::Result result;
+    result.type = aml::InputType::key;
+    result.active = action;
+    result.state.key = key;
+    localInputReciver->resultQueue.push(result);
+
 }
 void InputReciver::handleMousePress(GLFWwindow* rawWindow, int button, int action, int mods){
     InputReciver* localInputReciver = InputReciver::getInputReciver(rawWindow);
     //set the activity of the index button to action
     localInputReciver->mousePressTable[button] = action;
+    
+    aml::Result result;
+    result.type = aml::InputType::mousePress;
+    result.active = action;
+    result.state.mouseButton = button;
+    localInputReciver->resultQueue.push(result);
 };
 
 void InputReciver::handleMouseMovement(GLFWwindow* rawWindow, double x, double y){
@@ -22,6 +34,12 @@ void InputReciver::handleMouseMovement(GLFWwindow* rawWindow, double x, double y
     //set the current cursor location on the window
     localInputReciver->mouseLocation.x = x;
     localInputReciver->mouseLocation.y = y;
+
+    aml::Result result;
+    result.type = aml::InputType::mouseMove;
+    result.active = true;
+    result.state.pos = glm::vec2(x,y);
+    localInputReciver->resultQueue.push(result);
 };
 
 
@@ -29,7 +47,13 @@ void InputReciver::handleScroll(GLFWwindow* rawWindow, double x, double y){
     InputReciver* localInputReciver = InputReciver::getInputReciver(rawWindow);
     //set the magnitude of the scroll event
     localInputReciver->scrollMagnitude.x = x;    
-    localInputReciver->scrollMagnitude.y = y;    
+    localInputReciver->scrollMagnitude.y = y;
+
+    aml::Result result;
+    result.type = aml::InputType::scroll;
+    result.active = true;
+    result.state.magnitude = glm::vec2(x,y);
+    localInputReciver->resultQueue.push(result);   
 };
 
 InputReciver* InputReciver::getInputReciver(GLFWwindow* rawWindow){
@@ -86,4 +110,17 @@ glm::vec2 InputReciver::scrollAmount(){
 };
 void InputReciver::pollInput(){
     glfwPollEvents();
+}
+
+bool InputReciver::pendingResults() 
+{
+    pollInput();
+    return resultQueue.size();
+}
+
+aml::Result InputReciver::nextResult() 
+{
+    aml::Result next = resultQueue.front();
+    resultQueue.pop();
+    return next;
 }
