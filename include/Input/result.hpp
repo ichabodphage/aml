@@ -21,6 +21,8 @@ namespace aml{
         /// @brief activity of input
         bool active;
 
+        /// @brief modifiers of the input
+        int modifiers;
         /**
          * @brief union that holds relavant information per type of input
          * 

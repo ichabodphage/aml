@@ -83,13 +83,13 @@ int main()
         localInput.pollInput();
         //check for all input
         while(localInput.pendingResults()){
+            
             aml::Result result = localInput.nextResult();
 
             if(result.type == aml::InputType::key){
                 if(result.active){
                     std::cout << (char) result.state.key << "\n";
                 }
-                
             }
         }
         window.display();

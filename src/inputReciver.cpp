@@ -12,6 +12,7 @@ void InputReciver::handleKeyInput(GLFWwindow* rawWindow, int key, int scancode, 
     aml::Result result;
     result.type = aml::InputType::key;
     result.active = action;
+    result.modifiers = mods;
     result.state.key = key;
     localInputReciver->resultQueue.push(result);
 
@@ -24,6 +25,7 @@ void InputReciver::handleMousePress(GLFWwindow* rawWindow, int button, int actio
     aml::Result result;
     result.type = aml::InputType::mousePress;
     result.active = action;
+    result.modifiers = mods;
     result.state.mouseButton = button;
     localInputReciver->resultQueue.push(result);
 };
