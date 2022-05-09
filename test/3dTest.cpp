@@ -80,15 +80,18 @@ int main()
             }
         }
 
-        //check for all inputs
         localInput.pollInput();
-        if(localInput.keyTriggered('W')){
+        //check for all input
+        while(localInput.pendingResults()){
             
-            std::cout << std::to_string(localInput.mousePosition().x) << " "
-            << std::to_string(localInput.mousePosition().y) << "\n";
-            
+            aml::Result result = localInput.nextResult();
+
+            if(result.type == aml::InputType::key){
+                if(result.active){
+                    std::cout << (char) result.state.key << "\n";
+                }
+            }
         }
-        
         window.display();
         rotx += 0.01;
     }

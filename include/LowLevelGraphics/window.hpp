@@ -14,6 +14,7 @@
 
 #include "../lib.hpp"
 
+#include "resource/elementBuffer.hpp"
 #ifndef AML_WINDOW
 #define AML_WINDOW
 
@@ -78,12 +79,20 @@ namespace aml
         */ 
         void renderVertexBuffer(size_t index, size_t amount);
         
-         /**
-        *   @brief renders current EBO using the size of the EBO
+        /**
+        *   @brief renders a bound EBO using the size of the EBO
         *   @param amount amount of verticies to draw
         *   @return none
         */ 
-        void renderElementBuffer(size_t amount);
+        void renderBoundEBO(size_t amount);
+
+        /**
+         * @brief binds an EBO and draws its elements
+         * 
+         * @param amount amount of verticies to draw
+         * @param ebo ebo to bind
+         */
+        void renderEBO(size_t amount,aml::ElementBuffer& ebo);
         /**
         *   @brief displays to the current draw target
         *   @return none

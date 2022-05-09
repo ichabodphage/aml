@@ -81,7 +81,7 @@ int main()
         window.clear();
         shaderProgram.run();
         elementIndecies.bindResource();
-        window.renderElementBuffer(indecies.size());
+        window.renderBoundEBO(indecies.size());
         
         //check for all inputs
         localInput.pollInput();
