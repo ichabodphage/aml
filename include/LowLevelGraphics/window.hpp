@@ -89,10 +89,9 @@ namespace aml
         /**
          * @brief binds an EBO and draws its elements
          * 
-         * @param amount amount of verticies to draw
-         * @param ebo ebo to bind
+         * @param ebo ebo to draw
          */
-        void renderEBO(size_t amount,aml::ElementBuffer& ebo);
+        void renderEBO(aml::ElementBuffer& ebo);
         /**
         *   @brief displays to the current draw target
         *   @return none

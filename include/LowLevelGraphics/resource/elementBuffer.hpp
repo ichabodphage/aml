@@ -32,7 +32,8 @@ namespace aml{
             /// @brief id of the EBO on the graphics card
             GLuint bufferID;
 
-            
+            /// @brief length of the buffer object
+            size_t bufferSize;
         public:
 
         /**
@@ -44,6 +45,14 @@ namespace aml{
             bindResource();
         };
 
+        /**
+         * @brief returns the size of the buffer
+         * 
+         * @return size_t size of the buffer
+         */
+        size_t size(){
+            return bufferSize;
+        }
 
         /**
          * @brief Destroy the Element Buffer object
@@ -75,7 +84,7 @@ namespace aml{
             "type of standard vector used in element buffer object must be equivalent to unsigned int");
             //tell opengl to write data to this EBO
             bindResource();
-
+            bufferSize = indexArray.size();
             //set the buffer data to vertexArr
             glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(IntType) * indexArray.size(), indexArray.data(), GL_STATIC_DRAW);            
             aml::checkForGLErrors(__FILE__,__LINE__);
@@ -98,7 +107,7 @@ namespace aml{
             
             //tell opengl to write data to this EBO
             bindResource();
-
+            bufferSize = size;
             //set the buffer data to vertexArr
             glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(IntType) * size, indexArray, GL_STATIC_DRAW);            
             aml::checkForGLErrors(__FILE__,__LINE__);

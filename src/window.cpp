@@ -46,10 +46,10 @@ void Window::renderBoundEBO(size_t amount){
     glDrawElements(GL_TRIANGLES,amount,GL_UNSIGNED_INT,0);
 }
 
-void Window::renderEBO(size_t amount,aml::ElementBuffer& ebo) 
+void Window::renderEBO(aml::ElementBuffer& ebo) 
 {
     ebo.bindResource();
-    glDrawElements(GL_TRIANGLES,amount,GL_UNSIGNED_INT,0);   
+    glDrawElements(GL_TRIANGLES,ebo.size(),GL_UNSIGNED_INT,0);   
 }
 
 void Window::display(){
