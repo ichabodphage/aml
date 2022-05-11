@@ -22,6 +22,7 @@
  cmake --build . -j 4
 */
 
+
 int main()
 {
     // initAML and make AML window
