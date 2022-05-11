@@ -6,6 +6,6 @@ Makefile
 build/
 perf.data
 perf.data.old
+latex/
 test/3dTest
 test/TextureTest
-latex/

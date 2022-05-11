@@ -117,7 +117,7 @@ void InputReciver::pollInput(){
 bool InputReciver::pendingResults() 
 {
     pollInput();
-    return resultQueue.size();
+    return !resultQueue.empty();
 }
 
 aml::Result InputReciver::nextResult() 
