@@ -48,7 +48,7 @@ int main()
     aml::VertexResource<glm::vec2,glm::vec3> multiBuffer;
     std::vector<aml::Vert2> verticies = make2dVertexArr(aml::squareVertices,aml::squareColors);
     multiBuffer.pushToGPU<aml::Vert2>(verticies);
-    
+
     aml::ElementBuffer elementIndecies;
     std::vector<unsigned int> indecies = {
         0,1,3,
@@ -65,6 +65,7 @@ int main()
     texCords.pushToGPU(cords);
 
     aml::Texture localTexture("test/w3c_home.bmp");
+    
     //default shaders
     aml::ShaderResource defaultVertexShader(aml::defaultVert(),aml::ShaderType::VERTEX);
     aml::ShaderResource defaultFragmentShader(aml::defaultFrag(),aml::ShaderType::FRAGMENT);

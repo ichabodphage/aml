@@ -55,6 +55,8 @@ namespace aml
 
         /// @brief constant value for the offset to add to the layout of the vertex elements
         const size_t layout;
+
+        size_t bufferSize;
     public:
         /**
         *   @brief constructor for vertex resource
@@ -151,7 +153,8 @@ namespace aml
             bindResource();
 
             //set the buffer data to vertexArr
-            glBufferData(GL_ARRAY_BUFFER, aml::packSize<T...>() *size, rawData, GL_STATIC_DRAW);            
+            glBufferData(GL_ARRAY_BUFFER, aml::packSize<T...>() *size, rawData, GL_STATIC_DRAW);
+            bufferSize = size;
             aml::checkForGLErrors(__FILE__,__LINE__);
         }
 
@@ -178,10 +181,59 @@ namespace aml
             bindResource();
 
             //set the buffer data to vertexArr
-            glBufferData(GL_ARRAY_BUFFER, aml::packSize<T...>() * vertexArray.size(), vertexArray.data(), GL_STATIC_DRAW);            
+            glBufferData(GL_ARRAY_BUFFER, aml::packSize<T...>() * vertexArray.size(), vertexArray.data(), GL_STATIC_DRAW);   
+            bufferSize = vertexArray.size();         
+            aml::checkForGLErrors(__FILE__,__LINE__);
+        }
+        
+        /**
+         * @brief writes a data from a raw array of vertexType begining at a specific index in the buffer
+         * 
+         * @tparam vertexType type of vertex to write
+         * @param rawData pointer to raw vertex data
+         * @param size amount of verticies
+         * @param index index in the buffer to write to
+         */
+        template<typename vertexType>
+        void write(vertexType * rawData, size_t size, size_t index){
+            //check if the vertexType is the same size as the pack size
+            static_assert(
+            sizeof(vertexType) == aml::packSize<T...>(),    
+            "vertex template paramerter is not compatable with the type of vertex resource");
+
+            bindResource();
+            glBufferSubData(GL_ARRAY_BUFFER, index, aml::packSize<T...>() * size, rawData);
             aml::checkForGLErrors(__FILE__,__LINE__);
         }
 
+        /**
+         * @brief writes a standard vector of vertexType begining at a specific index in the buffer
+         * 
+         * @tparam vertexType 
+         * @param vertexArray standard vector of vertexType
+         * @param index index to begin writing
+         */
+        template<typename vertexType>
+        void write(std::vector<vertexType>& vertexArray, size_t index){
+            //check if the vertexType is the same size as the pack size
+            static_assert(
+            sizeof(vertexType) == aml::packSize<T...>(),    
+            "vertex template paramerter is not compatable with the type of vertex resource");
+
+            bindResource();
+            glBufferSubData(GL_ARRAY_BUFFER, index, aml::packSize<T...>() * vertexArray.size(), vertexArray.data());
+            aml::checkForGLErrors(__FILE__,__LINE__);
+        }
+
+
+        /**
+         * @brief returns the size of the buffer in the GPU
+         * 
+         * @return size_t size of the buffer
+         */
+        size_t size(){
+            return bufferSize;
+        }
         /**
          * @brief Destroy the Vertex Resource object
          * 
