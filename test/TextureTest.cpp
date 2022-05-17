@@ -45,9 +45,9 @@ int main()
     aml::InputReciver localInput(window);
 
     //insert verticies of the shape
-    aml::VertexResource<glm::vec2,glm::vec3> multiBuffer;
+    aml::VertexResource<aml::Vert2,glm::vec2,glm::vec3> multiBuffer;
     std::vector<aml::Vert2> verticies = make2dVertexArr(aml::squareVertices,aml::squareColors);
-    multiBuffer.pushToGPU<aml::Vert2>(verticies);
+    multiBuffer.pushToGPU(verticies);
 
     aml::ElementBuffer elementIndecies;
     std::vector<unsigned int> indecies = {

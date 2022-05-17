@@ -30,7 +30,7 @@ namespace aml
     *   @tparam 
     *   template pack, parameters must meet requirements in details section
     */
-    template <typename... T>
+    template <typename VertexType,typename... T>
     class VertexResource
     {
     private:
@@ -131,24 +131,13 @@ namespace aml
         */
         /**
         *   @brief pushes an array of verticies into the vertex buffer
-        *   @attention
-        *   sizeof(vertexType) must be equal to the size of all the atribute types combined
-        *   throws a runtime error if the size of the struct is not equal to the combined size of
-        *   all the classes' template parameters
         *
-        *   @tparam vertexType the vertex datatype to push to the GPU
         *   @param rawData pointer to an array of verticies
         *   @param size size of the vertex array
         *   
         */
-        template<typename vertexType>
-        void pushToGPU(vertexType * rawData, size_t size)
-        {
-            //check if the vertexType is the same size as the pack size
-            static_assert(
-            sizeof(vertexType) == aml::packSize<T...>(),    
-            "vertex template paramerter is not compatable with the type of vertex resource");
-            
+        void pushToGPU(VertexType * rawData, size_t size)
+        {   
             //tell opengl to write data to this VBO
             bindResource();
 
@@ -161,22 +150,12 @@ namespace aml
         /**
          * @brief pushes an array of verticies into the vertex buffer
          * 
-         * @attention
-         * sizeof(vertexType) must be equal to the size of all the atribute types combined
-         * throws a runtime error if the size of the struct is not equal to the combined size of
-         * all the classes' template parameters
-         * @tparam vertexType the vertex datatype to push to the GPU
          * 
          * @param vertexArray std::vector holding verticies
          */
-        template<typename vertexType>
-        void pushToGPU(std::vector<vertexType>& vertexArray)
+       
+        void pushToGPU(std::vector<VertexType>& vertexArray)
         {
-            //check if the vertexType is the same size as the pack size
-            static_assert(
-            sizeof(vertexType) == aml::packSize<T...>(),    
-            "vertex template paramerter is not compatable with the type of vertex resource");
-
             //tell opengl to write data to this VBO
             bindResource();
 
@@ -187,19 +166,13 @@ namespace aml
         }
         
         /**
-         * @brief writes a data from a raw array of vertexType begining at a specific index in the buffer
+         * @brief writes a data from a raw array of VertexType begining at a specific index in the buffer
          * 
-         * @tparam vertexType type of vertex to write
          * @param rawData pointer to raw vertex data
          * @param size amount of verticies
          * @param index index in the buffer to write to
          */
-        template<typename vertexType>
-        void write(vertexType * rawData, size_t size, size_t index){
-            //check if the vertexType is the same size as the pack size
-            static_assert(
-            sizeof(vertexType) == aml::packSize<T...>(),    
-            "vertex template paramerter is not compatable with the type of vertex resource");
+        void write(VertexType * rawData, size_t size, size_t index){
 
             bindResource();
             glBufferSubData(GL_ARRAY_BUFFER, index, aml::packSize<T...>() * size, rawData);
@@ -209,16 +182,10 @@ namespace aml
         /**
          * @brief writes a standard vector of vertexType begining at a specific index in the buffer
          * 
-         * @tparam vertexType 
          * @param vertexArray standard vector of vertexType
          * @param index index to begin writing
          */
-        template<typename vertexType>
-        void write(std::vector<vertexType>& vertexArray, size_t index){
-            //check if the vertexType is the same size as the pack size
-            static_assert(
-            sizeof(vertexType) == aml::packSize<T...>(),    
-            "vertex template paramerter is not compatable with the type of vertex resource");
+        void write(std::vector<VertexType>& vertexArray, size_t index){
 
             bindResource();
             glBufferSubData(GL_ARRAY_BUFFER, index, aml::packSize<T...>() * vertexArray.size(), vertexArray.data());
@@ -246,12 +213,9 @@ namespace aml
         
     };
     /// @brief vertex buffer for 2d vertices
-    typedef aml::VertexResource<glm::vec2,glm::vec3> VertexResource2d;
-
-    typedef aml::VertexResource<glm::vec2,glm::vec3,glm::vec2> VertexResource2dTextured;
-    
+    typedef aml::VertexResource<aml::Vert2,glm::vec2,glm::vec3> VertexResource2d;
     /// @brief vertex buffer for 3d verticies
-    typedef aml::VertexResource<glm::vec3,glm::vec3> VertexResource3d; 
+    typedef aml::VertexResource<aml::Vert3,glm::vec3,glm::vec3> VertexResource3d; 
 }
 
 #endif
