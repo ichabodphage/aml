@@ -26,6 +26,7 @@ add_executable(3dTest
     ${CMAKE_CURRENT_SOURCE_DIR}/src/inputReciver.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/defaultShaders.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/texture.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/inputCallbacks.cpp
     )
 
 add_executable(TextureTest 
@@ -39,4 +40,5 @@ add_executable(TextureTest
     ${CMAKE_CURRENT_SOURCE_DIR}/src/inputReciver.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/defaultShaders.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/texture.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/inputCallbacks.cpp
     )

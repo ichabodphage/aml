@@ -16,173 +16,135 @@
 
 #include "../lib.hpp"
 #include "../LowLevelGraphics/window.hpp"
-
 #ifndef AML_INPUT_RECIVER
 #define AML_INPUT_RECIVER
-namespace aml{
+namespace aml
+{
+    // forward declaration
+    void handleKeyInput(GLFWwindow *window, int key, int scancode, int action, int mods);
+    void handleMousePress(GLFWwindow *window, int button, int action, int mods);
+    void handleMouseMovement(GLFWwindow *window, double x, double y);
+    void handleScroll(GLFWwindow *window, double x, double y);
     /*
         class that manage polling of inputs
     */
-    class InputReciver{
-        private:
-            //window is friend class as window holds a GLFWwindow thats needed to scan inputs from
-            friend class aml::Window;
 
-            /// @brief standard queue of input results
-            std::queue<aml::Result> resultQueue;
-            /// @brief number of keys to track
-            static const size_t keyCount = 316;
+    class InputReciver
+    {
+    private:
+        // window is friend class as window holds a GLFWwindow thats needed to scan inputs from
+        friend class aml::Window;
 
-            /// @brief array containing all key Inputs
-            bool keyPressTable[InputReciver::keyCount];
-            
-            /// @brief number of mouse buttons to track
-            static const size_t mouseButtonCount = 8;
+        /// @brief standard queue of input results
+        std::queue<aml::Result> resultQueue;
+        /// @brief number of keys to track
+        static const size_t keyCount = 316;
 
-            /// @brief array containing all mouse button inputs
-            bool mousePressTable[InputReciver::mouseButtonCount];
+        /// @brief array containing all key Inputs
+        bool keyPressTable[InputReciver::keyCount];
 
-            /// @brief current location of the cursor of the window
-            glm::vec2 mouseLocation;
-            
-            /// @brief magnitude of the current scroll
-            glm::vec2 scrollMagnitude = glm::vec2(0,0);
+        /// @brief number of mouse buttons to track
+        static const size_t mouseButtonCount = 8;
 
-            /// @brief constant that gets subtracted from each keycode to find its place in keyPresstable             
-            static const size_t arrayOffset = 32;
+        /// @brief array containing all mouse button inputs
+        bool mousePressTable[InputReciver::mouseButtonCount];
 
-            /*
-                input callbacks used by the object to poll events from the window.
-                all of them are friend functions as they need to access private variables
-                of InputReciver to work
-            */
+        /// @brief current location of the cursor of the window
+        glm::vec2 mouseLocation;
 
-            /*****************************************************************
-             * @brief static function that acts as a keyboard event callback
-             * 
-             * @param window pointer to the window
-             * @param key keycode of the key input
-             * @param scancode platform specific keycode
-             * @param action state of the keypress
-             * @param mods modifiers of the keypress
-             */
-            static void handleKeyInput(GLFWwindow* window, int key, int scancode, int action, int mods);
-            friend void handleKeyInput(GLFWwindow* window, int key, int scancode, int action, int mods);
+        /// @brief magnitude of the current scroll
+        glm::vec2 scrollMagnitude = glm::vec2(0, 0);
 
-            /*****************************************************************
-             * @brief static function that acts as a mouse button callback
-             * 
-             * @param window pointer to the window
-             * @param button code of the mouse button that was pressed
-             * @param action state of the button press
-             * @param mods modifiers of the button press
-             */
-            static void handleMousePress(GLFWwindow* window,  int button, int action, int mods);
-            friend void handleMousePress(GLFWwindow* window,  int button, int action, int mods);
-            
-            /*****************************************************************
-             * @brief static function that acts as a cursor movement callback
-             * 
-             * @param window pointer to the window
-             * @param x x cordinates of cursor
-             * @param y y cordinates of cursor
-             */
-            static void handleMouseMovement(GLFWwindow* window, double x, double y);
-            friend void handleMouseMovement(GLFWwindow* window, double x, double y);
-            
-            /*****************************************************************
-             * @brief static function that acts as scrollwheel callback
-             * 
-             * @param window pointer to the window
-             * @param x x magnitide of the scroll
-             * @param y y magnitude of the scroll
-             */
-            static void handleScroll(GLFWwindow* window, double x, double y);
-            friend void handleScroll(GLFWwindow* window, double x, double y);
+        /// @brief constant that gets subtracted from each keycode to find its place in keyPresstable
+        static const size_t arrayOffset = 32;
 
-            /**
-             * @brief gets a windows InputReciver
-             * 
-             * @param window pointer to raw window
-             * @return InputReciver* pointer to the windows InputReciver
-             */
-            static InputReciver* getInputReciver(GLFWwindow* window);
-        public:
+        /// @brief constant max size of the input buffer
+        const size_t maxBufferSize;
+        /*
+            input callbacks used by the object to poll events from the window.
+            all of them are friend functions as they need to access private variables
+            of InputReciver to work
+        */
 
-            /**
-             * @brief creates an InputReciver for the selected window
-             * 
-             * @param window window to poll inputs from
-             */
-            InputReciver(aml::Window &window);
+        friend void aml::handleMouseMovement(GLFWwindow *window, double x, double y);
+        friend void aml::handleScroll(GLFWwindow *window, double x, double y);
+        friend void aml::handleMousePress(GLFWwindow *window, int button, int action, int mods);
+        friend void aml::handleKeyInput(GLFWwindow *window, int key, int scancode, int action, int mods);
 
-            //methods for polling inputs
+    public:
+        /**
+         * @brief creates an InputReciver for the selected window
+         *
+         * @param window window to poll inputs from
+         * @param maxLength max length of the input buffer
+         */
+        InputReciver(aml::Window &window, const size_t maxLength);
 
-            /**
-             * @brief checks if a key is pressed down or not
-             * 
-             * @param keycode keycode to check for input 
-             * @return true key is currently pressed
-             * @return false key is not pressed
-             */
-            bool keyPressed(int16_t keycode);
+        // methods for polling inputs
 
-            /**
-             * @brief checks if a key was pressed only once
-             * 
-             * @param keycode keycode to check for input
-             * @return true key was pressed once
-             * @return false key is either held or not pressed
-             */
-            bool keyTriggered(int16_t keycode);
+        /**
+         * @brief checks if a key is pressed down or not
+         *
+         * @param keycode keycode to check for input
+         * @return true key is currently pressed
+         * @return false key is not pressed
+         */
+        bool keyPressed(int16_t keycode);
 
-            /**
-             * @brief checks if a mouse button is pressed
-             * 
-             * @param button code of the mouse button to check
-             * @return true mouse button is pressed
-             * @return false mouse button is not pressed
-             */
-            bool mousePressed(int16_t button);
+        /**
+         * @brief checks if a key was pressed only once
+         *
+         * @param keycode keycode to check for input
+         * @return true key was pressed once
+         * @return false key is either held or not pressed
+         */
+        bool keyTriggered(int16_t keycode);
 
-            /**
-             * @brief gets the position of the cursor on the window
-             * 
-             * @return glm::vec2 cursor positon
-             */
-            glm::vec2 mousePosition(); 
+        /**
+         * @brief checks if a mouse button is pressed
+         *
+         * @param button code of the mouse button to check
+         * @return true mouse button is pressed
+         * @return false mouse button is not pressed
+         */
+        bool mousePressed(int16_t button);
 
-            /**
-             * @brief gets the current magnitude of the scrollwheel
-             * 
-             * @return glm::vec2 scroll magnitude 
-             */
-            glm::vec2 scrollAmount();
+        /**
+         * @brief gets the position of the cursor on the window
+         *
+         * @return glm::vec2 cursor positon
+         */
+        glm::vec2 mousePosition();
 
-            /**
-             * @brief polls the window for input
-             * 
-             */
-            void pollInput();
-            
-            /**
-             * @brief checks if the input queue has pending results
-             * 
-             * @return true queue has pending results
-             * @return false queue has no results
-             */
-            bool pendingResults();
+        /**
+         * @brief gets the current magnitude of the scrollwheel
+         *
+         * @return glm::vec2 scroll magnitude
+         */
+        glm::vec2 scrollAmount();
 
-            /**
-             * @brief returns the next input result in the queue
-             * 
-             * @return aml::Result& next result
-             */
-            aml::Result nextResult();
+        /**
+         * @brief polls the window for input
+         *
+         */
+        void pollInput();
 
-            
+        /**
+         * @brief checks if the input queue has pending results
+         *
+         * @return true queue has pending results
+         * @return false queue has no results
+         */
+        bool pendingResults();
+
+        /**
+         * @brief returns the next input result in the queue
+         *
+         * @return aml::Result& next result
+         */
+        aml::Result nextResult();
     };
-
+    
 
 }
 #endif

@@ -30,7 +30,7 @@ int main()
     aml::Window window(800,600,"TEST");
 
     //input reciver for the window
-    aml::InputReciver localInput(window);
+    aml::InputReciver localInput(window,10);
 
     aml::VertexResource3d multiBuffer;
     std::vector<aml::Vert3> verticies = aml::makeVertexArr(aml::cubeVertices,aml::cubeColors);

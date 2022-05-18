@@ -42,7 +42,7 @@ int main()
     aml::Window window(800, 600, "TEST");
 
     //input reciver for the window
-    aml::InputReciver localInput(window);
+    aml::InputReciver localInput(window,10);
 
     //insert verticies of the shape
     aml::VertexResource<aml::Vert2,glm::vec2,glm::vec3> multiBuffer;
@@ -91,7 +91,6 @@ int main()
             << std::to_string(localInput.mousePosition().y) << "\n";
             
         }
-        
         window.display();
         
     }
