@@ -66,9 +66,9 @@ namespace aml
             of InputReciver to work
         */
 
-        friend void aml::handleMouseMovement(GLFWwindow *window, double x, double y);
-        friend void aml::handleScroll(GLFWwindow *window, double x, double y);
-        friend void aml::handleMousePress(GLFWwindow *window, int button, int action, int mods);
+        friend void aml::handleMouseMovement(GLFWwindow *window, double x, double y); 
+        friend void aml::handleScroll(GLFWwindow *window, double x, double y); 
+        friend void aml::handleMousePress(GLFWwindow *window, int button, int action, int mods); 
         friend void aml::handleKeyInput(GLFWwindow *window, int key, int scancode, int action, int mods);
 
     public:
