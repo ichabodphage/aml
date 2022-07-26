@@ -1,4 +1,4 @@
-#include "../include/Input/inputCallbacks.hpp"
+#include "../../include/Input/inputCallbacks.hpp"
 
 
 aml::InputReciver* aml::getInputReciver(GLFWwindow* rawWindow){

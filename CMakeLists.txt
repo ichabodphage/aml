@@ -24,10 +24,10 @@ add_executable(3dTest
     ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderSrc/shaderProgram.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderSrc/uniform.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/vectorResource.ipp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/inputReciver.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/inputSrc/inputReciver.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderSrc/defaultShaders.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/texture.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/inputCallbacks.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/inputSrc/inputCallbacks.cpp
     )
 
 add_executable(TextureTest 
@@ -39,8 +39,8 @@ add_executable(TextureTest
     ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderSrc/shaderProgram.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderSrc/uniform.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/vectorResource.ipp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/inputReciver.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/inputSrc/inputReciver.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderSrc/defaultShaders.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/texture.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/inputCallbacks.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/inputSrc/inputCallbacks.cpp
     )

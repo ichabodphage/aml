@@ -1,5 +1,5 @@
-#include "../include/Input/inputReciver.hpp"
-#include "../include/Input/inputCallbacks.hpp"
+#include "../../include/Input/inputReciver.hpp"
+#include "../../include/Input/inputCallbacks.hpp"
 
 using namespace aml;
 
