@@ -49,6 +49,7 @@ namespace aml
          * @param copySource the StyleManager instance that wont be coppied
          */
         StyleManager(StyleManager& copySource) = delete;
+
         /**
          *   @brief minimizes the window on the desktop
          *   @return none
@@ -69,11 +70,22 @@ namespace aml
 
         /**
          *   @brief returns the width/height window dimensions
-         *   @return glm::vec2 holding current width and height of the window
+         *   @return glm::vec2 ,current width and height of the window
          */
         glm::vec2 dimensions();
 
-        // methods to controll the position of the window
+        /**
+         *   @brief changes the title of the window
+         *   @param title new title of the window
+         *   @return none
+         */
+        void setTitle(const char *title);
+
+        /**
+         *   @brief returns the position of the window on the monitor
+         *   @return glm::vec2 ,current position of the window
+         */
+        glm::vec2 position();
     };
 };
 

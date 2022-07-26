@@ -28,3 +28,13 @@ void StyleManager::unMinimize(){
 void StyleManager::maximize(){
     glfwMaximizeWindow(localWindow);
 }
+
+void StyleManager::setTitle(const char* title){
+    glfwSetWindowTitle(localWindow,title);
+}
+
+glm::vec2 StyleManager::position(){
+    int x,y;
+    glfwGetWindowPos(localWindow,&x,&y);
+    return glm::vec2(x,y);
+}

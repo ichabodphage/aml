@@ -57,33 +57,12 @@ void Window::display(){
     glfwSwapBuffers(renderWindow);
 }
 
-
-
-
-//window activity 
-
 bool Window::isActive(){
     return !glfwWindowShouldClose(renderWindow);
 }
 
 void Window::close(){
     glfwSetWindowShouldClose(renderWindow,true);
-}
-
-
-//window position
-
-glm::vec2 Window::position(){
-    int x,y;
-    glfwGetWindowPos(renderWindow,&x,&y);
-    return glm::vec2(x,y);
-}
-
-
-//window name
-
-void Window::setTitle(const char* title){
-    glfwSetWindowTitle(renderWindow,title);
 }
 
 double Window::upTime(){

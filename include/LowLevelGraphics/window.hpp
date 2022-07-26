@@ -52,6 +52,7 @@ namespace aml
 
     public:
 
+        /// @brief windows' style manager
         aml::StyleManager style;
 
         /**
@@ -106,28 +107,6 @@ namespace aml
         void display();
 
 
-
-
-
-
-        // methods to controll the size of the window
-
-  
-
-        // methods to controll the position of the window
-
-        /**
-         *   @brief returns the position of the window on the monitor
-         *   @return glm::vec2 holding current position of the window
-         */
-        glm::vec2 position();
-
-
-
-
-
-
-
         // methods to controll the activity of the window
 
         /**
@@ -142,13 +121,7 @@ namespace aml
          */
         void close();
 
-        /**
-         *   @brief changes the title of the window
-         *   @param title new title of the window
-         *   @return none
-         */
-        void setTitle(const char *title);
-
+        
         /**
          * @brief returns how long the window has been active
          * 
