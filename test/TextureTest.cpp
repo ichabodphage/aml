@@ -76,9 +76,7 @@ int main()
     shaderProgram["textureId"].setScalarInt(localTexture.getId());
     shaderProgram["BLEND_FLAG"].setScalarInt(true);
     while (window.isActive())
-    {
-        double time = glfwGetTime();
-        
+    {   
         window.clear();
         shaderProgram.run();
         window.renderEBO(elementIndecies);

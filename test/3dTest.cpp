@@ -50,7 +50,7 @@ int main()
 
     glm::mat4 viewConst = aml::viewMatrix;
     glm::mat4 projectionMatrix = glm::perspective(
-        45.0f,window.dimensions().x / window.dimensions().y,
+        45.0f,window.style.dimensions().x / window.style.dimensions().y,
         0.5f,1000.0f);
     shaderProgram["matrices.projectionMatrix"].setMatrix(projectionMatrix);
     
@@ -59,7 +59,6 @@ int main()
     
     while (window.isActive())
     {
-        double time = glfwGetTime();
         window.clear();
         shaderProgram.run();
 

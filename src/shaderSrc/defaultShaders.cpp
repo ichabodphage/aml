@@ -1,4 +1,4 @@
-#include "../include/LowLevelGraphics/shader/defaultShaderResources.hpp"
+#include "../../include/LowLevelGraphics/shader/defaultShaderResources.hpp"
 
 const char* aml::defaultFrag(){
     return "src/basicShaders/basicFrag.frag";

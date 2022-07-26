@@ -15,6 +15,8 @@
 #include "../lib.hpp"
 
 #include "resource/elementBuffer.hpp"
+
+#include "windowUtilities/styleManager.hpp"
 #ifndef AML_WINDOW
 #define AML_WINDOW
 
@@ -40,16 +42,18 @@ namespace aml
         ///@brief openGl vertex array object
         GLuint vao;
 
-        ///@brief width and height of the windo
-        size_t width, height;
+
 
         ///@brief raw openGL render window
         GLFWwindow *renderWindow;
 
         ///@brief system time in seconds when the window was opened
         double windowStartTime;
-        
+
     public:
+
+        aml::StyleManager style;
+
         /**
          *   @brief window constuctor, creates a window and sets the window as the current draw target
          *   @param width width of the window
@@ -108,29 +112,7 @@ namespace aml
 
         // methods to controll the size of the window
 
-        /**
-         *   @brief minimizes the window on the desktop
-         *   @return none
-         */
-        void minimize();
-
-        /**
-         *   @brief brief description unminimizes a minimized window
-         *   @return none
-         */
-        void unMinimize();
-
-        /**
-         *   @brief brief description sets the window to the size of the entire screen
-         *   @return none
-         */
-        void maximize();
-
-        /**
-         *   @brief returns the width/height window dimensions
-         *   @return glm::vec2 holding current width and height of the window
-         */
-        glm::vec2 dimensions();
+  
 
         // methods to controll the position of the window
 

@@ -18,13 +18,14 @@ link_libraries("glfw" "GL" "GLEW" "glut")
 add_executable(3dTest 
     ${CMAKE_CURRENT_SOURCE_DIR}/test/3dTest.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/lib.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/window.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderResource.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderProgram.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/uniform.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/windowSrc/window.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/windowSrc/styleManager.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderSrc/shaderResource.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderSrc/shaderProgram.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderSrc/uniform.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/vectorResource.ipp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/inputReciver.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/defaultShaders.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderSrc/defaultShaders.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/texture.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/inputCallbacks.cpp
     )
@@ -32,13 +33,14 @@ add_executable(3dTest
 add_executable(TextureTest 
     ${CMAKE_CURRENT_SOURCE_DIR}/test/TextureTest.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/lib.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/window.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderResource.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderProgram.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/uniform.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/windowSrc/window.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/windowSrc/styleManager.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderSrc/shaderResource.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderSrc/shaderProgram.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderSrc/uniform.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/vectorResource.ipp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/inputReciver.cpp
-    ${CMAKE_CURRENT_SOURCE_DIR}/src/defaultShaders.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/src/shaderSrc/defaultShaders.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/texture.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/src/inputCallbacks.cpp
     )

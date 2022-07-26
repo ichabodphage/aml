@@ -1,11 +1,12 @@
-#include "../include/LowLevelGraphics/window.hpp"
+#include "../../include/LowLevelGraphics/window.hpp"
 using namespace aml;
 
 
-Window::Window(size_t winWidth,size_t winHeight, const char* name):width(winWidth),height(winHeight),windowStartTime(aml::systemTime()){
-    //create the raw opengl render target
-    renderWindow = aml::makeGLWindow(width,height,name);
-
+Window::Window(size_t winWidth,size_t winHeight, const char* name):
+    renderWindow(aml::makeGLWindow(winWidth,winHeight,name)),
+    windowStartTime(aml::systemTime()),
+    style(renderWindow,winWidth,winHeight)
+{
     //initalize the vertex array object
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
@@ -57,24 +58,6 @@ void Window::display(){
 }
 
 
-//window size
-
-glm::vec2 Window::dimensions(){
-
-    return glm::vec2(width,height);
-}
-
-void Window::minimize(){
-    glfwIconifyWindow(renderWindow);
-};
-
-void Window::unMinimize(){
-    glfwRestoreWindow(renderWindow);
-}
-
-void Window::maximize(){
-    glfwMaximizeWindow(renderWindow);
-}
 
 
 //window activity 
