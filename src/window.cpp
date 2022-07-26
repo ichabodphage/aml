@@ -77,7 +77,7 @@ void Window::maximize(){
 }
 
 
-//window activity
+//window activity 
 
 bool Window::isActive(){
     return !glfwWindowShouldClose(renderWindow);

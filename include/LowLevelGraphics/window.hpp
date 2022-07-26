@@ -48,6 +48,7 @@ namespace aml
 
         ///@brief system time in seconds when the window was opened
         double windowStartTime;
+        
     public:
         /**
          *   @brief window constuctor, creates a window and sets the window as the current draw target
@@ -100,6 +101,11 @@ namespace aml
          */
         void display();
 
+
+
+
+
+
         // methods to controll the size of the window
 
         /**
@@ -133,6 +139,12 @@ namespace aml
          *   @return glm::vec2 holding current position of the window
          */
         glm::vec2 position();
+
+
+
+
+
+
 
         // methods to controll the activity of the window
 
