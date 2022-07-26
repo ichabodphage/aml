@@ -1,7 +1,12 @@
 #include "../include/lib.hpp"
 
 using namespace aml;
-
+/**
+ * @brief checks for any openGL errors in the current file
+ * 
+ * @param file current file the function was called in
+ * @param line line of the function when called
+ */
 void aml::checkForGLErrors( const char *file, int line){
     GLenum errorCode;
     std::string totalError = "";
@@ -28,6 +33,12 @@ void aml::checkForGLErrors( const char *file, int line){
     }
 };
 
+/**
+ * @brief starts an AML context in the current aplicatoion
+ * 
+ * @param antialiasingLevel level of antialiassing 
+ * @param resize wheather or not resizing is allowed
+ */
 void aml::startAml(int antialiasingLevel,bool resize){
     //init glfw
     if (!glfwInit()) {
@@ -42,26 +53,44 @@ void aml::startAml(int antialiasingLevel,bool resize){
 
     //establish if resizing is allowed or not
     glfwWindowHint(GLFW_RESIZABLE, resize);
+
+    //establish how much antialiasing should occur
     glfwWindowHint(GLFW_SAMPLES, antialiasingLevel);
 
+    //enable multisampleing
     glEnable(GL_MULTISAMPLE);  
     
+    //estabish the types of polygons that will be drawn by AML
     glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+
     glfwSwapInterval(0);
     aml::checkForGLErrors(__FILE__,__LINE__);
   
 
 }
 
+/**
+ * @brief produces a raw openGL window
+ * 
+ * @param width width of the window
+ * @param height height of the window
+ * @param name title of the window in the OS
+ * @return GLFWwindow*  pointer the raw openGL window
+ */
+
 GLFWwindow* aml::makeGLWindow(size_t width,size_t height,const char* name){
     GLFWwindow* window = glfwCreateWindow(width, height, name, NULL, NULL);
     glfwMakeContextCurrent(window);
     if (glewInit()!= 0) {
-        throw std::runtime_error("Failed to initialize GLEW\n");
+        throw std::runtime_error("Failed to initialize GLEW, window failed to create\n");
     }
     return window;
 }
 
+/**
+ * @brief stops the current AML context
+ * 
+ */
 void aml::stopAml(){
     glfwTerminate();
 }

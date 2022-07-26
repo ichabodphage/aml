@@ -30,7 +30,7 @@ namespace aml{
             /// @brief height of the texture
             int height;
 
-            /// @brief brief description amount of data in each pixel
+            /// @brief amount of data in each pixel
             int pixelSize;
         public:
             

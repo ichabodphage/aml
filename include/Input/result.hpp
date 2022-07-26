@@ -23,6 +23,7 @@ namespace aml{
 
         /// @brief modifiers of the input
         int modifiers;
+
         /**
          * @brief union that holds relavant information per type of input
          * 
