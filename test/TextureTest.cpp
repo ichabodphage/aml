@@ -87,8 +87,7 @@ int main()
         localInput.pollInput();
         if(localInput.keyTriggered('W')){
             
-            std::cout << std::to_string(localInput.mousePosition().x) << " "
-            << std::to_string(localInput.mousePosition().y) << "\n";
+            std::cout << window.upTime() << "\n";
             
         }
         window.display();

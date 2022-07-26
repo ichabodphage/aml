@@ -2,7 +2,7 @@
 using namespace aml;
 
 
-Window::Window(size_t winWidth,size_t winHeight, const char* name):width(winWidth),height(winHeight){
+Window::Window(size_t winWidth,size_t winHeight, const char* name):width(winWidth),height(winHeight),windowStartTime(aml::systemTime()){
     //create the raw opengl render target
     renderWindow = aml::makeGLWindow(width,height,name);
 
@@ -101,4 +101,8 @@ glm::vec2 Window::position(){
 
 void Window::setTitle(const char* title){
     glfwSetWindowTitle(renderWindow,title);
+}
+
+double Window::upTime(){
+    return aml::systemTime() - windowStartTime;
 }

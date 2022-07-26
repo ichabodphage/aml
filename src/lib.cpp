@@ -109,3 +109,7 @@ std::vector<aml::Vert3> aml::makeVertexArr(std::vector<glm::vec3> &posArray,std:
     return vertices;
 
 };
+
+double aml::systemTime(){
+    return glfwGetTime();
+}

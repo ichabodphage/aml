@@ -91,6 +91,13 @@ namespace aml
      */
     GLFWwindow *makeGLWindow(size_t width, size_t height, const char *name);
 
+
+    /**
+     * @brief gets the current system time in seconds
+     * 
+     * @return double, system time
+     */
+    double systemTime();
 }
 
 #endif
