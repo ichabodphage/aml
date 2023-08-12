@@ -7,6 +7,7 @@ Window::Window(size_t winWidth,size_t winHeight, const char* name):
     windowStartTime(aml::systemTime()),
     style(renderWindow,winWidth,winHeight)
 {
+    style.setTitle(name);
     //initalize the vertex array object
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);

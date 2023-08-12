@@ -37,7 +37,14 @@ namespace aml
 
         return (sizeof(T) + ...);
     }
-
+    /**
+     * @brief returns a boolean value indicative of if a template type paramater is contained within a template pack
+     * 
+     * @tparam T template type being checked for
+     * @tparam Ts template pack to compare to
+     * @return true, template pack contains the type checked for
+     * @return false, template pack does not comtain the type being checked for
+     */
     template <typename T, typename... Ts>
     constexpr bool contains()
     {
