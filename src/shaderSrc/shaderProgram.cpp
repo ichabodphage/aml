@@ -69,3 +69,4 @@ Uniform &ShaderProgram::operator[](const std::string uniformName)
     // return the value within the map
     return uniformMap[uniformName];
 }
+

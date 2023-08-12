@@ -90,10 +90,13 @@ namespace aml{
              * @return aml::Uniform& uniform at the specified name
              */
             aml::Uniform& operator[](const std::string uniformName);
+    
 
             
 
     };
+    
+    
 
 }
 

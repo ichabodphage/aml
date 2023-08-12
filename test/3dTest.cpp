@@ -60,8 +60,7 @@ int main()
     while (window.isActive())
     {
         window.clear();
-        shaderProgram.run();
-
+        
 
         for (int k = -2; k < 2; k++){
             for (int j = -1; j < 4; j++){
@@ -75,6 +74,7 @@ int main()
                     shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
                     shaderProgram["matrices.viewMatrix"].setMatrix(aml::viewMatrix);
                     // call windows draw function
+                    shaderProgram.run();
                     window.renderVertexBuffer(0, verticies.size());
                 }
             }
