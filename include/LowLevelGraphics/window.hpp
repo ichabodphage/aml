@@ -79,27 +79,7 @@ namespace aml
          */
         void clear();
 
-        /**
-         *   @brief renders current VBO from the starting vertex index and the amount of verticies to draw
-         *   @param index index to start drawing from
-         *   @param amount amount of verticies to draw
-         *   @return none
-         */
-        void renderVertexBuffer(size_t index, size_t amount);
-
-        /**
-         *   @brief renders a bound EBO using the size of the EBO
-         *   @param amount amount of verticies to draw
-         *   @return none
-         */
-        void renderBoundEBO(size_t amount);
-
-        /**
-         * @brief binds an EBO and draws its elements
-         *
-         * @param ebo ebo to draw
-         */
-        void renderEBO(aml::ElementBuffer &ebo);
+        
         /**
          *   @brief displays to the current draw target
          *   @return none
