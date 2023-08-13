@@ -10,3 +10,5 @@ latex/
 test/3dTest
 test/TextureTest
 accessToken.txt
+latex/
+html/
