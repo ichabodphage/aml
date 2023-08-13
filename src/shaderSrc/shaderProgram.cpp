@@ -70,3 +70,18 @@ Uniform &ShaderProgram::operator[](const std::string uniformName)
     return uniformMap[uniformName];
 }
 
+void ShaderProgram::renderVertexBuffer(size_t index, size_t amount){
+    // Draw a triangle from the 3 vertices
+    glDrawArrays(GL_TRIANGLES, index, amount);
+    
+}
+
+void ShaderProgram::renderBoundElementBuffer(size_t amount){
+    glDrawElements(GL_TRIANGLES,amount,GL_UNSIGNED_INT,0);
+}
+
+void ShaderProgram::renderElementBuffer(aml::ElementBuffer& ebo) 
+{
+    ebo.bindResource();
+    glDrawElements(GL_TRIANGLES,ebo.size(),GL_UNSIGNED_INT,0);   
+}

@@ -73,9 +73,9 @@ int main()
                     aml::modelMatrix = glm::rotate(aml::modelMatrix,rotx,glm::vec3(1,0,0));
                     shaderProgram["matrices.modelMatrix"].setMatrix(aml::modelMatrix);
                     shaderProgram["matrices.viewMatrix"].setMatrix(aml::viewMatrix);
-                    // call windows draw function
+
                     shaderProgram.run();
-                    window.renderVertexBuffer(0, verticies.size());
+                    shaderProgram.renderVertexBuffer(0, verticies.size());
                 }
             }
         }

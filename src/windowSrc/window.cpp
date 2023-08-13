@@ -38,21 +38,7 @@ void Window::clear(){
     
 }
 
-void Window::renderVertexBuffer(size_t index, size_t amount){
-    // Draw a triangle from the 3 vertices
-    glDrawArrays(GL_TRIANGLES, index, amount);
-    
-}
 
-void Window::renderBoundEBO(size_t amount){
-    glDrawElements(GL_TRIANGLES,amount,GL_UNSIGNED_INT,0);
-}
-
-void Window::renderEBO(aml::ElementBuffer& ebo) 
-{
-    ebo.bindResource();
-    glDrawElements(GL_TRIANGLES,ebo.size(),GL_UNSIGNED_INT,0);   
-}
 
 void Window::display(){
     glfwSwapBuffers(renderWindow);

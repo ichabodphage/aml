@@ -79,7 +79,7 @@ int main()
     {   
         window.clear();
         shaderProgram.run();
-        window.renderEBO(elementIndecies);
+        shaderProgram.renderElementBuffer(elementIndecies);
         
         //check for all inputs
         localInput.pollInput();
