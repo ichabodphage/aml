@@ -56,7 +56,7 @@ Texture::Texture(const std::string& path, bool mipmap){
 }
 
 void Texture::bindTexture(){
-    glActiveTexture(GL_TEXTURE10);
+    glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, textureId);
 }
 
