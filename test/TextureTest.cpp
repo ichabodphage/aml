@@ -21,7 +21,7 @@
  compile with
  cmake --build . -j 4
 */
-std::vector<aml::Vert2> make2dVertexArr(std::vector<glm::vec2> &posArray,std::vector<glm::vec3> &colorArray){
+std::vector<aml::Vert2> make2dVertexArr(std::vector<aml::Vector2float> &posArray,std::vector<aml::Vector3float> &colorArray){
     if(posArray.size() != colorArray.size()){
         throw std::runtime_error("array of position vectors must be the same size of the array of color vectors");
     }
@@ -45,7 +45,7 @@ int main()
     aml::InputReciver localInput(window,10);
 
     //insert verticies of the shape
-    aml::VertexResource<aml::Vert2,glm::vec2,glm::vec3> multiBuffer;
+    aml::VertexResource<aml::Vert2,aml::Vector2float,aml::Vector3float> multiBuffer;
     std::vector<aml::Vert2> verticies = make2dVertexArr(aml::squareVertices,aml::squareColors);
     multiBuffer.pushToGPU(verticies);
 
@@ -58,9 +58,9 @@ int main()
     elementIndecies.pushToGPU(indecies);
     
     // define shape texture cordinates
-    aml::VectorResource<glm::vec2> texCords(2,2);
-    std::vector<glm::vec2> cords = {
-        glm::vec2(1,0),glm::vec2(1,1),glm::vec2(0,1),glm::vec2(0,0)
+    aml::VectorResource<aml::Vector2float> texCords(2,2);
+    std::vector<aml::Vector2float> cords = {
+        aml::Vector2float(1,0),aml::Vector2float(1,1),aml::Vector2float(0,1),aml::Vector2float(0,0)
     };
     texCords.pushToGPU(cords);
     

@@ -9,8 +9,7 @@
 
 #include "LowLevelGraphics/resource/texture.hpp"
 #include "LowLevelGraphics/resource/vertex.hpp"
-
-
+#include "LowLevelGraphics/resource/vectorInclude.hpp"
 //shader includes
 #include "LowLevelGraphics/shader/shaderResource.hpp"
 #include "LowLevelGraphics/shader/shaderProgram.hpp"

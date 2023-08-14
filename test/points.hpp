@@ -1,11 +1,10 @@
-
 #include <vector>
 
 #include <GL/glew.h>
 #include <GL/glut.h>
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
-
+#include "../include/LowLevelGraphics/resource/vectorInclude.hpp"
 namespace aml{
     std::vector<float> cubeVerticesFloat = {
         -0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, -0.5f, 0.5f, 0.5f, -0.5f, 0.5f, -0.5f, -0.5f, 0.5f, -0.5f, 0.5f, 0.5f,
@@ -22,46 +21,46 @@ namespace aml{
         
     };
 
-    std::vector<glm::vec3> cubeVertices = {
-        glm::vec3(-0.5f, 0.5f, 0.5f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(0.5f, -0.5f, 0.5f), glm::vec3(0.5f, -0.5f, 0.5f), glm::vec3(-0.5f, -0.5f, 0.5f), glm::vec3(-0.5f, 0.5f, 0.5f),
+    std::vector<aml::Vector3float> cubeVertices = {
+        aml::Vector3float(-0.5f, 0.5f, 0.5f), aml::Vector3float(0.5f, 0.5f, 0.5f), aml::Vector3float(0.5f, -0.5f, 0.5f), aml::Vector3float(0.5f, -0.5f, 0.5f), aml::Vector3float(-0.5f, -0.5f, 0.5f), aml::Vector3float(-0.5f, 0.5f, 0.5f),
         // Back face
-        glm::vec3(0.5f, 0.5f, -0.5f), glm::vec3(-0.5f, 0.5f, -0.5f), glm::vec3(-0.5f, -0.5f, -0.5f), glm::vec3(-0.5f, -0.5f, -0.5f), glm::vec3(0.5f, -0.5f, -0.5f), glm::vec3(0.5f, 0.5f, -0.5f),
+        aml::Vector3float(0.5f, 0.5f, -0.5f), aml::Vector3float(-0.5f, 0.5f, -0.5f), aml::Vector3float(-0.5f, -0.5f, -0.5f), aml::Vector3float(-0.5f, -0.5f, -0.5f), aml::Vector3float(0.5f, -0.5f, -0.5f), aml::Vector3float(0.5f, 0.5f, -0.5f),
         // Left face
-        glm::vec3(-0.5f, 0.5f, -0.5f), glm::vec3(-0.5f, 0.5f, 0.5f), glm::vec3(-0.5f, -0.5f, 0.5f), glm::vec3(-0.5f, -0.5f, 0.5f), glm::vec3(-0.5f, -0.5f, -0.5f), glm::vec3(-0.5f, 0.5f, -0.5f),
+        aml::Vector3float(-0.5f, 0.5f, -0.5f), aml::Vector3float(-0.5f, 0.5f, 0.5f), aml::Vector3float(-0.5f, -0.5f, 0.5f), aml::Vector3float(-0.5f, -0.5f, 0.5f), aml::Vector3float(-0.5f, -0.5f, -0.5f), aml::Vector3float(-0.5f, 0.5f, -0.5f),
         // Right face
-        glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(0.5f, 0.5f, -0.5f), glm::vec3(0.5f, -0.5f, -0.5f), glm::vec3(0.5f, -0.5f, -0.5f), glm::vec3(0.5f, -0.5f, 0.5f), glm::vec3(0.5f, 0.5f, 0.5f),
+        aml::Vector3float(0.5f, 0.5f, 0.5f), aml::Vector3float(0.5f, 0.5f, -0.5f), aml::Vector3float(0.5f, -0.5f, -0.5f), aml::Vector3float(0.5f, -0.5f, -0.5f), aml::Vector3float(0.5f, -0.5f, 0.5f), aml::Vector3float(0.5f, 0.5f, 0.5f),
         // Top face
-        glm::vec3(-0.5f, 0.5f, -0.5f), glm::vec3(0.5f, 0.5f, -0.5f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(0.5f, 0.5f, 0.5f), glm::vec3(-0.5f, 0.5f, 0.5f), glm::vec3(-0.5f, 0.5f, -0.5f),
+        aml::Vector3float(-0.5f, 0.5f, -0.5f), aml::Vector3float(0.5f, 0.5f, -0.5f), aml::Vector3float(0.5f, 0.5f, 0.5f), aml::Vector3float(0.5f, 0.5f, 0.5f), aml::Vector3float(-0.5f, 0.5f, 0.5f), aml::Vector3float(-0.5f, 0.5f, -0.5f),
         // Bottom face
-        glm::vec3(-0.5f, -0.5f, 0.5f), glm::vec3(0.5f, -0.5f, 0.5f), glm::vec3(0.5f, -0.5f, -0.5f), glm::vec3(0.5f, -0.5f, -0.5f), glm::vec3(-0.5f, -0.5f, -0.5f), glm::vec3(-0.5f, -0.5f, 0.5f),
+        aml::Vector3float(-0.5f, -0.5f, 0.5f), aml::Vector3float(0.5f, -0.5f, 0.5f), aml::Vector3float(0.5f, -0.5f, -0.5f), aml::Vector3float(0.5f, -0.5f, -0.5f), aml::Vector3float(-0.5f, -0.5f, -0.5f), aml::Vector3float(-0.5f, -0.5f, 0.5f),
         
     };
 
-    std::vector<glm::vec2> squareVertices = {
-       glm::vec2(1, 1),glm::vec2(1, -1),glm::vec2(-1, -1),glm::vec2(-1, 1)
+    std::vector<aml::Vector2float> squareVertices = {
+       aml::Vector2float(1, 1),aml::Vector2float(1, -1),aml::Vector2float(-1, -1),aml::Vector2float(-1, 1)
     };
 
-    std::vector<glm::vec3> squareColors = {
-        glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f),glm::vec3(0.0f, 1.0f, 1.0f)
+    std::vector<aml::Vector3float> squareColors = {
+        aml::Vector3float(1.0f, 0.0f, 0.0f), aml::Vector3float(0.0f, 1.0f, 0.0f), aml::Vector3float(0.0f, 0.0f, 1.0f),aml::Vector3float(0.0f, 1.0f, 1.0f)
     };
-    std::vector<glm::vec3> cubeColors = { 
-        glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f),
-        glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f),
+    std::vector<aml::Vector3float> cubeColors = { 
+        aml::Vector3float(1.0f, 0.0f, 0.0f), aml::Vector3float(0.0f, 1.0f, 0.0f), aml::Vector3float(0.0f, 0.0f, 1.0f),
+        aml::Vector3float(0.0f, 0.0f, 1.0f), aml::Vector3float(1.0f, 1.0f, 0.0f), aml::Vector3float(1.0f, 0.0f, 0.0f),
 
-        glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f),
-        glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f),
+        aml::Vector3float(1.0f, 0.0f, 0.0f), aml::Vector3float(0.0f, 1.0f, 0.0f), aml::Vector3float(0.0f, 0.0f, 1.0f),
+        aml::Vector3float(0.0f, 0.0f, 1.0f), aml::Vector3float(1.0f, 1.0f, 0.0f), aml::Vector3float(1.0f, 0.0f, 0.0f),
         
-        glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f),
-        glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f),
+        aml::Vector3float(1.0f, 0.0f, 0.0f), aml::Vector3float(0.0f, 1.0f, 0.0f), aml::Vector3float(0.0f, 0.0f, 1.0f),
+        aml::Vector3float(0.0f, 0.0f, 1.0f), aml::Vector3float(1.0f, 1.0f, 0.0f), aml::Vector3float(1.0f, 0.0f, 0.0f),
         
-        glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f),
-        glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f),
+        aml::Vector3float(1.0f, 0.0f, 0.0f), aml::Vector3float(0.0f, 1.0f, 0.0f), aml::Vector3float(0.0f, 0.0f, 1.0f),
+        aml::Vector3float(0.0f, 0.0f, 1.0f), aml::Vector3float(1.0f, 1.0f, 0.0f), aml::Vector3float(1.0f, 0.0f, 0.0f),
 
-        glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f),
-        glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f),
+        aml::Vector3float(1.0f, 0.0f, 0.0f), aml::Vector3float(0.0f, 1.0f, 0.0f), aml::Vector3float(0.0f, 0.0f, 1.0f),
+        aml::Vector3float(0.0f, 0.0f, 1.0f), aml::Vector3float(1.0f, 1.0f, 0.0f), aml::Vector3float(1.0f, 0.0f, 0.0f),
 
-        glm::vec3(1.0f, 0.0f, 0.0f), glm::vec3(0.0f, 1.0f, 0.0f), glm::vec3(0.0f, 0.0f, 1.0f),
-        glm::vec3(0.0f, 0.0f, 1.0f), glm::vec3(1.0f, 1.0f, 0.0f), glm::vec3(1.0f, 0.0f, 0.0f),
+        aml::Vector3float(1.0f, 0.0f, 0.0f), aml::Vector3float(0.0f, 1.0f, 0.0f), aml::Vector3float(0.0f, 0.0f, 1.0f),
+        aml::Vector3float(0.0f, 0.0f, 1.0f), aml::Vector3float(1.0f, 1.0f, 0.0f), aml::Vector3float(1.0f, 0.0f, 0.0f),
         
         
     };

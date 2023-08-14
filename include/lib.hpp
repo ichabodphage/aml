@@ -10,6 +10,7 @@
 #include <type_traits>
 
 #include "LowLevelGraphics/resource/vertex.hpp"
+#include "LowLevelGraphics/resource/vectorInclude.hpp"
 #ifndef AML_CORE
 #define AML_CORE
 
@@ -80,7 +81,7 @@ namespace aml
      * @return std::vector<vertType> standard vector of vertTyoe vertices
      */
     
-    std::vector<aml::Vert3> makeVertexArr(std::vector<glm::vec3> &posArray, std::vector<glm::vec3> &colorArray);
+    std::vector<aml::Vert3> makeVertexArr(std::vector<aml::Vector3float> &posArray, std::vector<aml::Vector3float> &colorArray);
 
     /**
      * @brief terminates AML

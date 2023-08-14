@@ -8,10 +8,10 @@
 #include <GL/glut.h>
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
+#include "vectorInclude.hpp"
 
-
-#ifndef AML_VECTOR
-#define AML_VECTOR
+#ifndef AML_VERTEX
+#define AML_VERTEX
 // struct needs densly packed datavalues to function properly
 #pragma pack(push, 1)
 namespace aml{
@@ -39,10 +39,10 @@ namespace aml{
     };
     
     /// @brief 2d vertex template declaration
-    typedef aml::Vertex<glm::vec2,glm::vec3> Vert2;
+    typedef aml::Vertex<aml::Vector2float,aml::Vector3float> Vert2;
 
     /// @brief 3d vertex template delcaration
-    typedef aml::Vertex<glm::vec3,glm::vec3> Vert3;
+    typedef aml::Vertex<aml::Vector3float,aml::Vector3float> Vert3;
 
 
 }

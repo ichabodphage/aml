@@ -95,7 +95,7 @@ void aml::stopAml(){
     glfwTerminate();
 }
 
-std::vector<aml::Vert3> aml::makeVertexArr(std::vector<glm::vec3> &posArray,std::vector<glm::vec3> &colorArray){
+std::vector<aml::Vert3> aml::makeVertexArr(std::vector<aml::Vector3float> &posArray,std::vector<aml::Vector3float> &colorArray){
     if(posArray.size() != colorArray.size()){
         throw std::runtime_error("array of position vectors must be the same size of the array of color vectors");
     }
