@@ -48,8 +48,9 @@ namespace aml
          * 
          * @param layoutLocation vector atribute position 
          * @param VectorSize size of each vector to pass to the GPU
+         * @param glDatatype opengl datatype enum that will be bound to the driver. defaults to GL_FLOAT
          */
-        VectorResource(size_t layoutLocation,size_t VectorSize = 3);
+        VectorResource(size_t layoutLocation,size_t VectorSize = 3,size_t glDatatype = GL_FLOAT);
 
         /**
          * @brief Destroy the Vector Resource object
@@ -66,8 +67,9 @@ namespace aml
         /**
          * @brief establishes how vector data is positioned on the GPU
          * 
+         * @param glDatatype opengl datatype enum that will be bound to the driver
          */
-        void bindAtributes();
+        void bindAtributes(size_t glDatatype);
 
         /**
          * @brief pushes a C style array into the vector buffer

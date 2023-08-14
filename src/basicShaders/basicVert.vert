@@ -17,10 +17,12 @@ uniform MatrixPack matrices = MatrixPack(mat4(1),mat4(1),mat4(1));
 layout(location = 0) in vec3 vertexPosition;
 layout(location = 1) in vec3 vertexColor;
 layout(location = 2) in vec2 aTexCoord;
+layout(location = 3) in int textureNumber;
+
 
 smooth out vec3 ioVertexColor;
 smooth out vec2 TexCoord;
-
+flat out int textureNumberOutput;
 
 
 
@@ -30,4 +32,5 @@ void main()
 	gl_Position = mvpMatrix * vec4(vertexPosition, 1.0);
 	ioVertexColor = vertexColor;
 	TexCoord = aTexCoord;
+	textureNumberOutput =textureNumber;
 }

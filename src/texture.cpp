@@ -5,7 +5,7 @@
 using namespace aml;
 
 
-Texture::Texture(const std::string& path, bool mipmap){
+Texture::Texture(const std::string& path,unsigned int bindLocation ,bool mipmap){
     
 
     //load image
@@ -19,7 +19,7 @@ Texture::Texture(const std::string& path, bool mipmap){
 	}
 
     glGenTextures(1, &textureId);
-	bindTexture();
+	bindTexture(bindLocation);
 
 	GLenum internalFormat = 0;
 	GLenum format = 0;
@@ -55,8 +55,8 @@ Texture::Texture(const std::string& path, bool mipmap){
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 }
 
-void Texture::bindTexture(){
-    glActiveTexture(GL_TEXTURE0);
+void Texture::bindTexture(int bindIndex){
+    glActiveTexture(GL_TEXTURE0+bindIndex);
     glBindTexture(GL_TEXTURE_2D, textureId);
 }
 

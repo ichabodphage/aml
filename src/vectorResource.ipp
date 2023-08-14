@@ -5,12 +5,12 @@ using namespace aml;
 
 
 template<typename vType>
-VectorResource<vType>::VectorResource(size_t layoutLocation,size_t VectorSize):
+VectorResource<vType>::VectorResource(size_t layoutLocation,size_t VectorSize,size_t glDatatype):
 layout(layoutLocation),
 valueCount(VectorSize){
     glGenBuffers(1, &vbo);
     bindResource();
-    bindAtributes();
+    bindAtributes(glDatatype);
 }
 
 template<typename vType>
@@ -41,16 +41,26 @@ void VectorResource<vType>::pushToGPU(std::vector<vType> &VectorArray){
 
 
 template<typename vType>
-void VectorResource<vType>::bindAtributes(){
+void VectorResource<vType>::bindAtributes(size_t glDatatype){
     
     //get the length of the Vector atribute
     size_t atributeLength = sizeof(vType) /sizeof(float);
     //set the current data pointer to the objects ID
-    glVertexAttribPointer(
+
+    if (glDatatype == GL_INT){
+        glVertexAttribIPointer(
         layout, valueCount, 
-        GL_FLOAT, GL_FALSE, 
+        GL_INT,
         0, 
         (void*)0);
+    }else{
+        glVertexAttribPointer(
+        layout, valueCount, 
+        GL_FLOAT, true, 
+        0, 
+        (void*)0);
+    }
+    
     glEnableVertexAttribArray(layout);
     aml::checkForGLErrors(__FILE__,__LINE__);
 	

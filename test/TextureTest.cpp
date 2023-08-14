@@ -63,17 +63,28 @@ int main()
         glm::vec2(1,0),glm::vec2(1,1),glm::vec2(0,1),glm::vec2(0,0)
     };
     texCords.pushToGPU(cords);
-
-    aml::Texture localTexture("test/w3c_home.bmp");
+    aml::VectorResource<int> textureSelector(3,1,GL_INT);
     
+
+    aml::Texture localTexture("test/w3c_home.bmp",0);
+    aml::Texture localTextureTwo("test/blackbuck.bmp",1);
+    std::vector<int> textureType = {
+        localTextureTwo.getId(),localTextureTwo.getId(),localTextureTwo.getId(),localTextureTwo.getId()
+    };
+    textureSelector.pushToGPU(textureType);
+
     //default shaders
     aml::ShaderResource defaultVertexShader(aml::defaultVert(),aml::ShaderType::VERTEX);
     aml::ShaderResource defaultFragmentShader(aml::defaultFrag(),aml::ShaderType::FRAGMENT);
-
+    std::cout << localTextureTwo.getId()<<"\n";
     //initalize shader program
     aml::ShaderProgram shaderProgram(defaultFragmentShader,defaultVertexShader);
     
-    shaderProgram["textureId"].setScalarInt(localTexture.getId());
+    std::vector<int> textureArr(16);
+    textureArr[0] = localTexture.getId();
+    textureArr[1] = localTextureTwo.getId();
+    
+    shaderProgram["textureId"].setIntArr(textureArr);
     shaderProgram["BLEND_FLAG"].setScalarInt(true);
     while (window.isActive())
     {   

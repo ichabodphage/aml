@@ -40,14 +40,17 @@ namespace aml{
              * @param path file path of texture data
              * 
              * @param mipmap flag to generate mipmaps
+             * 
+             * @param bindLocation location in gpu to bind texture too
              */
-            Texture(const std::string& path, bool mipmap = false);
+            Texture(const std::string& path,unsigned int bindLocation = 0, bool mipmap = false);
 
             /**
              * @brief binds the texture to openGL
              * 
+             * @param bindIndex index to bind the texture to
              */
-            void bindTexture();
+            void bindTexture(int bindIndex);
             /**
              * @brief deconstructs the texture object
              * 
