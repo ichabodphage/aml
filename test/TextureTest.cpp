@@ -71,7 +71,7 @@ int main()
     //default shaders
     aml::ShaderResource defaultVertexShader(aml::defaultVert(),aml::ShaderType::VERTEX);
     aml::ShaderResource defaultFragmentShader(aml::defaultFrag(),aml::ShaderType::FRAGMENT);
-    std::cout << localTextureTwo.getId()<<"\n";
+    
     //initalize shader program
     aml::ShaderProgram shaderProgram(defaultFragmentShader,defaultVertexShader);
     

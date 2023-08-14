@@ -38,7 +38,7 @@ namespace aml{
     };
 
     std::vector<glm::vec2> squareVertices = {
-       glm::vec2(0.5f, 0.5f),glm::vec2(0.5f, -0.5f),glm::vec2(-0.5f, -0.5f),glm::vec2(-0.5f, 0.5f)
+       glm::vec2(1, 1),glm::vec2(1, -1),glm::vec2(-1, -1),glm::vec2(-1, 1)
     };
 
     std::vector<glm::vec3> squareColors = {

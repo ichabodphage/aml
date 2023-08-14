@@ -4,7 +4,7 @@
 #include "../include/stb_image.h"
 using namespace aml;
 
-Texture::Texture(const std::string &path, unsigned int bindLocation, bool mipmap):mipmap(mipmap), bindLocation(bindLocation)
+Texture::Texture(const std::string &path, unsigned int bindLocation, bool mipmap, const bool manualSetupEnabled ) : mipmap(mipmap), bindLocation(bindLocation), manualSetupEnabled(manualSetupEnabled)
 {
 
     // load image
@@ -14,13 +14,13 @@ Texture::Texture(const std::string &path, unsigned int bindLocation, bool mipmap
     {
         throw std::runtime_error("Failed to load texture " + path + "!\n");
     }
-
-    createGLTexture()
-    
+    if (!manualSetupEnabled)
+    {
+        createGLTexture();
+    }
 }
 
-
-void Texture::createGLTexture() 
+void Texture::createGLTexture()
 {
     glGenTextures(1, &textureId);
     bindTexture();
@@ -49,14 +49,17 @@ void Texture::createGLTexture()
         glGenerateMipmap(GL_TEXTURE_2D);
     }
 
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    if (!manualSetupEnabled)
+    {
+        setTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
+        setTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
+        setTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        setTextureParameter(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+    }
 }
 
 void Texture::bindTexture()
-{   
+{
     glActiveTexture(GL_TEXTURE0 + bindLocation);
     glBindTexture(GL_TEXTURE_2D, textureId);
 }
@@ -67,16 +70,20 @@ Texture::~Texture()
     deleteGLTexture();
 }
 
-void Texture::deleteGLTexture() 
+void Texture::deleteGLTexture()
 {
     glDeleteTextures(1, &textureId);
 }
 
-void Texture::setBindIndex(unsigned int newIndex) 
+void Texture::setTextureParameter(unsigned int textureType, unsigned int openGLParameterNameEnum, unsigned int openGlParameter)
+{
+    glTexParameteri(textureType, openGLParameterNameEnum, openGlParameter);
+}
+
+void Texture::setBindIndex(unsigned int newIndex)
 {
     bindLocation = newIndex;
 }
-
 
 GLuint Texture::getId()
 {
