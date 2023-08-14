@@ -12,7 +12,8 @@
 
 #ifndef AML_VECTOR
 #define AML_VECTOR
-
+// struct needs densly packed datavalues to function properly
+#pragma pack(push, 1)
 namespace aml{
     /**
      * @brief Vertex template struct
@@ -45,6 +46,6 @@ namespace aml{
 
 
 }
-
+#pragma pack(pop)
 
 #endif
