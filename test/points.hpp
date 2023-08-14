@@ -4,7 +4,7 @@
 #include <GL/glut.h>
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
-#include "../include/LowLevelGraphics/resource/vectorInclude.hpp"
+#include "../include/LowLevelGraphics/resource/vector/vectorInclude.hpp"
 namespace aml{
     std::vector<float> cubeVerticesFloat = {
         -0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, 0.5f, -0.5f, 0.5f, 0.5f, -0.5f, 0.5f, -0.5f, -0.5f, 0.5f, -0.5f, 0.5f, 0.5f,

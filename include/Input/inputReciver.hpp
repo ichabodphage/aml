@@ -15,7 +15,7 @@
 #include "result.hpp"
 
 #include "../lib.hpp"
-#include "../LowLevelGraphics/window.hpp"
+#include "../LowLevelGraphics/window/window.hpp"
 #ifndef AML_INPUT_RECIVER
 #define AML_INPUT_RECIVER
 namespace aml

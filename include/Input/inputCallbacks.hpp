@@ -6,10 +6,6 @@
 
 #ifndef AML_INPUT_CALLBACKS
 #define AML_INPUT_CALLBACKS
-/**
- * @brief series of functions that act as window input callbacks
- *
- */
 namespace aml
 {
     /**

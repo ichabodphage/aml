@@ -12,11 +12,10 @@
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 
-#include "../lib.hpp"
+#include "../../lib.hpp"
 
-#include "resource/elementBuffer.hpp"
 
-#include "windowUtilities/styleManager.hpp"
+#include "styleManager.hpp"
 #ifndef AML_WINDOW
 #define AML_WINDOW
 

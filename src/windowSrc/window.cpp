@@ -1,4 +1,4 @@
-#include "../../include/LowLevelGraphics/window.hpp"
+#include "../../include/LowLevelGraphics/window/window.hpp"
 using namespace aml;
 
 

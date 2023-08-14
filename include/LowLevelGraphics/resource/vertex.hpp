@@ -8,7 +8,7 @@
 #include <GL/glut.h>
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
-#include "vectorInclude.hpp"
+#include "vector/vectorInclude.hpp"
 
 #ifndef AML_VERTEX
 #define AML_VERTEX

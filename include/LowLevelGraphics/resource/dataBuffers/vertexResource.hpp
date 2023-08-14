@@ -9,7 +9,7 @@
 #include <glm/glm.hpp>
 #include <GLFW/glfw3.h>
 
-#include "../../lib.hpp"
+#include "../../../lib.hpp"
 #ifndef AML_MULTI_RESOURCE
 #define AML_MULTI_RESOURCE
 

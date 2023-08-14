@@ -10,10 +10,13 @@
 #include <type_traits>
 
 #include "LowLevelGraphics/resource/vertex.hpp"
-#include "LowLevelGraphics/resource/vectorInclude.hpp"
+#include "LowLevelGraphics/resource/vector/vectorInclude.hpp"
 #ifndef AML_CORE
 #define AML_CORE
-
+/**
+ * @brief generic AML namespace holding all functions and classes
+ * 
+ */
 namespace aml
 {
     /**

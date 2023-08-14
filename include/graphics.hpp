@@ -3,13 +3,13 @@
 #include "lib.hpp"
 
 //resource includes
-#include "LowLevelGraphics/resource/vectorResource.hpp"
-#include "LowLevelGraphics/resource/vertexResource.hpp"
-#include "LowLevelGraphics/resource/elementBuffer.hpp"
+#include "LowLevelGraphics/resource/dataBuffers/vectorResource.hpp"
+#include "LowLevelGraphics/resource/dataBuffers/vertexResource.hpp"
+#include "LowLevelGraphics/resource/dataBuffers/elementBuffer.hpp"
 
 #include "LowLevelGraphics/resource/texture.hpp"
 #include "LowLevelGraphics/resource/vertex.hpp"
-#include "LowLevelGraphics/resource/vectorInclude.hpp"
+#include "LowLevelGraphics/resource/vector/vectorInclude.hpp"
 //shader includes
 #include "LowLevelGraphics/shader/shaderResource.hpp"
 #include "LowLevelGraphics/shader/shaderProgram.hpp"
@@ -17,4 +17,4 @@
 #include "LowLevelGraphics/shader/uniform.hpp"
 
 
-#include "LowLevelGraphics/window.hpp"
+#include "LowLevelGraphics/window/window.hpp"

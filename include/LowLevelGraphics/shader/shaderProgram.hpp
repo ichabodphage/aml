@@ -13,7 +13,7 @@
 #include "shaderResource.hpp"
 #include "uniform.hpp"
 #include "../../lib.hpp"
-#include "../resource/elementBuffer.hpp"
+#include "../resource/dataBuffers/elementBuffer.hpp"
 #ifndef AML_SHADER_PROGRAM
 #define AML_SHADER_PROGRAM
 

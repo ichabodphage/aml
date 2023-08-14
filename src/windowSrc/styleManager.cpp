@@ -1,4 +1,4 @@
-#include "../../include/LowLevelGraphics/windowUtilities/styleManager.hpp"
+#include "../../include/LowLevelGraphics/window/styleManager.hpp"
 
 using namespace aml;
 
