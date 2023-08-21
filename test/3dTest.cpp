@@ -31,16 +31,18 @@ int main()
 
     //input reciver for the window
     aml::InputReciver localInput(window,10);
-
+    std::vector<aml::Vector2float> textCordArr;
+    for(int i = 0; i < aml::cubeVertices.size();i++){
+        textCordArr.push_back(aml::Vector2float(0,0));
+    }
     aml::VertexResource3d multiBuffer;
-    std::vector<aml::Vert3> verticies = aml::makeVertexArr(aml::cubeVertices,aml::cubeColors);
+    std::vector<aml::Vert3> verticies = aml::makeVertexArr(aml::cubeVertices,aml::cubeColors,textCordArr);
     multiBuffer.pushToGPU(verticies);
 
     // default vertex shader, uses color and vertex data
     aml::ShaderResource defaultVertexShader(aml::defaultVert(),aml::ShaderType::VERTEX);
     // default fragment shader, uses vertex color data
     aml::ShaderResource defaultFragmentShader(aml::defaultFrag(),aml::ShaderType::FRAGMENT);
-
     // Link the vertex and fragment shader into a shader program
     aml::ShaderProgram shaderProgram(defaultFragmentShader,defaultVertexShader);
     
@@ -55,6 +57,9 @@ int main()
     shaderProgram["matrices.projectionMatrix"].setMatrix(projectionMatrix);
     
     float rotx = 0;
+
+    aml::Texture localTexture("test/all_gray.bmp", 0);
+    shaderProgram["textureId"].setScalarInt(localTexture.getId());
   
     
     while (window.isActive())

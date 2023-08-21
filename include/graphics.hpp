@@ -8,7 +8,7 @@
 #include "LowLevelGraphics/resource/dataBuffers/elementBuffer.hpp"
 
 #include "LowLevelGraphics/resource/texture.hpp"
-#include "LowLevelGraphics/resource/vertex.hpp"
+#include "LowLevelGraphics/resource/vertex/vertex.hpp"
 #include "LowLevelGraphics/resource/vector/vectorInclude.hpp"
 //shader includes
 #include "LowLevelGraphics/shader/shaderResource.hpp"

@@ -95,7 +95,7 @@ void aml::stopAml(){
     glfwTerminate();
 }
 
-std::vector<aml::Vert3> aml::makeVertexArr(std::vector<aml::Vector3float> &posArray,std::vector<aml::Vector3float> &colorArray){
+std::vector<aml::Vert3> aml::makeVertexArr(std::vector<aml::Vector3float> &posArray,std::vector<aml::Vector3float> &colorArray,std::vector<aml::Vector2float>& textureCordinates ){
     if(posArray.size() != colorArray.size()){
         throw std::runtime_error("array of position vectors must be the same size of the array of color vectors");
     }
@@ -103,7 +103,7 @@ std::vector<aml::Vert3> aml::makeVertexArr(std::vector<aml::Vector3float> &posAr
     std::vector<aml::Vert3> vertices;
 
     for(size_t i = 0; i <posArray.size();i++){
-        vertices.push_back(aml::Vert3(posArray[i],colorArray[i]));
+        vertices.push_back(aml::Vert3(posArray[i],colorArray[i],textureCordinates[i]));
     }
 
     return vertices;

@@ -11,10 +11,7 @@ uniform int BLEND_FLAG = 0;
 
 
 void main()
-{	if(BLEND_FLAG == 1){
+{	
 		outputColor = texture(textureId[0], TexCoord) * vec4(ioVertexColor, 1.0);	
-	}else{
-		outputColor = texture(textureId[0], TexCoord) + vec4(ioVertexColor, 1.0);
-	}
 	
 } 

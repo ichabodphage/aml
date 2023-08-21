@@ -36,12 +36,12 @@ namespace aml{
         
     };
 
-    std::vector<aml::Vector2float> squareVertices = {
-       aml::Vector2float(1, 1),aml::Vector2float(1, -1),aml::Vector2float(-1, -1),aml::Vector2float(-1, 1)
+    std::vector<aml::Vector3float> squareVertices = {
+       aml::Vector3float(0.5, -0.5, 0),aml::Vector3float(-0.5,  0.5, 0),aml::Vector3float(0.5,  0.5, 0)
     };
 
     std::vector<aml::Vector3float> squareColors = {
-        aml::Vector3float(1.0f, 0.0f, 0.0f), aml::Vector3float(0.0f, 1.0f, 0.0f), aml::Vector3float(0.0f, 0.0f, 1.0f),aml::Vector3float(0.0f, 1.0f, 1.0f)
+        aml::Vector3float(1.0f, 1.0f, 1.0f), aml::Vector3float(1.0f, 1.0f, 1.0f), aml::Vector3float(1.0f, 1.0f, 1.0f)
     };
     std::vector<aml::Vector3float> cubeColors = { 
         aml::Vector3float(1.0f, 0.0f, 0.0f), aml::Vector3float(0.0f, 1.0f, 0.0f), aml::Vector3float(0.0f, 0.0f, 1.0f),

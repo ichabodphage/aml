@@ -9,7 +9,7 @@
 #include <tuple>
 #include <type_traits>
 
-#include "LowLevelGraphics/resource/vertex.hpp"
+#include "LowLevelGraphics/resource/vertex/vertex.hpp"
 #include "LowLevelGraphics/resource/vector/vectorInclude.hpp"
 #ifndef AML_CORE
 #define AML_CORE
@@ -19,41 +19,6 @@
  */
 namespace aml
 {
-    /**
-     * @brief gets the Nth element in a template parameter pack
-     *
-     * @tparam N template element
-     * @tparam Ts template parameter pack
-     */
-    template <int N, typename... Ts>
-    using indexInTemplate =
-        typename std::tuple_element<N, std::tuple<Ts...>>::type;
-
-    /**
-     * @brief returns the combined sizeof every item in a template parameter pack
-     *
-     * @tparam T template parameter pack
-     * @return constexpr size_t sum of the size of all the parameters
-     */
-    template <typename... T>
-    constexpr size_t packSize()
-    {
-
-        return (sizeof(T) + ...);
-    }
-    /**
-     * @brief returns a boolean value indicative of if a template type paramater is contained within a template pack
-     * 
-     * @tparam T template type being checked for
-     * @tparam Ts template pack to compare to
-     * @return true, template pack contains the type checked for
-     * @return false, template pack does not comtain the type being checked for
-     */
-    template <typename T, typename... Ts>
-    constexpr bool contains()
-    {
-        return std::disjunction_v<std::is_same<T, Ts>...>;
-    }
 
     /**
      * @brief checks for any openGL errors, throws a runtime error if any errors are caught
@@ -84,7 +49,7 @@ namespace aml
      * @return std::vector<vertType> standard vector of vertTyoe vertices
      */
     
-    std::vector<aml::Vert3> makeVertexArr(std::vector<aml::Vector3float> &posArray, std::vector<aml::Vector3float> &colorArray);
+    std::vector<aml::Vert3> makeVertexArr(std::vector<aml::Vector3float> &posArray, std::vector<aml::Vector3float> &colorArray,std::vector<aml::Vector2float>& textureCordinates);
 
     /**
      * @brief terminates AML

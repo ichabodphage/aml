@@ -10,6 +10,7 @@
 #include <GLFW/glfw3.h>
 
 #include "../../../lib.hpp"
+#include "../../../templateUtilities/templateLib.hpp"
 #ifndef AML_MULTI_RESOURCE
 #define AML_MULTI_RESOURCE
 
@@ -95,7 +96,8 @@ namespace aml
                     //establish the distance inbetween verticies
                     stride * sizeof(float), 
                     //tell openGL where the atribute is located within the vertex
-                    (void*) ((i*offSet) * sizeof(float)));
+                    (void*) (offSet * sizeof(float)));
+                  
                 glEnableVertexAttribArray(i+layout);
                 offSet+= floatCountArr[i];
             } 
@@ -213,9 +215,17 @@ namespace aml
         
     };
     /// @brief vertex buffer for 2d vertices
-    typedef aml::VertexResource<aml::Vert2,glm::vec2,glm::vec3> VertexResource2d;
+    typedef aml::VertexResource<aml::Vert2,
+                                aml::Vector2float, //position
+                                aml::Vector3float, //color
+                                aml::Vector2float  //textcords
+                                > VertexResource2d;
     /// @brief vertex buffer for 3d verticies
-    typedef aml::VertexResource<aml::Vert3,glm::vec3,glm::vec3> VertexResource3d; 
+    typedef aml::VertexResource<aml::Vert3,
+                                aml::Vector3float, //position
+                                aml::Vector3float, //color
+                                aml::Vector2float  //textcords
+                                > VertexResource3d; 
 }
 
 #endif
