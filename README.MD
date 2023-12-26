@@ -11,7 +11,8 @@ the library itself is divided into a few modules,
 
 ## building
 
-run cmake 
-```CMakeLists.txt```
-then run 
+run 
+```cmake CMakeLists.txt```
+
+afterwards just run
 ```make```
