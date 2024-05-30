@@ -12,3 +12,4 @@ test/TextureTest
 accessToken.txt
 latex/
 html/
+.direnv/
