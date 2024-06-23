@@ -13,6 +13,9 @@ set(SOURCE
    PARENT_SCOPE
 )
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test)
+set (DCMAKE_EXE_LINKER_FLAGS "-fuse-ld=mold")
+set (DCMAKE_SHARED_LINKER_FLAGS "-fuse-ld=mold")
+
 link_libraries("glfw" "GL" "GLEW" "glut")
 
 add_executable(3dTest 

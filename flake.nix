@@ -22,6 +22,7 @@
 	    clang
 	    cmake
 	    gnumake
+	    mold
           ];
           shellHook = ''
           '';
@@ -37,6 +38,7 @@
 	    clang
 	    cmake
 	    gnumake
+	    mold
 	  ];
 	  installPhase = ''
 	  mkdir -p $out/bin
