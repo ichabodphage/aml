@@ -22,7 +22,9 @@
  cmake --build . -j 4
 */
 std::vector<aml::Vector2float> cords = {
-    aml::Vector2float(0, 0), aml::Vector2float(0, 1), aml::Vector2float(1, 0)};
+    {0.0f, 1.0f}, {0.0f, 0.0f}, {1.0f, 0.0f},
+    {0.0f, 1.0f}, {1.0f, 0.0f}, {1.0f, 1.0f}
+};
 std::vector<aml::Vert3> make2dVertexArr(std::vector<aml::Vector3float> &posArray, std::vector<aml::Vector3float> &colorArray, std::vector<aml::Vector2float> &textureCordinates)
 {
     if (posArray.size() != colorArray.size())
@@ -53,7 +55,7 @@ int main()
     aml::VertexResource3d vertexBuffer;
     
     
-        glEnableVertexAttribArray(2);
+        //glEnableVertexAttribArray(2);
     vertexBuffer.pushToGPU(vertArray);
     /*
     aml::VectorResource<aml::Vector3float> posBuffer(0);
@@ -75,14 +77,14 @@ int main()
     aml::ShaderProgram shaderProgram(defaultFragmentShader, defaultVertexShader);
 
     std::vector<int> textureArr(16);
-    textureArr[0] = localTexture.getId();
+    textureArr[0] = 0;
 
     shaderProgram["textureId"].setIntArr(textureArr);
     while (window.isActive())
     {
         window.clear();
         shaderProgram.run();
-        shaderProgram.renderVertexBuffer(0, 3);
+        shaderProgram.renderVertexBuffer(0, vertArray.size());
 
         // check for all inputs
         localInput.pollInput();
