@@ -24,6 +24,11 @@ ShaderProgram::ShaderProgram()
     programId = glCreateProgram();
 }
 
+void ShaderProgram::bindElementBuffer(aml::ElementBuffer &ebo)
+{
+    ebo.bindResource();
+}
+
 ShaderProgram::~ShaderProgram()
 {
     // delete the program
@@ -68,20 +73,20 @@ Uniform &ShaderProgram::operator[](const std::string uniformName)
     }
     // return the value within the map
     return uniformMap[uniformName];
-}
+};
 
-void ShaderProgram::renderVertexBuffer(size_t index, size_t amount){
+void ShaderProgram::renderVertexBuffer(size_t index, size_t amount, GLenum mode){
     // Draw a triangle from the 3 vertices
-    glDrawArrays(GL_TRIANGLES, index, amount);
+    glDrawArrays(mode, index, amount);
     
-}
+};
 
 void ShaderProgram::renderBoundElementBuffer(size_t amount){
     glDrawElements(GL_TRIANGLES,amount,GL_UNSIGNED_INT,0);
-}
+};
 
 void ShaderProgram::renderElementBuffer(aml::ElementBuffer& ebo) 
 {
     ebo.bindResource();
     glDrawElements(GL_TRIANGLES,ebo.size(),GL_UNSIGNED_INT,0);   
-}
+};

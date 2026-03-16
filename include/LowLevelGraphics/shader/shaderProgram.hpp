@@ -14,6 +14,7 @@
 #include "uniform.hpp"
 #include "../../lib.hpp"
 #include "../resource/dataBuffers/elementBuffer.hpp"
+#include "../resource/dataBuffers/shaderStorageBuffer.hpp"
 #ifndef AML_SHADER_PROGRAM
 #define AML_SHADER_PROGRAM
 
@@ -100,14 +101,27 @@ namespace aml
          *   @param amount amount of verticies to draw
          *   @return none
          */
-        void renderVertexBuffer(size_t index, size_t amount);
+        void renderVertexBuffer(size_t index, size_t amount, GLenum mode = GL_TRIANGLES);
 
         /**
          *   @brief renders a bound EBO using the size of the EBO
          *   @param amount amount of verticies to draw
          *   @return none
          */
+
+        /**
+         * @brief renders a bound EBO using the size of the EBO
+         * 
+         * @param amount amount of verticies to draw
+         */
         void renderBoundElementBuffer(size_t amount);
+
+        /**
+         * @brief binds an EBO and draws its elements
+         *
+         * @param ebo ebo to draw
+         */
+        void bindElementBuffer(aml::ElementBuffer &ebo);
 
         /**
          * @brief binds an EBO and draws its elements
