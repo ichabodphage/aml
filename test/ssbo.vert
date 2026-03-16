@@ -10,6 +10,10 @@ struct MatrixPack
 	mat4 modelMatrix;
 };
 
+layout(std430, binding = 1) buffer layoutName
+{
+    float data_SSBO[];
+};
 
 uniform MatrixPack matrices = MatrixPack(mat4(1),mat4(1),mat4(1));
 
@@ -25,9 +29,10 @@ smooth out vec2 TexCoord;
 
 void main()
 {
+    float weight = data_SSBO[gl_VertexID];
 
 	mat4 mvpMatrix = matrices.projectionMatrix * matrices.viewMatrix * matrices.modelMatrix;
 	gl_Position = mvpMatrix * vec4(vertexPosition, 1.0);
-	ioVertexColor = vertexColor;
+	ioVertexColor = vertexColor + weight;
 	TexCoord = aTexCoord;
 }

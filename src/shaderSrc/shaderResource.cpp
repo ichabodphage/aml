@@ -9,7 +9,6 @@ ShaderResource::ShaderResource(const std::string shaderFile,aml::ShaderType type
     std::vector<std::string> fileLines;
 
 
-    
     //throw runtime error if the file fails to open
     if(!resourceFile.is_open()){
         throw std::runtime_error("file resource \"" + shaderFile  + "\" failed to open"); 

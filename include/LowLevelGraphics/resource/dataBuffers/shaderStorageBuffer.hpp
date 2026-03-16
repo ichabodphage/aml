@@ -70,6 +70,16 @@ namespace aml
             bufferSize = data.size();
         };
         /**
+         * @brief links the buffer to a specific slot on the GPU
+         * * @param slot slot to link the buffer to
+         * 
+         */
+        void bindSlot(GLuint slot)
+        {
+            // This connects our buffer ID to the target slot
+            glBindBufferBase(GL_SHADER_STORAGE_BUFFER, slot, bufferID);
+        }
+        /**
          * @brief pushes an update to the GPU
          * * @param data pointer to the data to push
          * @param size size of the data to push
@@ -80,7 +90,7 @@ namespace aml
         void pushUpdateToGPU(T *data, size_t size, size_t index)
         {
             bindResource();
-            glBufferSubData(GL_SHADER_STORAGE_BUFFER, index * sizeof(T),  size * sizeof(T), data);
+            glBufferSubData(GL_SHADER_STORAGE_BUFFER, index * sizeof(T), size * sizeof(T), data);
         };
         /**
          * @brief pushes an update to the GPU
@@ -91,7 +101,7 @@ namespace aml
         void pushUpdateToGPU(std::vector<T> &data, size_t index)
         {
             bindResource();
-            glBufferSubData(GL_SHADER_STORAGE_BUFFER, index * sizeof(T),  data.size() * sizeof(T), data.data());
+            glBufferSubData(GL_SHADER_STORAGE_BUFFER, index * sizeof(T), data.size() * sizeof(T), data.data());
         };
         /**
          * @brief Destroy the Shader Storage Buffer object

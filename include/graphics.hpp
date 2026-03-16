@@ -6,6 +6,7 @@
 #include "LowLevelGraphics/resource/dataBuffers/vectorResource.hpp"
 #include "LowLevelGraphics/resource/dataBuffers/vertexResource.hpp"
 #include "LowLevelGraphics/resource/dataBuffers/elementBuffer.hpp"
+#include "LowLevelGraphics/resource/dataBuffers/shaderStorageBuffer.hpp"
 
 #include "LowLevelGraphics/resource/texture.hpp"
 #include "LowLevelGraphics/resource/vertex/vertex.hpp"

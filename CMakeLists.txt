@@ -58,3 +58,6 @@ target_link_libraries(3dTest PRIVATE aml_core)
 
 add_executable(TextureTest test/TextureTest.cpp)
 target_link_libraries(TextureTest PRIVATE aml_core)
+
+add_executable(SSBOTest test/ssboTest.cpp)
+target_link_libraries(SSBOTest PRIVATE aml_core)
