@@ -177,7 +177,9 @@ namespace aml
         void write(VertexType * rawData, size_t size, size_t index){
 
             bindResource();
-            glBufferSubData(GL_ARRAY_BUFFER, index, aml::packSize<T...>() * size, rawData);
+            size_t byteOffset = index * aml::packSize<T...>();
+            
+            glBufferSubData(GL_ARRAY_BUFFER, byteOffset, aml::packSize<T...>() * size, rawData);
             aml::checkForGLErrors(__FILE__,__LINE__);
         }
 
@@ -190,7 +192,8 @@ namespace aml
         void write(std::vector<VertexType>& vertexArray, size_t index){
 
             bindResource();
-            glBufferSubData(GL_ARRAY_BUFFER, index, aml::packSize<T...>() * vertexArray.size(), vertexArray.data());
+            size_t byteOffset = index * aml::packSize<T...>();
+            glBufferSubData(GL_ARRAY_BUFFER, byteOffset, aml::packSize<T...>() * vertexArray.size(), vertexArray.data());
             aml::checkForGLErrors(__FILE__,__LINE__);
         }
 
